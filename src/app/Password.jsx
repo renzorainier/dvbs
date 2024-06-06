@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 import { FaLock } from "react-icons/fa6";
 
@@ -11,6 +11,7 @@ const Password = ({
   const [pin, setPin] = useState("");
   const [error, setError] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const audioRef = useRef(null);
 
   const handlePinChange = (event) => {
     setPin(event.target.value);
@@ -24,12 +25,18 @@ const Password = ({
     } else {
       setError("Incorrect PIN. Please try again."); // Set error message
       setPin(""); // Clear PIN input after incorrect entry
+      denied();
     }
   };
 
   const handleVisitorView = () => {
-    setIsAuthenticated(true); // Directly set isAuthenticated to true for visitor view
+    setIsAuthenticated(true); // Directlsy set isAuthenticated to true for visitor view
     setIsVisitorView(true); // Set the state indicating visitor view
+  };
+
+  const denied = () => {
+    const audio = new Audio("/denied.wav");
+    audio.play();
   };
 
   return (
@@ -78,6 +85,7 @@ const Password = ({
           </div>
         </div>
       )}
+      <audio ref={audioRef} />
     </div>
   );
 };
