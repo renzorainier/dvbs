@@ -34,37 +34,7 @@ function DisplayControl() {
         return (
           <div className="flex flex-col justify-center items-center h-screen">
             <div className="container mx-auto">
-              <div className="grid grid-cols-2 md:grid-cols-2 gap-2">
-                <button
-                  className="focus:outline-none bg-white/5 backdrop-blur-5xl  text-white font-semibold py-4 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
-                  onClick={() => handleButtonClick("Tab")}
-                  style={{ animation: "slide-from-left 1s ease forwards" }}>
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                    }}>
-                    <FaListCheck style={{ fontSize: "3.5em" }} />
-                    <span style={{ marginTop: "0.5em" }}>Attendance</span>
-                  </div>
-                </button>
-
-                <button
-                  className="focus:outline-none bg-white/5 backdrop-blur-5xl text-white font-semibold py-4 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
-                  onClick={() => handleButtonClick("Attendance")}
-                  style={{ animation: "slide-from-left 1s ease forwards" }}>
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                    }}>
-                    <BsGraphUpArrow style={{ fontSize: "3.5em" }} />
-                    <span style={{ marginTop: "0.5em" }}>List</span>
-                  </div>
-                </button>
-              </div>
+             
             </div>
           </div>
         );
