@@ -18,6 +18,7 @@ import Store from "./Store";
 import CopyDataComponent from "./CopyDataComponent";
 import Password from "./Password.jsx";
 import StudentPointsRanking from "./StudentPointsRanking"
+import DisplayControl from "./DisplayControl"
 
 import { MdOutlineLocalGroceryStore } from "react-icons/md";
 import { FaListCheck } from "react-icons/fa6";
@@ -83,6 +84,8 @@ function Main() {
             <Store isVisitorView={isVisitorView} />
           </Password>
         );
+        case "DisplayControl":
+          return <DisplayControl/>;
 
       default:
         return (
@@ -230,6 +233,20 @@ function Main() {
                     }}>
                     <TbDoorExit style={{ fontSize: "3.5em" }} />{" "}
                     <span style={{ marginTop: "0.5em" }}>StudentRanking</span>
+                  </div>
+                </button>
+                <button
+                  className="focus:outline-none bg-white/5 backdrop-blur-5xl text-white font-semibold py-4 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
+                  onClick={() => handleButtonClick("DisplayControl")}
+                  style={{ animation: "slide-from-left 1s ease forwards" }}>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                    }}>
+                    <TbDoorExit style={{ fontSize: "3.5em" }} />{" "}
+                    <span style={{ marginTop: "0.5em" }}>DisplayControl</span>
                   </div>
                 </button>
               </div>
