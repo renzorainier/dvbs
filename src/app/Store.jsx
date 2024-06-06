@@ -301,7 +301,7 @@ function Store({ isVisitorView }) {
                   Confirm Payment
                 </button>
                 <button
-                  className="bg-blue-500 text-white font-bold py-2 px-4 rounded"
+                  className="bg-red-500 text-white font-bold py-2 px-4 rounded"
                   // disabled={paymentAmount !== ""}
                   onClick={() => {
                     if (paymentAmount !== "") {
