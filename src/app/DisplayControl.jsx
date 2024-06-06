@@ -67,7 +67,13 @@ function DisplayControl({ isVisitorView }) {
                   Monitor 1
                 </button>
                 <button
-                  onClick={() => handleMonitorClick("monitor2")}
+                  onClick={() => {
+                    if (!isVisitorView) {
+                      handleMonitorClick("monitor2");
+                    } else {
+                      setShowVisitorPrompt(true); // Show visitor prompt if in visitor view
+                    }
+                  }}
                   className={`m-2 p-2 rounded ${
                     selectedMonitor === "monitor2"
                       ? "bg-blue-500 text-white"
@@ -76,7 +82,13 @@ function DisplayControl({ isVisitorView }) {
                   Monitor 2
                 </button>
                 <button
-                  onClick={() => handleMonitorClick("monitor3")}
+                  onClick={() => {
+                    if (!isVisitorView) {
+                      handleMonitorClick("monitor3");
+                    } else {
+                      setShowVisitorPrompt(true); // Show visitor prompt if in visitor view
+                    }
+                  }}
                   className={`m-2 p-2 rounded ${
                     selectedMonitor === "monitor3"
                       ? "bg-blue-500 text-white"
