@@ -42,13 +42,9 @@ function DisplayControl() {
     switch (currentComponent) {
       case "Point":
         return (
-          <Password
-            isVisitorView={isVisitorView}
-            setIsVisitorView={setIsVisitorView}
-            correctPassword="0000"
-          >
-            <PointingSystemGraph isVisitorView={isVisitorView} />
-          </Password>
+
+            <PointingSystemGraph isVisitorView={false} />
+
         );
       case "Attendance":
         return <AttendanceChart />;
