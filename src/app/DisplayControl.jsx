@@ -9,7 +9,7 @@ import StudentPointsRanking from "./StudentPointsRanking";
 import { FaListCheck } from "react-icons/fa6";
 import { BsGraphUpArrow } from "react-icons/bs";
 
-function DisplayControl() {
+function DisplayControl({isVisitorView}) {
   const [currentComponent, setCurrentComponent] = useState(null);
   const [isVisitorView, setIsVisitorView] = useState(false);
   const [selectedMonitor, setSelectedMonitor] = useState("");
