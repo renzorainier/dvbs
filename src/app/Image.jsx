@@ -9,7 +9,9 @@ const BobbingImage = () => {
           <Image
             src="/firefighter.png"
             alt="Bobbing Image"
-            layout="fill"
+            layout="responsive" // Change the layout prop value to "responsive"
+            width={80} // Set the width and height explicitly
+            height={80}
           />
         </div>
       </div>
