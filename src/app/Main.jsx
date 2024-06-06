@@ -99,7 +99,7 @@ function Main() {
       default:
         return (
           <div
-            className="flex flex-col justify-center items-center h-screen relative"
+            className="flex flex-col justify-center items-center h-screen relative overflow-hidden"
             style={{
               background:
                 "linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0.05))",
@@ -127,7 +127,7 @@ function Main() {
                 </button>
 
                 <button
-                  className="focus:outline-none bg-white/5 backdrop-blur-4xl text-white font-semibold py-4 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
+                  className="focus:outline-none bg-white/5 backdrop-blur-5xl text-white font-semibold py-4 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
                   onClick={() => handleButtonClick("Attendance")}
                   style={{ animation: "slide-from-left 1s ease forwards" }}>
                   <div
@@ -140,8 +140,6 @@ function Main() {
                     <span style={{ marginTop: "0.5em" }}>List</span>
                   </div>
                 </button>
-
-
               </div>
             </div>
             <BobbingImage />
@@ -179,9 +177,7 @@ function Main() {
         <div>
           {backButton}
           {/* <ScrollToTopButton /> */}
-
           {renderCurrentComponent()}
-
           {/* <StudentPointsRanking/> */}
           {/* <AttendanceChart/> */}
           {/* <CopyDataComponent />; */}
@@ -194,7 +190,6 @@ function Main() {
 }
 
 export default Main;
-
 
 
 
