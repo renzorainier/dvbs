@@ -313,7 +313,7 @@ function Store({ isVisitorView }) {
                       setPaymentStatus(null);
                     }
                   }}>
-                  OK
+                  back
                 </button>
               </div>
             </div>
