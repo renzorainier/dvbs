@@ -83,25 +83,20 @@ body {
 
 @keyframes bob {
   0% {
-    transform: translate(0, 0) rotate(0deg);
-  }
-  25% {
-    transform: translate(0, -10px) rotate(-5deg);
+    transform: translate(0, 0) rotate(10deg);
   }
   50% {
-    transform: translate(0, 0) rotate(0deg);
-  }
-  75% {
-    transform: translate(0, 10px) rotate(5deg);
+    transform: translate(0, -20px);
   }
   100% {
-    transform: translate(0, 0) rotate(0deg);
+    transform: translate(0, 0)rotate(10deg);
   }
 }
-
 .animate-bob {
   animation-name: bob;
-  animation-duration: 2s;
+  animation-duration: 4s;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
 }
+
+
