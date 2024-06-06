@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const BobbingImage = () => {
   return (
-    <div className="absolute bottom-0 right-0 mb-10 ml-10 animate-bob">
+    <div className="absolute bottom-0 right-0 animate-bob">
       <div className="relative h-100 w-100"> {/* Adjusted size */}
         <Image
           src="/firefighter.png"
