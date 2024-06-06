@@ -231,7 +231,7 @@ function Main() {
                 </button>
 
               </div>
-            </div>
+            </div >
             <BobbingImage />
           </div>
         );
