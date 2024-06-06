@@ -28,6 +28,7 @@ import { FaMedal } from "react-icons/fa";
 import { FaCross } from "react-icons/fa";
 import { TbDoorExit } from "react-icons/tb";
 import { BsGraphUpArrow } from "react-icons/bs";
+import { FiMonitor } from "react-icons/fi";
 
 function Main() {
   const [currentComponent, setCurrentComponent] = useState(null);
@@ -232,7 +233,7 @@ function Main() {
                       flexDirection: "column",
                       alignItems: "center",
                     }}>
-                    <TbDoorExit style={{ fontSize: "3.5em" }} />{" "}
+                    <FiMonitor style={{ fontSize: "3.5em" }} />{" "}
                     <span style={{ marginTop: "0.5em" }}>DisplayControl</span>
                   </div>
                 </button>
