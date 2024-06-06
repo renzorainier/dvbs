@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { collection, onSnapshot, doc } from "firebase/firestore";
-import { db2 } from "./firebaseConfig2.js";
+import { doc, getDoc } from "firebase/firestore";
+import { db2 } from "./firebaseConfig2"; // Adjust the path if necessary
 import AttendanceChart from "./AttendanceChart";
 import PointingSystemGraph from "./PointingSystemGraph";
 import Password from "./Password.jsx";
@@ -15,7 +15,7 @@ function DisplayControl() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const docRef = doc(db, "points", "monitor1");
+      const docRef = doc(db2, "points", "monitor1");
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {
