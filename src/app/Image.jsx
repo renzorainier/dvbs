@@ -4,7 +4,7 @@ import Image from "next/image";
 const BobbingImage = () => {
   return (
     <div className="absolute bottom-0 right-0 mb-10 mr-10 animate-bob">
-      <div className="relative h-140 w-140">
+      <div className="relative h-20 w-140">
         <Image
           src="/firefighter.png"
           alt="Bobbing Image"
