@@ -31,10 +31,12 @@ const Password = ({
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center ">
+    <div >
       {isAuthenticated || isVisitorView ? (
         children
       ) : (
+        <div className="min-h-screen flex items-center justify-center bg-gray-100">
+
         <div className="bg-white rounded-lg shadow-2xl p-8 max-w-md w-full">
           <h1 className="text-2xl font-semibold text-gray-800 mb-6 text-center">
             Restricted Access
@@ -50,7 +52,7 @@ const Password = ({
               onChange={handlePinChange}
               className="border border-gray-300 rounded-lg px-4 py-3 mb-4 w-full text-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder="Enter PIN"
-            />
+              />
             {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
             <button
               type="submit"
@@ -65,6 +67,7 @@ const Password = ({
             </button>
           </form>
         </div>
+                </div>
       )}
     </div>
   );
