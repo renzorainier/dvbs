@@ -304,7 +304,7 @@ function Store({ isVisitorView }) {
                 </button>
                 <button
                   className="bg-blue-500 text-white font-bold py-2 px-4 rounded"
-                  disabled={paymentAmount !== ""}
+                  // disabled={paymentAmount !== ""}
                   onClick={() => {
                     if (paymentAmount !== "") {
                       setPaymentStatus("Remove the typed number first");
