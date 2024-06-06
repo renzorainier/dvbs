@@ -9,11 +9,11 @@ import StudentPointsRanking from "./StudentPointsRanking";
 import { FaListCheck } from "react-icons/fa6";
 import { BsGraphUpArrow } from "react-icons/bs";
 
-function DisplayControl({isVisitorView}) {
+function DisplayControl({ isVisitorView }) {
   const [currentComponent, setCurrentComponent] = useState(null);
-  const [isVisitorView, setIsVisitorView] = useState(false);
   const [selectedMonitor, setSelectedMonitor] = useState("");
   const [monitorData, setMonitorData] = useState(null);
+  const [showVisitorPrompt, setShowVisitorPrompt] = useState(false);
 
   useEffect(() => {
     if (selectedMonitor) {
@@ -41,11 +41,7 @@ function DisplayControl({isVisitorView}) {
   const renderCurrentComponent = () => {
     switch (currentComponent) {
       case "Point":
-        return (
-
-            <PointingSystemGraph isVisitorView={false} />
-
-        );
+        return <PointingSystemGraph isVisitorView={false} />;
       case "Attendance":
         return <AttendanceChart />;
       case "Rank":
@@ -61,8 +57,7 @@ function DisplayControl({isVisitorView}) {
                     selectedMonitor === "monitor1"
                       ? "bg-blue-500 text-white"
                       : "bg-gray-200"
-                  }`}
-                >
+                  }`}>
                   Monitor 1
                 </button>
                 <button
@@ -71,8 +66,7 @@ function DisplayControl({isVisitorView}) {
                     selectedMonitor === "monitor2"
                       ? "bg-blue-500 text-white"
                       : "bg-gray-200"
-                  }`}
-                >
+                  }`}>
                   Monitor 2
                 </button>
                 <button
@@ -81,8 +75,7 @@ function DisplayControl({isVisitorView}) {
                     selectedMonitor === "monitor3"
                       ? "bg-blue-500 text-white"
                       : "bg-gray-200"
-                  }`}
-                >
+                  }`}>
                   Monitor 3
                 </button>
               </div>
@@ -95,6 +88,21 @@ function DisplayControl({isVisitorView}) {
   return (
     <div className="fade-in">
       <div className="fade-in">
+        {showVisitorPrompt && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center">
+            <div className="fixed inset-0 bg-black opacity-50"></div>
+            <div className="bg-white rounded-lg p-5 shadow-md z-10 flex flex-col items-center">
+              <p className="mb-4 text-center">
+                You are in visitor view. This feature is disabled.
+              </p>
+              <button
+                className="bg-blue-500 text-white font-bold py-2 px-6 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                onClick={() => setShowVisitorPrompt(false)}>
+                OK
+              </button>
+            </div>
+          </div>
+        )}
 
         <div>{renderCurrentComponent()}</div>
       </div>
