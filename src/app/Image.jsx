@@ -9,9 +9,8 @@ const BobbingImage = () => {
           src="/firefighter.png"
           alt="Bobbing Image"
           layout="responsive"
-          width={80}
-          height={80}
-        />
+          width={120}
+          height={120}        />
       </div>
     </div>
   );
