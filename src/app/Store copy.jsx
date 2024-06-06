@@ -291,9 +291,15 @@ function Store({ isVisitorView }) {
                   value={paymentAmount}
                   onChange={(e) => setPaymentAmount(e.target.value)}
                 />
-                <button
+               <button
                   className="bg-green-500 text-white font-bold py-2 px-4 rounded mb-4"
-                  onClick={handlePayment}>
+                  onClick={() => {
+                    if (!isVisitorView) {
+                      handlePayment();
+                    } else {
+                      setShowVisitorPrompt(true); // Show visitor prompt if in visitor view
+                    }
+                  }}>
                   Confirm Payment
                 </button>
                 <button

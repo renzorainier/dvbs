@@ -15,11 +15,8 @@ function Store({ isVisitorView }) {
   const [showPoints, setShowPoints] = useState(false);
   const [paymentAmount, setPaymentAmount] = useState("");
   const [paymentStatus, setPaymentStatus] = useState(null);
-  const audioRef = useRef(null);
   const [showVisitorPrompt, setShowVisitorPrompt] = useState(false); // New state for visitor prompt
-
-
-
+  const audioRef = useRef(null);
 
   useEffect(() => {
     const fetchStudents = async () => {
@@ -81,7 +78,6 @@ function Store({ isVisitorView }) {
     return days[dayIndex >= 1 && dayIndex <= 5 ? dayIndex - 1 : 4];
   };
 
-
   // const getCurrentDayLetter = () => {
   //   const days = ["A", "B", "C", "D", "E", "F", "G"];
   //   const dayIndex = new Date().getDay();
@@ -131,7 +127,6 @@ function Store({ isVisitorView }) {
         setPaymentAmount("");
         setPaymentStatus("Payment complete"); // Show payment complete text
         playEnterSound();
-
       } catch (error) {
         console.error("Error updating points: ", error);
       }
@@ -148,7 +143,7 @@ function Store({ isVisitorView }) {
       selectedLocation ? student.location === selectedLocation : true
     );
 
-  const  getBackgroundColor = (prefix) => {
+  const getBackgroundColor = (prefix) => {
     switch (prefix) {
       case "primary": // Assuming 'pr' stands for primary
         return "#FFC100";
@@ -168,10 +163,9 @@ function Store({ isVisitorView }) {
     audio.play();
   };
 
-
   return (
     <div className="bg-[#9ca3af] h-screen overflow-auto">
-        {showVisitorPrompt && (
+      {showVisitorPrompt && (
         <div className="fixed inset-0 z-50 flex items-center justify-center">
           <div className="fixed inset-0 bg-black opacity-50"></div>
           <div className="bg-white rounded-lg p-5 shadow-md z-10 flex flex-col items-center">
@@ -297,11 +291,11 @@ function Store({ isVisitorView }) {
                   value={paymentAmount}
                   onChange={(e) => setPaymentAmount(e.target.value)}
                 />
-                <button
+               <button
                   className="bg-green-500 text-white font-bold py-2 px-4 rounded mb-4"
                   onClick={() => {
                     if (!isVisitorView) {
-                      handleClick();
+                      handlePayment();
                     } else {
                       setShowVisitorPrompt(true); // Show visitor prompt if in visitor view
                     }
@@ -310,14 +304,9 @@ function Store({ isVisitorView }) {
                 </button>
                 <button
                   className="bg-blue-500 text-white font-bold py-2 px-4 rounded"
-                  disabled={paymentAmount !== ""}
                   onClick={() => {
-                    if (paymentAmount !== "") {
-                      setPaymentStatus("Remove the typed number first");
-                    } else {
-                      setShowPoints(false);
-                      setPaymentStatus(null);
-                    }
+                    setShowPoints(false);
+                    setPaymentStatus(null);
                   }}>
                   OK
                 </button>
@@ -327,22 +316,11 @@ function Store({ isVisitorView }) {
         </div>
       </div>
       <audio ref={audioRef} />
-
     </div>
   );
 }
 
 export default Store;
-
-
-
-
-
-
-
-
-
-
 
 
 
