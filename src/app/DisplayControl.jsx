@@ -1,29 +1,10 @@
 import React, { useState } from "react";
-import Visitors from "./Visitors";
-import Tab from "./Tab";
-import Primary from "./Primary";
-import InitializeData from "./InitializeData";
 import AttendanceChart from "./AttendanceChart";
-import StudentOutTime from "./StudentOutTime";
 import PointingSystemGraph from "./PointingSystemGraph";
-import ScrollToTopButton from "./Scroll";
-import Schedule from "./Schedule";
-import CopyScheduleData from "./CopyScheduleData";
-import DailyRewards from "./DailyRewards";
-import SalvationDecision from "./SalvationDecision";
-import CopyPreviousDayPoints from "./CopyPreviousDayPoints";
-import Store from "./Store";
-import CopyDataComponent from "./CopyDataComponent";
 import Password from "./Password.jsx";
-import StudentPointsRanking from "./StudentPointsRanking"
+import StudentPointsRanking from "./StudentPointsRanking";
 
-import { MdOutlineLocalGroceryStore } from "react-icons/md";
 import { FaListCheck } from "react-icons/fa6";
-import { FiClock } from "react-icons/fi";
-import { HiMiniUserGroup } from "react-icons/hi2";
-import { FaMedal } from "react-icons/fa";
-import { FaCross } from "react-icons/fa";
-import { TbDoorExit } from "react-icons/tb";
 import { BsGraphUpArrow } from "react-icons/bs";
 
 function DisplayControl() {
@@ -49,17 +30,9 @@ function DisplayControl() {
         return <AttendanceChart />;
       case "Rank":
         return <StudentPointsRanking />;
-
-
       default:
         return (
-          <div
-            className="flex flex-col justify-center items-center h-screen"
-            style={{
-              background:
-                "linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0.05))",
-              position: "relative",
-            }}>
+          <div className="flex flex-col justify-center items-center h-screen">
             <div className="container mx-auto">
               <div className="grid grid-cols-2 md:grid-cols-2 gap-2">
                 <button
@@ -98,14 +71,10 @@ function DisplayControl() {
     }
   };
 
-
-
   return (
     <div className="fade-in">
       <div className="fade-in">
-        <div>
-          {renderCurrentComponent()}
-        </div>
+        <div>{renderCurrentComponent()}</div>
       </div>
     </div>
   );
