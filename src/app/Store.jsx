@@ -3,6 +3,7 @@ import { collection, getDocs, updateDoc, doc } from "firebase/firestore";
 import { db } from "./firebase.js"; // Import your Firebase config
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
+import { IoIosBackspace } from "react-icons/io";
 
 function Store({ isVisitorView }) {
   const [students, setStudents] = useState([]);
@@ -265,10 +266,7 @@ function Store({ isVisitorView }) {
 
           {showPoints && (
             <div className="fixed inset-0 z-40 flex items-center justify-center">
-              <div
-                className="fixed inset-0 bg-black opacity-50"
-
-              />
+              <div className="fixed inset-0 bg-black opacity-50" />
               <div className="bg-white rounded-lg p-5 shadow-md z-10 flex flex-col items-center">
                 <p className="text-xl font-bold mb-2">
                   Points: {currentPoints}
@@ -291,7 +289,7 @@ function Store({ isVisitorView }) {
                   value={paymentAmount}
                   onChange={(e) => setPaymentAmount(e.target.value)}
                 />
-               <button
+                <button
                   className="bg-green-500 text-white font-bold py-2 px-4 rounded mb-4"
                   onClick={() => {
                     if (!isVisitorView) {
@@ -313,7 +311,7 @@ function Store({ isVisitorView }) {
                       setPaymentStatus(null);
                     }
                   }}>
-                  back
+                  <IoIosBackspace style={{ fontSize: "2.0em" }} />
                 </button>
               </div>
             </div>
@@ -326,27 +324,6 @@ function Store({ isVisitorView }) {
 }
 
 export default Store;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // import React, { useState, useEffect, Fragment, useRef } from "react";
 // import { collection, getDocs, updateDoc, doc } from "firebase/firestore";
@@ -367,9 +344,6 @@ export default Store;
 //   const [paymentStatus, setPaymentStatus] = useState(null);
 //   const audioRef = useRef(null);
 //   const [showVisitorPrompt, setShowVisitorPrompt] = useState(false); // New state for visitor prompt
-
-
-
 
 //   useEffect(() => {
 //     const fetchStudents = async () => {
@@ -430,7 +404,6 @@ export default Store;
 //     const dayIndex = new Date().getDay();
 //     return days[dayIndex >= 1 && dayIndex <= 5 ? dayIndex - 1 : 4];
 //   };
-
 
 //   // const getCurrentDayLetter = () => {
 //   //   const days = ["A", "B", "C", "D", "E", "F", "G"];
@@ -517,7 +490,6 @@ export default Store;
 //     const audio = new Audio("/point.wav");
 //     audio.play();
 //   };
-
 
 //   return (
 //     <div className="bg-[#9ca3af] h-screen overflow-auto">
@@ -683,6 +655,3 @@ export default Store;
 // }
 
 // export default Store;
-
-
-
