@@ -247,9 +247,7 @@ function Main() {
                 </button>
               </div>
             </div>
-            <div >
-            <BobbingImage />
-          </div>
+
           </div>
         );
     }
@@ -284,6 +282,9 @@ function Main() {
         <div>
           {backButton}
           {/* <ScrollToTopButton /> */}
+          <div >
+            <BobbingImage />
+          </div>
           {renderCurrentComponent()}
 
           {/* <StudentPointsRanking/> */}
