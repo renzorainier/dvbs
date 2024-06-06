@@ -8,7 +8,7 @@ const BobbingImage = () => {
         <Image
           src="/firefighter.png"
           alt="Bobbing Image"
-          // layout="responsive"
+          layout="responsive"
           width={100} // Adjusted width
           height={100} // Adjusted height
         />
