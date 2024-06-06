@@ -1,5 +1,4 @@
 import React, { useState, useRef } from "react";
-
 import { FaLock } from "react-icons/fa6";
 
 const Password = ({
@@ -11,6 +10,7 @@ const Password = ({
   const [pin, setPin] = useState("");
   const [error, setError] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [attempts, setAttempts] = useState(0);
   const audioRef = useRef(null);
 
   const handlePinChange = (event) => {
@@ -23,14 +23,20 @@ const Password = ({
     if (pin === correctPassword) {
       setIsAuthenticated(true);
     } else {
-      setError("Incorrect PIN. Please try again."); // Set error message
+      const newAttempts = attempts + 1;
+      setAttempts(newAttempts);
+      if (newAttempts >= 10) {
+        setError("Ang cute ni Renz");
+      } else {
+        setError("Incorrect PIN. Please try again."); // Set error message
+      }
       setPin(""); // Clear PIN input after incorrect entry
       denied();
     }
   };
 
   const handleVisitorView = () => {
-    setIsAuthenticated(true); // Directlsy set isAuthenticated to true for visitor view
+    setIsAuthenticated(true); // Directly set isAuthenticated to true for visitor view
     setIsVisitorView(true); // Set the state indicating visitor view
   };
 
@@ -46,9 +52,7 @@ const Password = ({
       ) : (
         <div className="min-h-screen flex items-center justify-center bg-gray-400">
           <div className="flex justify-center items-center overflow-auto">
-            <div
-              className="w-full rounded-lg mx-auto"
-              style={{ maxWidth: "90%" }}>
+            <div className="w-full rounded-lg mx-auto" style={{ maxWidth: "90%" }}>
               <div className="bg-white rounded-lg shadow-2xl p-8 max-w-md w-full">
                 <h1 className="text-2xl font-semibold text-gray-800 mb-6 text-center flex items-center justify-center">
                   Restricted Access <FaLock className="ml-2" />
