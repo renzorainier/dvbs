@@ -36,18 +36,6 @@ function DisplayControl() {
 
   const renderCurrentComponent = () => {
     switch (currentComponent) {
-      case "Tab":
-        return <Tab />;
-      case "Out":
-        return (
-          <Password
-            isVisitorView={isVisitorView}
-            setIsVisitorView={setIsVisitorView}
-            correctPassword="1111">
-            <StudentOutTime isVisitorView={isVisitorView} />;
-          </Password>
-        );
-
       case "Point":
         return (
           <Password
@@ -59,23 +47,9 @@ function DisplayControl() {
         );
       case "Attendance":
         return <AttendanceChart />;
-      case "Schedule":
-        return <Schedule />;
-      case "Rewards":
-        return <DailyRewards />;
-      case "SalvationDecision":
-        return <SalvationDecision />;
       case "Rank":
         return <StudentPointsRanking />;
-      case "Store":
-        return (
-          <Password
-            isVisitorView={isVisitorView}
-            setIsVisitorView={setIsVisitorView}
-            correctPassword="2024">
-            <Store isVisitorView={isVisitorView} />
-          </Password>
-        );
+
 
       default:
         return (
