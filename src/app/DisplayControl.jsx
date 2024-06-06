@@ -12,7 +12,7 @@ import { BsGraphUpArrow } from "react-icons/bs";
 function DisplayControl() {
   const [currentComponent, setCurrentComponent] = useState(null);
   const [isVisitorView, setIsVisitorView] = useState(false);
-  const [selectedMonitor, setSelectedMonitor] = useState("monitor1");
+  const [selectedMonitor, setSelectedMonitor] = useState("");
   const [monitorData, setMonitorData] = useState(null);
 
   useEffect(() => {
