@@ -57,7 +57,38 @@ function DisplayControl() {
       default:
         return (
           <div className="flex flex-col justify-center items-center h-screen">
-            <div className="container mx-auto"></div>
+            <div className="container mx-auto">
+              {" "}
+              <div className="flex justify-center mb-4">
+                <button
+                  onClick={() => handleMonitorClick("monitor1")}
+                  className={`m-2 p-2 rounded ${
+                    selectedMonitor === "monitor1"
+                      ? "bg-blue-500 text-white"
+                      : "bg-gray-200"
+                  }`}>
+                  Monitor 1
+                </button>
+                <button
+                  onClick={() => handleMonitorClick("monitor2")}
+                  className={`m-2 p-2 rounded ${
+                    selectedMonitor === "monitor2"
+                      ? "bg-blue-500 text-white"
+                      : "bg-gray-200"
+                  }`}>
+                  Monitor 2
+                </button>
+                <button
+                  onClick={() => handleMonitorClick("monitor3")}
+                  className={`m-2 p-2 rounded ${
+                    selectedMonitor === "monitor3"
+                      ? "bg-blue-500 text-white"
+                      : "bg-gray-200"
+                  }`}>
+                  Monitor 3
+                </button>
+              </div>
+            </div>
           </div>
         );
     }
@@ -66,27 +97,9 @@ function DisplayControl() {
   return (
     <div className="fade-in">
       <div className="fade-in">
-        <div className="flex justify-center mb-4">
-          <button
-            onClick={() => handleMonitorClick("monitor1")}
-            className={`m-2 p-2 rounded ${selectedMonitor === "monitor1" ? "bg-blue-500 text-white" : "bg-gray-200"}`}
-          >
-            Monitor 1
-          </button>
-          <button
-            onClick={() => handleMonitorClick("monitor2")}
-            className={`m-2 p-2 rounded ${selectedMonitor === "monitor2" ? "bg-blue-500 text-white" : "bg-gray-200"}`}
-          >
-            Monitor 2
-          </button>
-          <button
-            onClick={() => handleMonitorClick("monitor3")}
-            className={`m-2 p-2 rounded ${selectedMonitor === "monitor3" ? "bg-blue-500 text-white" : "bg-gray-200"}`}
-          >
-            Monitor 3
-          </button>
+        <div>
+          {monitorData && <pre>{JSON.stringify(monitorData, null, 2)}</pre>}
         </div>
-        <div>{monitorData && <pre>{JSON.stringify(monitorData, null, 2)}</pre>}</div>
         <div>{renderCurrentComponent()}</div>
       </div>
     </div>
