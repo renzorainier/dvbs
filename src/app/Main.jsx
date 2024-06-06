@@ -19,6 +19,7 @@ import CopyDataComponent from "./CopyDataComponent";
 import Password from "./Password.jsx";
 import StudentPointsRanking from "./StudentPointsRanking";
 import DisplayControl from "./DisplayControl";
+import BobbingImage from "./Image";
 
 import { MdOutlineLocalGroceryStore } from "react-icons/md";
 import { FaListCheck } from "react-icons/fa6";
@@ -86,16 +87,14 @@ function Main() {
           </Password>
         );
       case "DisplayControl":
-
-      return (
-        <Password
-          isVisitorView={isVisitorView}
-          setIsVisitorView={setIsVisitorView}
-          correctPassword="0000">
-          <DisplayControl isVisitorView={isVisitorView} />
-        </Password>
-      );
-
+        return (
+          <Password
+            isVisitorView={isVisitorView}
+            setIsVisitorView={setIsVisitorView}
+            correctPassword="0000">
+            <DisplayControl isVisitorView={isVisitorView} />
+          </Password>
+        );
 
       default:
         return (
@@ -246,6 +245,9 @@ function Main() {
                     <span style={{ marginTop: "0.5em" }}>DisplayControl</span>
                   </div>
                 </button>
+              </div>
+              <div className="move-up">
+                <BobbingImage />
               </div>
             </div>
           </div>
