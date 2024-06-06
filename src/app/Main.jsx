@@ -230,20 +230,6 @@ function Main() {
                   </div>
                 </button>
 
-                <button
-                  className="focus:outline-none bg-white/5 backdrop-blur-5xl text-white font-semibold py-4 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
-                  onClick={() => handleButtonClick("DisplayControl")}
-                  style={{ animation: "slide-from-left 1s ease forwards" }}>
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                    }}>
-                    <FiMonitor style={{ fontSize: "3.5em" }} />{" "}
-                    <span style={{ marginTop: "0.5em" }}>DisplayControl</span>
-                  </div>
-                </button>
               </div>
             </div>
             <BobbingImage />
@@ -294,6 +280,31 @@ function Main() {
 }
 
 export default Main;
+
+
+
+
+
+
+
+
+
+{/* <button
+className="focus:outline-none bg-white/5 backdrop-blur-5xl text-white font-semibold py-4 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
+onClick={() => handleButtonClick("DisplayControl")}
+style={{ animation: "slide-from-left 1s ease forwards" }}>
+<div
+  style={{
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  }}>
+  <FiMonitor style={{ fontSize: "3.5em" }} />{" "}
+  <span style={{ marginTop: "0.5em" }}>DisplayControl</span>
+</div>
+</button> */}
+
+
 
 // "use client";
 
