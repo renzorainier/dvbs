@@ -52,7 +52,13 @@ function DisplayControl({ isVisitorView }) {
             <div className="container mx-auto">
               <div className="flex justify-center mb-4">
                 <button
-                  onClick={() => handleMonitorClick("monitor1")}
+                  onClick={() => {
+                    if (!isVisitorView) {
+                      handleMonitorClick("monitor1");
+                    } else {
+                      setShowVisitorPrompt(true); // Show visitor prompt if in visitor view
+                    }
+                  }}
                   className={`m-2 p-2 rounded ${
                     selectedMonitor === "monitor1"
                       ? "bg-blue-500 text-white"
