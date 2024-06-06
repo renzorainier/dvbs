@@ -140,6 +140,110 @@ function Main() {
                     <span style={{ marginTop: "0.5em" }}>List</span>
                   </div>
                 </button>
+
+                <button
+                  className="focus:outline-none bg-white/5 backdrop-blur-5xl text-white font-semibold py-4 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
+                  onClick={() => handleButtonClick("Schedule")}
+                  style={{ animation: "slide-from-left 1s ease forwards" }}>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                    }}>
+                    <FiClock style={{ fontSize: "3.5em" }} />{" "}
+                    <span style={{ marginTop: "0.5em" }}>Schedule</span>
+                  </div>
+                </button>
+
+                <button
+                  className="focus:outline-none bg-white/5 backdrop-blur-5xl text-white font-semibold py-4 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
+                  onClick={() => handleButtonClick("Point")}
+                  style={{ animation: "slide-from-left 1s ease forwards" }}>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                    }}>
+                    <HiMiniUserGroup style={{ fontSize: "3.5em" }} />{" "}
+                    <span style={{ marginTop: "0.5em" }}>Points</span>
+                  </div>
+                </button>
+
+                <button
+                  className="focus:outline-none bg-white/5 backdrop-blur-5xl text-white font-semibold py-4 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
+                  onClick={() => handleButtonClick("Rewards")}
+                  style={{ animation: "slide-from-left 1s ease forwards" }}>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                    }}>
+                    <FaMedal style={{ fontSize: "3.5em" }} />{" "}
+                    <span style={{ marginTop: "0.5em" }}>Rewards</span>
+                  </div>
+                </button>
+
+                <button
+                  className="focus:outline-none bg-white/5 backdrop-blur-5xl text-white font-semibold py-4 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
+                  onClick={() => handleButtonClick("SalvationDecision")}
+                  style={{ animation: "slide-from-left 1s ease forwards" }}>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                    }}>
+                    <FaCross style={{ fontSize: "3.5em" }} />{" "}
+                    <span style={{ marginTop: "0.5em" }}>Salvation</span>
+                  </div>
+                </button>
+                <button
+                  className="focus:outline-none bg-white/5 backdrop-blur-5xl text-white font-semibold py-4 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
+                  onClick={() => handleButtonClick("Store")}
+                  style={{ animation: "slide-from-left 1s ease forwards" }}>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                    }}>
+                    <MdOutlineLocalGroceryStore style={{ fontSize: "3.5em" }} />{" "}
+                    <span style={{ marginTop: "0.5em" }}>Store</span>
+                  </div>
+                </button>
+
+                <button
+                  className="focus:outline-none bg-white/5 backdrop-blur-5xl text-white font-semibold py-4 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
+                  onClick={() => handleButtonClick("Out")}
+                  style={{ animation: "slide-from-left 1s ease forwards" }}>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                    }}>
+                    <TbDoorExit style={{ fontSize: "3.5em" }} />{" "}
+                    <span style={{ marginTop: "0.5em" }}>Out</span>
+                  </div>
+                </button>
+
+                <button
+                  className="focus:outline-none bg-white/5 backdrop-blur-5xl text-white font-semibold py-4 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
+                  onClick={() => handleButtonClick("DisplayControl")}
+                  style={{ animation: "slide-from-left 1s ease forwards" }}>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                    }}>
+                    <FiMonitor style={{ fontSize: "3.5em" }} />{" "}
+                    <span style={{ marginTop: "0.5em" }}>DisplayControl</span>
+                  </div>
+                </button>
               </div>
             </div>
             <BobbingImage />
@@ -190,134 +294,6 @@ function Main() {
 }
 
 export default Main;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// <button
-// className="focus:outline-none bg-white/5 backdrop-blur-5xl text-white font-semibold py-4 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
-// onClick={() => handleButtonClick("Schedule")}
-// style={{ animation: "slide-from-left 1s ease forwards" }}>
-// <div
-//   style={{
-//     display: "flex",
-//     flexDirection: "column",
-//     alignItems: "center",
-//   }}>
-//   <FiClock style={{ fontSize: "3.5em" }} />{" "}
-//   <span style={{ marginTop: "0.5em" }}>Schedule</span>
-// </div>
-// </button>
-
-// <button
-// className="focus:outline-none bg-white/5 backdrop-blur-5xl text-white font-semibold py-4 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
-// onClick={() => handleButtonClick("Point")}
-// style={{ animation: "slide-from-left 1s ease forwards" }}>
-// <div
-//   style={{
-//     display: "flex",
-//     flexDirection: "column",
-//     alignItems: "center",
-//   }}>
-//   <HiMiniUserGroup style={{ fontSize: "3.5em" }} />{" "}
-//   <span style={{ marginTop: "0.5em" }}>Points</span>
-// </div>
-// </button>
-
-// <button
-// className="focus:outline-none bg-white/5 backdrop-blur-5xl text-white font-semibold py-4 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
-// onClick={() => handleButtonClick("Rewards")}
-// style={{ animation: "slide-from-left 1s ease forwards" }}>
-// <div
-//   style={{
-//     display: "flex",
-//     flexDirection: "column",
-//     alignItems: "center",
-//   }}>
-//   <FaMedal style={{ fontSize: "3.5em" }} />{" "}
-//   <span style={{ marginTop: "0.5em" }}>Rewards</span>
-// </div>
-// </button>
-
-// <button
-// className="focus:outline-none bg-white/5 backdrop-blur-5xl text-white font-semibold py-4 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
-// onClick={() => handleButtonClick("SalvationDecision")}
-// style={{ animation: "slide-from-left 1s ease forwards" }}>
-// <div
-//   style={{
-//     display: "flex",
-//     flexDirection: "column",
-//     alignItems: "center",
-//   }}>
-//   <FaCross style={{ fontSize: "3.5em" }} />{" "}
-//   <span style={{ marginTop: "0.5em" }}>Salvation</span>
-// </div>
-// </button>
-// <button
-// className="focus:outline-none bg-white/5 backdrop-blur-5xl text-white font-semibold py-4 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
-// onClick={() => handleButtonClick("Store")}
-// style={{ animation: "slide-from-left 1s ease forwards" }}>
-// <div
-//   style={{
-//     display: "flex",
-//     flexDirection: "column",
-//     alignItems: "center",
-//   }}>
-//   <MdOutlineLocalGroceryStore style={{ fontSize: "3.5em" }} />{" "}
-//   <span style={{ marginTop: "0.5em" }}>Store</span>
-// </div>
-// </button>
-
-// <button
-// className="focus:outline-none bg-white/5 backdrop-blur-5xl text-white font-semibold py-4 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
-// onClick={() => handleButtonClick("Out")}
-// style={{ animation: "slide-from-left 1s ease forwards" }}>
-// <div
-//   style={{
-//     display: "flex",
-//     flexDirection: "column",
-//     alignItems: "center",
-//   }}>
-//   <TbDoorExit style={{ fontSize: "3.5em" }} />{" "}
-//   <span style={{ marginTop: "0.5em" }}>Out</span>
-// </div>
-// </button>
-
-// <button
-// className="focus:outline-none bg-white/5 backdrop-blur-5xl text-white font-semibold py-4 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
-// onClick={() => handleButtonClick("DisplayControl")}
-// style={{ animation: "slide-from-left 1s ease forwards" }}>
-// <div
-//   style={{
-//     display: "flex",
-//     flexDirection: "column",
-//     alignItems: "center",
-//   }}>
-//   <FiMonitor style={{ fontSize: "3.5em" }} />{" "}
-//   <span style={{ marginTop: "0.5em" }}>DisplayControl</span>
-// </div>
-// </button>
-
-
-
-
-
 
 // "use client";
 
