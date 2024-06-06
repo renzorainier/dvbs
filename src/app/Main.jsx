@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Visitors from "./Visitors";
 import Tab from "./Tab";
 import Primary from "./Primary";
@@ -99,18 +99,17 @@ function Main() {
       default:
         return (
           <div
-            className="flex flex-col justify-center items-center h-screen"
+            className="flex flex-col justify-center items-center h-screen relative"
             style={{
               background:
                 "linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0.05))",
-              position: "relative",
             }}>
-            <div className="text-white text-center mb-10 relative">
+            <div className="text-white text-center mb-10 relative z-10">
               <h1 className="font-bold text-9xl">DVBS</h1>
               <h2 className="text-2xl font-thin">2024</h2>
               <h3 className="text-3xl font-semibold">R e s c u e‎ Z o n e</h3>
             </div>
-            <div className="container mx-auto">
+            <div className="container mx-auto relative z-10">
               <div className="grid grid-cols-2 md:grid-cols-2 gap-2">
                 <button
                   className="focus:outline-none bg-white/5 backdrop-blur-5xl  text-white font-semibold py-4 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
@@ -128,7 +127,7 @@ function Main() {
                 </button>
 
                 <button
-                  className="focus:outline-none bg-white/5 backdrop-blur-5xl text-white font-semibold py-4 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
+                  className="focus:outline-none bg-white/5 backdrop-blur-4xl text-white font-semibold py-4 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
                   onClick={() => handleButtonClick("Attendance")}
                   style={{ animation: "slide-from-left 1s ease forwards" }}>
                   <div
@@ -145,10 +144,7 @@ function Main() {
 
               </div>
             </div>
-            <div >
             <BobbingImage />
-          </div>
-
           </div>
         );
     }
@@ -158,7 +154,7 @@ function Main() {
   const backButton = currentComponent ? (
     <div className="fixed bottom-4 left-4 z-50">
       <button
-        className="bg-gray-500   text-white font-bold py-2 px-4 rounded-lg transition-all duration-300 ease-in-out transform hover:scale-110 focus:outline-none focus:ring-2 "
+        className="bg-gray-500 text-white font-bold py-2 px-4 rounded-lg transition-all duration-300 ease-in-out transform hover:scale-110 focus:outline-none focus:ring-2"
         onClick={handleBackButtonClick}>
         <svg
           className="w-6 h-6"
@@ -198,8 +194,6 @@ function Main() {
 }
 
 export default Main;
-
-
 
 
 
