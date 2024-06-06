@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, onSnapshot } from "firebase/firestore";
 import { db2 } from "./firebaseConfig2"; // Adjust the path if necessary
 import AttendanceChart from "./AttendanceChart";
 import PointingSystemGraph from "./PointingSystemGraph";
@@ -14,18 +14,17 @@ function DisplayControl() {
   const [isVisitorView, setIsVisitorView] = useState(false);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const docRef = doc(db2, "points", "monitor1");
-      const docSnap = await getDoc(docRef);
+    const docRef = doc(db2, "points", "monitor1");
 
+    const unsubscribe = onSnapshot(docRef, (docSnap) => {
       if (docSnap.exists()) {
         console.log("Document data:", docSnap.data());
       } else {
         console.log("No such document!");
       }
-    };
+    });
 
-    fetchData();
+    return () => unsubscribe(); // Clean up the subscription on unmount
   }, []);
 
   const handleButtonClick = (componentName) => {
