@@ -22,6 +22,7 @@ function DisplayControl() {
       if (docSnap.exists()) {
         console.log("Document data:", docSnap.data());
         setMonitorData(docSnap.data());
+        setCurrentComponent(docSnap.data().component); // Set current component based on fetched data
       } else {
         console.log("No such document!");
         setMonitorData(null);
@@ -58,7 +59,6 @@ function DisplayControl() {
         return (
           <div className="flex flex-col justify-center items-center h-screen">
             <div className="container mx-auto">
-              {" "}
               <div className="flex justify-center mb-4">
                 <button
                   onClick={() => handleMonitorClick("monitor1")}
