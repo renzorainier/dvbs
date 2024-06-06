@@ -16,25 +16,23 @@ function DisplayControl() {
   const [monitorData, setMonitorData] = useState(null);
 
   useEffect(() => {
-    const docRef = doc(db2, "points", selectedMonitor);
+    if (selectedMonitor) {
+      const docRef = doc(db2, "points", selectedMonitor);
 
-    const unsubscribe = onSnapshot(docRef, (docSnap) => {
-      if (docSnap.exists()) {
-        console.log("Document data:", docSnap.data());
-        setMonitorData(docSnap.data());
-        setCurrentComponent(docSnap.data().component); // Set current component based on fetched data
-      } else {
-        console.log("No such document!");
-        setMonitorData(null);
-      }
-    });
+      const unsubscribe = onSnapshot(docRef, (docSnap) => {
+        if (docSnap.exists()) {
+          console.log("Document data:", docSnap.data());
+          setMonitorData(docSnap.data());
+          setCurrentComponent(docSnap.data().component); // Set current component based on fetched data
+        } else {
+          console.log("No such document!");
+          setMonitorData(null);
+        }
+      });
 
-    return () => unsubscribe(); // Clean up the subscription on unmount
+      return () => unsubscribe(); // Clean up the subscription on unmount
+    }
   }, [selectedMonitor]);
-
-  const handleButtonClick = (componentName) => {
-    setCurrentComponent(componentName);
-  };
 
   const handleMonitorClick = (monitor) => {
     setSelectedMonitor(monitor);
@@ -47,7 +45,8 @@ function DisplayControl() {
           <Password
             isVisitorView={isVisitorView}
             setIsVisitorView={setIsVisitorView}
-            correctPassword="0000">
+            correctPassword="0000"
+          >
             <PointingSystemGraph isVisitorView={isVisitorView} />
           </Password>
         );
@@ -66,7 +65,8 @@ function DisplayControl() {
                     selectedMonitor === "monitor1"
                       ? "bg-blue-500 text-white"
                       : "bg-gray-200"
-                  }`}>
+                  }`}
+                >
                   Monitor 1
                 </button>
                 <button
@@ -75,7 +75,8 @@ function DisplayControl() {
                     selectedMonitor === "monitor2"
                       ? "bg-blue-500 text-white"
                       : "bg-gray-200"
-                  }`}>
+                  }`}
+                >
                   Monitor 2
                 </button>
                 <button
@@ -84,7 +85,8 @@ function DisplayControl() {
                     selectedMonitor === "monitor3"
                       ? "bg-blue-500 text-white"
                       : "bg-gray-200"
-                  }`}>
+                  }`}
+                >
                   Monitor 3
                 </button>
               </div>
@@ -97,9 +99,7 @@ function DisplayControl() {
   return (
     <div className="fade-in">
       <div className="fade-in">
-        <div>
-          {monitorData && <pre>{JSON.stringify(monitorData, null, 2)}</pre>}
-        </div>
+
         <div>{renderCurrentComponent()}</div>
       </div>
     </div>
