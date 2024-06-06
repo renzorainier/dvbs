@@ -1,5 +1,4 @@
-
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Visitors from "./Visitors";
 import Tab from "./Tab";
 import Primary from "./Primary";
@@ -35,11 +34,6 @@ function DisplayControl() {
     setCurrentComponent(componentName);
   };
 
-  const handleBackButtonClick = () => {
-    setCurrentComponent(null);
-    setIsVisitorView(false);
-  };
-
   const renderCurrentComponent = () => {
     switch (currentComponent) {
       case "Tab":
@@ -71,9 +65,9 @@ function DisplayControl() {
         return <DailyRewards />;
       case "SalvationDecision":
         return <SalvationDecision />;
-        case "Rank":
-          return <StudentPointsRanking />;
-        case "Store":
+      case "Rank":
+        return <StudentPointsRanking />;
+      case "Store":
         return (
           <Password
             isVisitorView={isVisitorView}
@@ -92,11 +86,6 @@ function DisplayControl() {
                 "linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0.05))",
               position: "relative",
             }}>
-            <div className="text-white text-center mb-10 relative">
-              <h1 className="font-bold text-9xl">DVBS</h1>
-              <h2 className="text-2xl font-thin">2024</h2>
-              <h3 className="text-3xl font-semibold">R e s c u e‎ Z o n e</h3>
-            </div>
             <div className="container mx-auto">
               <div className="grid grid-cols-2 md:grid-cols-2 gap-2">
                 <button
@@ -128,8 +117,6 @@ function DisplayControl() {
                     <span style={{ marginTop: "0.5em" }}>List</span>
                   </div>
                 </button>
-
-               
               </div>
             </div>
           </div>
@@ -137,41 +124,13 @@ function DisplayControl() {
     }
   };
 
-  // Style the back button with modern UI
-  const backButton = currentComponent ? (
-    <div className="fixed bottom-4 left-4 z-50">
-      <button
-        className="bg-gray-500   text-white font-bold py-2 px-4 rounded-lg transition-all duration-300 ease-in-out transform hover:scale-110 focus:outline-none focus:ring-2 "
-        onClick={handleBackButtonClick}>
-        <svg
-          className="w-6 h-6"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="2"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          style={{ transform: "rotate(270deg)" }}>
-          <path d="M5 10l7-7m0 0l7 7m-7-7v18" />
-        </svg>
-      </button>
-    </div>
-  ) : null;
-
   const currentYear = new Date().getFullYear();
 
   return (
     <div className="fade-in">
       <div className="fade-in">
         <div>
-          {backButton}
-          {/* <ScrollToTopButton /> */}
           {renderCurrentComponent()}
-          {/* <StudentPointsRanking/> */}
-          {/* <AttendanceChart/> */}
-          {/* <CopyDataComponent />; */}
-          {/* <CopyScheduleData/> */}
-          {/* <Analytics />  */}
         </div>
       </div>
     </div>
