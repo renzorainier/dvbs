@@ -69,13 +69,13 @@ function DailyRewards() {
     fetchPrimary();
   }, [currentConfig.dbPath]);
 
-const getCurrentDayLetter = () => {
+  const getCurrentDayLetter = () => {
     const days = ["A", "B", "C", "D", "E"];
     const dayIndex = new Date().getDay();
     return days[dayIndex >= 1 && dayIndex <= 5 ? dayIndex - 1 : 4];
   };
 
-    // const getCurrentDayLetter = () => {
+  // const getCurrentDayLetter = () => {
   //   const days = ["A", "B", "C", "D", "E", "F", "G"];
   //   const dayIndex = new Date().getDay();
   //   return days[dayIndex === 0 ? 6 : dayIndex - 1];
@@ -296,7 +296,7 @@ const getCurrentDayLetter = () => {
                       {primaryData[savedFieldName] && <FaCheckCircle />}{" "}
                       {/* Check if saved is true */}
                     </button>
-                    <div className="flex ml-1">
+                    <div className="flex ml-1 border-2 border-gray-400 p-1 rounded-md">
                       {["A", "B", "C", "D", "E"].map((dayLetter) => {
                         const fieldName = `${studentIndex.slice(
                           0,
@@ -308,7 +308,7 @@ const getCurrentDayLetter = () => {
                         return (
                           <div
                             key={dayLetter}
-                            className="w-4 h-9 rounded-lg mr-1"
+                            className="w-4 h-7 rounded-lg mr-1"
                             style={{ backgroundColor: indicatorColor }}></div>
                         );
                       })}

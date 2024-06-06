@@ -1,4 +1,4 @@
-  import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { doc, updateDoc, getDoc } from "firebase/firestore";
 import { db } from "./firebase.js"; // Import your Firebase config
 import Confetti from "react-confetti";
@@ -264,40 +264,38 @@ function Primary({
         </div>
       )}
 
-{showVisitorPrompt && (
-  <div className="fixed inset-0 z-50 flex items-center justify-center">
-    <div className="fixed inset-0 bg-black opacity-50"></div>
-    <div className="bg-white rounded-lg p-5 shadow-md z-10 flex flex-col items-center">
-      <p className="mb-4 text-center">
-        You are in visitor view. This feature is disabled.
-      </p>
-      <button
-        className="bg-blue-500 text-white font-bold py-2 px-6 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-        onClick={() => setShowVisitorPrompt(false)}
-      >
-        OK
-      </button>
-    </div>
-  </div>
-)}
-
+      {showVisitorPrompt && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
+          <div className="fixed inset-0 bg-black opacity-50"></div>
+          <div className="bg-white rounded-lg p-5 shadow-md z-10 flex flex-col items-center">
+            <p className="mb-4 text-center">
+              You are in visitor view. This feature is disabled.
+            </p>
+            <button
+              className="bg-blue-500 text-white font-bold py-2 px-6 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              onClick={() => setShowVisitorPrompt(false)}>
+              OK
+            </button>
+          </div>
+        </div>
+      )}
 
       <div className="flex justify-center mb-5 font-bold">
         <div className="flex items-center bg-white border rounded-lg shadow-md p-4">
-        <FaUserCheck style={{ fontSize: "1.5em" }}/>
+          <FaUserCheck style={{ fontSize: "1.5em" }} />
           <p className="text-gray-800 font-bold ml-2 text-lg sm:text-base md:text-lg lg:text-xl">
             {countPresentForToday()}
           </p>
         </div>
         <div className="flex items-center bg-white border rounded-lg shadow-md p-4 ml-4">
-        <ImCross style={{ fontSize: "1.0em" }}/>
+          <ImCross style={{ fontSize: "1.0em" }} />
           <p className="text-gray-800 font-bold ml-2 text-lg sm:text-base md:text-lg lg:text-xl">
             {countAbsentForToday()}
           </p>
         </div>
 
         <div className="flex items-center bg-white border rounded-lg shadow-md p-4 ml-4">
-        <HiClipboardList style={{ fontSize: "1.5em" }} />
+          <HiClipboardList style={{ fontSize: "1.5em" }} />
           <p className="text-gray-800 font-bold ml-2 text-lg sm:text-base md:text-lg lg:text-xl">
             {countPresentForToday() + countAbsentForToday()}
           </p>
@@ -336,13 +334,13 @@ function Primary({
                   {primaryData[savedFieldName] && <FaCheckCircle />}{" "}
                   {/* Check if saved is true */}
                 </button>
-                <div className="flex flex-row ml-1">
+                <div className="flex flex-row ml-1 border-2 border-gray-400 p-1 rounded-md">
                   {["A", "B", "C", "D", "E"].map((dayLetter) => {
                     const fieldName = `${studentIndex.slice(0, 2)}${dayLetter}`;
                     return (
                       <div
                         key={dayLetter}
-                        className={`w-4 h-9 rounded-lg ${
+                        className={`w-4 h-7 rounded-lg ${
                           primaryData[fieldName]
                             ? config.colors.present
                             : config.colors.absent

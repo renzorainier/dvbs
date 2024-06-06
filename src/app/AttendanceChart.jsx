@@ -125,24 +125,20 @@ function AttendanceChart() {
     if (attendanceData) {
       renderChart();
     }
-  },
-  [attendanceData, selectedDay]);
+  }, [attendanceData, selectedDay]);
 
   const countPresentForDay = (attendanceData, day) => {
-    return Object.keys(attendanceData).filter(
-      (key) => {
-        // Check if the key ends with the selected day and has a truthy value
-        if (key.endsWith(day) && attendanceData[key]) {
-          // Extract the prefix (index) part of the key
-          const index = parseInt(key.substring(0, 2));
-          // Ensure the index is a number between 1 and 99
-          return !isNaN(index) && index >= 1 && index <= 99;
-        }
-        return false;
+    return Object.keys(attendanceData).filter((key) => {
+      // Check if the key ends with the selected day and has a truthy value
+      if (key.endsWith(day) && attendanceData[key]) {
+        // Extract the prefix (index) part of the key
+        const index = parseInt(key.substring(0, 2));
+        // Ensure the index is a number between 1 and 99
+        return !isNaN(index) && index >= 1 && index <= 99;
       }
-    ).length;
+      return false;
+    }).length;
   };
-
 
   // const countPresentForDay = (attendanceData, day) => {
   //   return Object.keys(attendanceData).filter(
@@ -219,27 +215,33 @@ function AttendanceChart() {
           </Menu.Items>
         </Menu>
 
-        {Object.keys(attendanceData).map((group, index) => (
-          <div
-            key={group}
-            style={{
-              backgroundColor: ["#FFC100", "#04d924", "#027df7", "#f70233"][
-                index
-              ],
-            }}
-            className="h-full md:h-full w-full flex flex-col items-center rounded-lg m-2 justify-center cursor-pointer">
-            <div className="text-5xl md:text-9xl text-white font-bold">
-              {countPresentForDay(attendanceData[group], selectedDay)}
+        <div className="grid grid-cols-2 gap-4 w-full h-full py-3">
+          {Object.keys(attendanceData).map((group, index) => (
+            <div
+              key={group}
+              style={{
+                backgroundColor: ["#FFC100", "#04d924", "#027df7", "#f70233"][
+                  index
+                ],
+              }}
+              className="h-full w-full flex flex-col items-center rounded-lg justify-center cursor-pointer p-4">
+              <div className="text-5xl md:text-9xl text-white font-bold">
+                {countPresentForDay(attendanceData[group], selectedDay)}
+              </div>
+              <div className="md:text-6xl text-4xl text-white font-bold">
+                {group}
+              </div>
             </div>
-            <div className="md:text-6xl text-white font-bold">{group}</div>
-          </div>
-        ))}
+          ))}
+        </div>
 
         <div className="w-full flex flex-col items-center rounded-lg m-2 justify-center bg-gray-300 cursor-pointer">
           <div className="text-5xl md:text-9xl text-black font-bold">
             {getTotalAttendanceForDay(selectedDay)}
           </div>
-          <div className="md:text-4xl md:mb-4 text-black font-bold">Total</div>
+          <div className="text-4xl md:text-4xl md:mb-4 text-black font-bold">
+            Total
+          </div>
         </div>
       </div>
       <audio ref={audioRef} />
