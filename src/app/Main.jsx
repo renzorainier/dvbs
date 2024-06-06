@@ -86,7 +86,16 @@ function Main() {
           </Password>
         );
       case "DisplayControl":
-        return <DisplayControl />;
+
+      return (
+        <Password
+          isVisitorView={isVisitorView}
+          setIsVisitorView={setIsVisitorView}
+          correctPassword="0000">
+          <DisplayControl isVisitorView={isVisitorView} />
+        </Password>
+      );
+
 
       default:
         return (
