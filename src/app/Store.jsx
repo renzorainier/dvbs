@@ -267,7 +267,7 @@ function Store({ isVisitorView }) {
             <div className="fixed inset-0 z-40 flex items-center justify-center">
               <div
                 className="fixed inset-0 bg-black opacity-50"
-                onClick={() => setShowPoints(false)}
+
               />
               <div className="bg-white rounded-lg p-5 shadow-md z-10 flex flex-col items-center">
                 <p className="text-xl font-bold mb-2">
@@ -304,9 +304,14 @@ function Store({ isVisitorView }) {
                 </button>
                 <button
                   className="bg-blue-500 text-white font-bold py-2 px-4 rounded"
+                  disabled={paymentAmount !== ""}
                   onClick={() => {
-                    setShowPoints(false);
-                    setPaymentStatus(null);
+                    if (paymentAmount !== "") {
+                      setPaymentStatus("Remove the typed number first");
+                    } else {
+                      setShowPoints(false);
+                      setPaymentStatus(null);
+                    }
                   }}>
                   OK
                 </button>
