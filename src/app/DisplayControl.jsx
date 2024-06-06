@@ -98,7 +98,7 @@ function DisplayControl() {
     }
   };
 
-  const currentYear = new Date().getFullYear();
+
 
   return (
     <div className="fade-in">
