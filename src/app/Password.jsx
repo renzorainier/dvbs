@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 
+import { FaLock } from "react-icons/fa6";
+
+
+
 const Password = ({
   correctPassword,
   children,
@@ -39,7 +43,8 @@ const Password = ({
 
         <div className="bg-white rounded-lg shadow-2xl p-8 max-w-md w-full">
           <h1 className="text-2xl font-semibold text-gray-800 mb-6 text-center">
-            Restricted Access
+            Restricted Access <FaLock />
+
           </h1>
           <p className="text-gray-600 mb-6 text-center">
             This feature is intended for authorized users. Enter the password to
