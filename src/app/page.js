@@ -15,7 +15,7 @@ export default function Home() {
         />
         {/* Open Graph meta tags */}
         <meta property="og:title" content="Rescue Zone | DVBS 2024" />
-        <meta property="og:image" content="https://example.com/firefighter.png" />
+        <meta property="og:image" content="https://dvbs.vercel.app/target.png" />
         {/* Add more Open Graph meta tags as needed */}
       </Head>
 
