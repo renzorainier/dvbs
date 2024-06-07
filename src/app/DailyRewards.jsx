@@ -164,7 +164,7 @@ function DailyRewards() {
       style={{ backgroundColor: currentConfig.color }}>
       <div className="flex justify-center items-center overflow-auto">
         <div className="w-full rounded-lg mx-auto" style={{ maxWidth: "90%" }}>
-          <div className="flex  max-w-md flex-col gap-4">
+          <div className="flex  max-w-md mx-auto flex-col gap-4">
             <div className="w-full ">
               <Menu as="div" className="relative inline-block mt-4">
                 <div>
