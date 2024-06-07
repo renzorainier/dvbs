@@ -125,7 +125,7 @@ function Main() {
               </h1>
               <h3 className="text-3xl font-bold ">D V B S &nbsp;2 0 2 4</h3>
             </div>
-            <div className="container mx-auto relative z-10">
+            <div className="container mx-auto mb-5 relative z-10">
               <Weather />
             </div>
             <div className="container mx-auto relative z-10">
