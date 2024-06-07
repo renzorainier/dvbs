@@ -100,7 +100,7 @@ function Main() {
       default:
         return (
           <div
-            className="flex flex-col justify-center items-center h-screen relative overflow-hidden"
+            className="flex flex-col justify-center items-center h-screen relative overflow-auto"
             style={{
               background:
                 "linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0.05))",
