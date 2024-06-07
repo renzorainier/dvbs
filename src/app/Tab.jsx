@@ -99,7 +99,8 @@ function Tab() {
                         </Dialog.Title>
                         <div className="mt-2">
                           <p className="text-sm text-gray-500">
-                          Consists of two main parts: "List" displays existing students and "Add" lets you add new students with their information. In "List",  clicking a name marks the student present; clicking again reverts it. Attendance is represented by five bars.                          </p>
+                          Consists of two main parts: &quot;List&quot; displays existing students and &quot;Add&quot; lets you add new students with their information. In &quot;List&quot;, clicking a name marks the student present; clicking again reverts it. Attendance is represented by five bars.
+                          </p>
                         </div>
 
                         <div className="mt-4">
