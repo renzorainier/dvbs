@@ -280,8 +280,7 @@ function Main() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <div className="fade-in" style={{ overflowY: "auto", maxHeight: "100vh" }}>
-      {backButton}
+    <div className="fade-in">
       <div className="fade-in">
         <div>
           {backButton}
