@@ -19,7 +19,7 @@ const BobbingImage = () => {
   }, []);
 
   return shouldRender ? (
-    <div className="absolute bottom-0 right-0 animate-bob">
+    <div className="absolute right-0 animate-bob">
       <div className="relative h-100 w-100"> {/* Adjusted size */}
         <Image
           src="/firefighter.png"
