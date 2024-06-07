@@ -135,6 +135,7 @@ function Main() {
             <div className="container mx-auto mb-5 relative z-10">
               <Weather />
             </div>
+            <div >
             <div className="container mx-auto relative z-10">
               <div className="grid grid-cols-2 md:grid-cols-2 gap-2">
                 <button
@@ -256,48 +257,50 @@ function Main() {
                   </div>
                 </button>
               </div>
-              <div
-                className="bg-white shadow-lg rounded-lg overflow-hidden"
-                style={{ animation: "slide-from-left 1s ease forwards" }}>
-                <div
-                  className="px-4 py-5 sm:p-6 cursor-pointer"
-                  onClick={toggleCard}>
-                  <div className="flex justify-between items-center">
-                    <h3 className="text-lg font-bold leading-6  text-gray-900">
-                      What is{" "}
-                      <span class="bg-gradient-to-r from-blue-400 to-violet-400 text-transparent bg-clip-text">
-                        Scans
-                      </span>
-                    </h3>
-                    <div className="flex items-center">
-                      <FaChevronDown
-                        className={`transition-transform ${
-                          cardExpanded ? "rotate-180" : ""
-                        }`}
-                      />
-                    </div>
-                  </div>
-                  {cardExpanded && (
-                    <div className="mt-2 pl-2 text-sm text-gray-500">
-                      &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;Scans is an attendance
-                      system developed by Renz Pasagdan - a Grade 12 STEM-1B
-                      student of Sumulong College of Arts and Sciences as a
-                      research project titled &ldquo;
-                      <span className="text-violet-400">
-                        Development of QR Code Technology as an Attendance
-                        System for Enhancing Attendance and Punctuality
-                      </span>
-                      &rdquo;. One of the key advantages of Scans, is its
-                      cost-effectiveness. Unlike the other systems utilized by
-                      many prominent private schools, scans incurs zero expenses
-                      in its operation.
-                    </div>
-                  )}
-                </div>
-              </div>
+
             </div>
             <BobbingImage />
           </div>
+               <div
+               className="shadow-lg rounded-lg"
+               style={{ animation: "slide-from-left 1s ease forwards" }}>
+               <div
+                 className="px-4 py-5 sm:p-6 cursor-pointer"
+                 onClick={toggleCard}>
+                 <div className="flex justify-between items-center">
+                   <div className="flex text-white items-center">
+                     <FaChevronDown
+                       className={`transition-transform  ${
+                         cardExpanded ? "rotate-180" : ""
+                       }`}
+                     />
+                   </div>
+                 </div>
+                 {cardExpanded && (
+                   <div>
+                     <button
+                       className="focus:outline-none bg-white-500 backdrop-blur-lg  text-white font-semibold py-4 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
+                       onClick={() => handleButtonClick("DisplayControl")}
+                       style={{
+                         animation: "slide-from-left 1s ease forwards",
+                       }}>
+                       <div
+                         style={{
+                           display: "flex",
+                           flexDirection: "column",
+                           alignItems: "center",
+                         }}>
+                         <FiMonitor style={{ fontSize: "3.5em" }} />{" "}
+                         <span style={{ marginTop: "0.5em" }}>
+                           DisplayControl
+                         </span>
+                       </div>
+                     </button>
+                   </div>
+                 )}
+               </div>
+             </div>
+              </div>
         );
     }
   };
@@ -328,23 +331,6 @@ function Main() {
 }
 
 export default Main;
-
-{
-  /* <button
-className="focus:outline-none bg-white-500 backdrop-blur-lg  text-white font-semibold py-4 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
-onClick={() => handleButtonClick("DisplayControl")}
-style={{ animation: "slide-from-left 1s ease forwards" }}>
-<div
-  style={{
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-  }}>
-  <FiMonitor style={{ fontSize: "3.5em" }} />{" "}
-  <span style={{ marginTop: "0.5em" }}>DisplayControl</span>
-</div>
-</button> */
-}
 
 // "use client";
 
