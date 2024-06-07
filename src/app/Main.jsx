@@ -127,7 +127,7 @@ function Main() {
                 </button>
 
                 <button
-                  className="focus:outline-none bg-white-500 backdrop-blur-lg backdrop-blur-5xl text-white font-semibold py-4 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
+                  className="focus:outline-none bg-white-500 backdrop-blur-lg  text-white font-semibold py-4 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
                   onClick={() => handleButtonClick("Attendance")}
                   style={{ animation: "slide-from-left 1s ease forwards" }}>
                   <div
@@ -142,7 +142,7 @@ function Main() {
                 </button>
 
                 <button
-                  className="focus:outline-none bg-white-500 backdrop-blur-lg backdrop-blur-5xl text-white font-semibold py-4 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
+                  className="focus:outline-none bg-white-500 backdrop-blur-lg  text-white font-semibold py-4 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
                   onClick={() => handleButtonClick("Schedule")}
                   style={{ animation: "slide-from-left 1s ease forwards" }}>
                   <div
@@ -157,7 +157,7 @@ function Main() {
                 </button>
 
                 <button
-                  className="focus:outline-none bg-white-500 backdrop-blur-lg backdrop-blur-5xl text-white font-semibold py-4 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
+                  className="focus:outline-none bg-white-500 backdrop-blur-lg  text-white font-semibold py-4 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
                   onClick={() => handleButtonClick("Point")}
                   style={{ animation: "slide-from-left 1s ease forwards" }}>
                   <div
@@ -172,7 +172,7 @@ function Main() {
                 </button>
 
                 <button
-                  className="focus:outline-none bg-white-500 backdrop-blur-lg backdrop-blur-5xl text-white font-semibold py-4 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
+                  className="focus:outline-none bg-white-500 backdrop-blur-lg  text-white font-semibold py-4 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
                   onClick={() => handleButtonClick("Rewards")}
                   style={{ animation: "slide-from-left 1s ease forwards" }}>
                   <div
@@ -201,7 +201,7 @@ function Main() {
                   </div>
                 </button>
                 <button
-                  className="focus:outline-none bg-white-500 backdrop-blur-lg backdrop-blur-5xl text-white font-semibold py-4 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
+                  className="focus:outline-none bg-white-500 backdrop-blur-lg  text-white font-semibold py-4 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
                   onClick={() => handleButtonClick("Store")}
                   style={{ animation: "slide-from-left 1s ease forwards" }}>
                   <div
@@ -216,7 +216,7 @@ function Main() {
                 </button>
 
                 <button
-                  className="focus:outline-none bg-white-500 backdrop-blur-lg backdrop-blur-5xl text-white font-semibold py-4 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
+                  className="focus:outline-none bg-white-500 backdrop-blur-lg  text-white font-semibold py-4 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
                   onClick={() => handleButtonClick("Out")}
                   style={{ animation: "slide-from-left 1s ease forwards" }}>
                   <div
@@ -290,7 +290,7 @@ export default Main;
 
 
 {/* <button
-className="focus:outline-none bg-white-500 backdrop-blur-lg backdrop-blur-5xl text-white font-semibold py-4 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
+className="focus:outline-none bg-white-500 backdrop-blur-lg  text-white font-semibold py-4 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
 onClick={() => handleButtonClick("DisplayControl")}
 style={{ animation: "slide-from-left 1s ease forwards" }}>
 <div
