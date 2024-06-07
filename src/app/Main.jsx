@@ -108,6 +108,9 @@ function Main() {
               <h1 className="font-bold text-9xl bg-gradient-to-r from-yellow-500 via-red-500 to-orange-500 text-transparent bg-clip-text ">
               Rescue
               </h1>
+              <h1 className="font-bold text-9xl bg-gradient-to-r from-red-500 via-yellow-500 to-orange-500 text-transparent bg-clip-text ">
+              Zone
+              </h1>
               <h2 className="text-3xl font-bold ">2024</h2>
               <h3 className="text-5xl font-semibold ">
                 Rescue&nbsp; Zone
