@@ -263,7 +263,8 @@ function Main() {
       <button
         className="bg-gray-500 text-white font-bold py-2 px-4 rounded-lg transition-all duration-300 ease-in-out transform hover:scale-110 focus:outline-none focus:ring-2"
         onClick={handleBackButtonClick}>
-        <IoMdArrowRoundBack />
+        <IoMdArrowRoundBack className="text-2xl" />
+
       </button>
     </div>
   ) : null;
