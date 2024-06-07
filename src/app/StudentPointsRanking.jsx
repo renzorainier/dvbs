@@ -104,7 +104,7 @@ const StudentRanking = () => {
       unsubscribeConfig();
     };
   }, []);
-
+//fix here 
   useEffect(() => {
     let interval;
     if (configGroup === "play" && Object.keys(groupedStudents).length > 0) {
