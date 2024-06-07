@@ -58,7 +58,7 @@ function Weather() {
       {!loading ? (
         data && (
           <div className="w-full rounded-lg" style={{ maxWidth: "90%" }}>
-            <div className="bg-gradient-to-r text-white from-blue-400 to-violet-400 text-transparent mt-3 rounded-lg shadow-lg p-1 flex flex-row items-center justify-center space-x-4">
+            <div className="bg-gradient-to-r text-white from-blue-400 to-violet-400 text-transparent  rounded-lg shadow-lg p-1 flex flex-row items-center justify-center space-x-4">
               <h1 className="text-base font-bold text-center">{data.name}</h1>
               <img
                 src={`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`}
