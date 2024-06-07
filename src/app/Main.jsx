@@ -31,7 +31,7 @@ import { FaCross } from "react-icons/fa";
 import { TbDoorExit } from "react-icons/tb";
 import { BsGraphUpArrow } from "react-icons/bs";
 import { FiMonitor } from "react-icons/fi";
-import { FaHome } from "react-icons/fa";
+import { IoMdArrowRoundBack } from "react-icons/io";
 
 function Main() {
   const [currentComponent, setCurrentComponent] = useState(null);
@@ -263,7 +263,7 @@ function Main() {
       <button
         className="bg-gray-500 text-white font-bold py-2 px-4 rounded-lg transition-all duration-300 ease-in-out transform hover:scale-110 focus:outline-none focus:ring-2"
         onClick={handleBackButtonClick}>
-   <FaHome />
+<IoMdArrowRoundBack />
       </button>
     </div>
   ) : null;
