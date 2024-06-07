@@ -164,8 +164,8 @@ function DailyRewards() {
       style={{ backgroundColor: currentConfig.color }}>
       <div className="flex justify-center items-center overflow-auto">
         <div className="w-full rounded-lg mx-auto" style={{ maxWidth: "90%" }}>
-          <div className="flex  max-w-md mx-auto flex-col gap-4">
-            <div className="w-full ">
+          <div className="flex   flex-col gap-4">
+            <div className="w-full  ">
               <Menu as="div" className="relative inline-block mt-4">
                 <div>
                   <Menu.Button className="inline-flex justify-center w-full rounded-md bg-black/20 px-4 py-2 text-sm font-bold text-white hover:bg-black/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75">
@@ -207,7 +207,7 @@ function DailyRewards() {
               </Menu>
             </div>
 
-            <div className="w-full">
+            <div className="w-full max-w-md mx-auto">
               <Menu as="div" className="relative inline-block w-full mb-4">
                 <div>
                   <Menu.Button className="inline-flex justify-center w-full rounded-md bg-black/20 px-4 py-2 text-sm font-bold text-white hover:bg-black/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75">
