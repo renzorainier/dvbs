@@ -106,7 +106,7 @@ function Main() {
                 "linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0.05))",
             }}>
             <div className="text-white text-center mb-4 relative z-10">
-              <h1 className="font-bold text-6xl sm:text-7xl md:text-8xl lg:text-9xl">
+              <h1 className="font-bold text-7xl sm:text-7xl md:text-8xl lg:text-9xl">
                 <span className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-orange-500 text-transparent bg-clip-text">
                   Re
                 </span>
@@ -122,7 +122,7 @@ function Main() {
                   one
                 </span>
               </h1>
-              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold">
+              <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold">
                 D V B S &nbsp;2 0 2 4
               </h3>
             </div>
