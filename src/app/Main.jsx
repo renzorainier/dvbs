@@ -105,7 +105,7 @@ function Main() {
               background:
                 "linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0.05))",
             }}>
-            <div className="text-white text-center mb-10 relative z-10">
+            <div className="text-white text-center mb-4 relative z-10">
               <h1 className="font-bold text-9xl">
                 <span className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-orange-500 text-transparent bg-clip-text">
                   Re
