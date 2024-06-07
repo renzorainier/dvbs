@@ -22,6 +22,7 @@ import DisplayControl from "./DisplayControl";
 import BobbingImage from "./Image";
 import Weather from "./Weather";
 
+import { FaChevronDown } from "react-icons/fa";
 import { MdOutlineLocalGroceryStore } from "react-icons/md";
 import { FaListCheck } from "react-icons/fa6";
 import { FiClock } from "react-icons/fi";
