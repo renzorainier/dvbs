@@ -106,16 +106,15 @@ function Main() {
                 "linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0.05))",
             }}>
             <div className="text-white text-center mb-4 relative z-10">
-              <h1 className="font-bold text-9xl">
+              <h1 className="font-bold text-6xl sm:text-7xl md:text-8xl lg:text-9xl">
                 <span className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-orange-500 text-transparent bg-clip-text">
                   Re
                 </span>
-
                 <span className="bg-gradient-to-r from-orange-500 via-red-500 to-orange-500 text-transparent bg-clip-text">
                   scue
                 </span>
               </h1>
-              <h1 className="font-bold text-9xl">
+              <h1 className="font-bold text-6xl sm:text-7xl md:text-8xl lg:text-9xl">
                 <span className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-orange-500 text-transparent bg-clip-text">
                   Z
                 </span>
@@ -123,8 +122,11 @@ function Main() {
                   one
                 </span>
               </h1>
-              <h3 className="text-3xl font-bold ">D V B S &nbsp;2 0 2 4</h3>
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold">
+                D V B S &nbsp;2 0 2 4
+              </h3>
             </div>
+
             <div className="container mx-auto mb-5 relative z-10">
               <Weather />
             </div>
@@ -276,7 +278,6 @@ function Main() {
       </button>
     </div>
   ) : null;
-
 
   return (
     <div className="fade-in">
