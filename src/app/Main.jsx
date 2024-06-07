@@ -106,14 +106,18 @@ function Main() {
             }}>
             <div className="text-white text-center mb-10 relative z-10">
               <h1 className="font-bold text-9xl">
-              <span className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-orange-500 text-transparent bg-clip-text">Re</span>
+                <span className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-orange-500 text-transparent bg-clip-text">
+                  Re
+                </span>
 
-                <span className="bg-gradient-to-r from-yellow-500 via-red-500 to-orange-500 text-transparent bg-clip-text">
+                <span className="bg-gradient-to-r from-orange-500 via-red-500 to-orange-500 text-transparent bg-clip-text">
                   scue
                 </span>
               </h1>
               <h1 className="font-bold text-9xl">
-                <span className="text-yellow-500">Z</span>
+                <span className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-orange-500 text-transparent bg-clip-text">
+                  Z
+                </span>
                 <span className="bg-gradient-to-r from-orange-500 via-yellow-500 to-red-500 text-transparent bg-clip-text">
                   one
                 </span>
