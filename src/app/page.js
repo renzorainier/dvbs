@@ -17,9 +17,7 @@ export default function Home() {
         />
         {/* Open Graph meta tags */}
         <meta property="og:title" content="Rescue Zone | DVBS 2024" />
-        <meta property="og:description" content="Manage attendance efficiently with our app." />
         <meta property="og:image" content="https://example.com/your-image.jpg" />
-        <meta property="og:url" content="https://example.com" />
         {/* Add more Open Graph meta tags as needed */}
       </Head>
 
