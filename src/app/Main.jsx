@@ -36,6 +36,10 @@ import { IoMdArrowRoundBack } from "react-icons/io";
 function Main() {
   const [currentComponent, setCurrentComponent] = useState(null);
   const [isVisitorView, setIsVisitorView] = useState(false);
+  const [cardExpanded, setCardExpanded] = useState(false);
+
+
+  const toggleCard = () => setCardExpanded(!cardExpanded);
 
   const handleButtonClick = (componentName) => {
     setCurrentComponent(componentName);
@@ -252,6 +256,22 @@ function Main() {
                   </div>
                 </button>
               </div>
+              {cardExpanded && (
+                <div className="mt-2 pl-2 text-sm text-gray-500">
+                  &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;Scans is an attendance system
+                  developed by Renz Pasagdan - a Grade 12 STEM-1B student of
+                  Sumulong College of Arts and Sciences as a research project
+                  titled &ldquo;
+                  <span className="text-violet-400">
+                    Development of QR Code Technology as an Attendance System
+                    for Enhancing Attendance and Punctuality
+                  </span>
+                  &rdquo;. One of the key advantages of Scans, is its
+                  cost-effectiveness. Unlike the other systems utilized by many
+                  prominent private schools, scans incurs zero expenses in its
+                  operation.
+                </div>
+              )}
             </div>
             <BobbingImage />
           </div>
