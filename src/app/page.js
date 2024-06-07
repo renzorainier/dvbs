@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/image.js";
+// import Image from "next/image.js";
 import Main from "./Main.jsx";
 import Head from "next/head.js";
 import React, { useState, Fragment } from "react";
