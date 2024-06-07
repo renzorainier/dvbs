@@ -6,7 +6,7 @@ const BobbingImage = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth > 1024) { // Adjust this value according to your screen size
+      if (window.innerWidth > 5000) { // Adjust this value according to your screen size
         setShouldRender(false);
       } else {
         setShouldRender(true);
