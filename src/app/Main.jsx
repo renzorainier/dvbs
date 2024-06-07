@@ -106,9 +106,10 @@ function Main() {
             }}>
             <div className="text-white text-center mb-10 relative z-10">
               <h1 className=" text-9xl"></h1>
-              <h1 className="font-bold text-9xl bg-gradient-to-r from-white to-yellow text-transparent bg-clip-text">
-              DVBS
-            </h1>
+              <h1 className="font-bold text-9xl bg-gradient-to-r from-white to-yellow bg-clip-text text-transparent">
+                DVBS
+              </h1>
+
               <h2 className="text-2xl font-thin">2024</h2>
               <h3 className="text-3xl font-semibold">R e s c u e‎ Z o n e</h3>
             </div>
@@ -232,9 +233,8 @@ function Main() {
                     <span style={{ marginTop: "0.5em" }}>Out</span>
                   </div>
                 </button>
-
               </div>
-            </div >
+            </div>
             <BobbingImage />
           </div>
         );
@@ -284,15 +284,8 @@ function Main() {
 
 export default Main;
 
-
-
-
-
-
-
-
-
-{/* <button
+{
+  /* <button
 className="focus:outline-none bg-white-500 backdrop-blur-lg  text-white font-semibold py-4 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
 onClick={() => handleButtonClick("DisplayControl")}
 style={{ animation: "slide-from-left 1s ease forwards" }}>
@@ -305,9 +298,8 @@ style={{ animation: "slide-from-left 1s ease forwards" }}>
   <FiMonitor style={{ fontSize: "3.5em" }} />{" "}
   <span style={{ marginTop: "0.5em" }}>DisplayControl</span>
 </div>
-</button> */}
-
-
+</button> */
+}
 
 // "use client";
 
