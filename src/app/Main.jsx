@@ -106,11 +106,11 @@ function Main() {
             }}>
             <div className="text-white text-center mb-10 relative z-10">
               <h1 className="font-bold text-9xl bg-gradient-to-r from-yellow-500 via-red-500 to-orange-500 text-transparent bg-clip-text ">
-                DVBS
+              Rescue
               </h1>
               <h2 className="text-3xl font-bold ">2024</h2>
               <h3 className="text-5xl font-semibold ">
-                R e s c u e&nbsp; Z o n e
+                Rescue&nbsp; Zone
               </h3>
             </div>
 
