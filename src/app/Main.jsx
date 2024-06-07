@@ -38,7 +38,6 @@ function Main() {
   const [isVisitorView, setIsVisitorView] = useState(false);
   const [cardExpanded, setCardExpanded] = useState(false);
 
-
   const toggleCard = () => setCardExpanded(!cardExpanded);
 
   const handleButtonClick = (componentName) => {
@@ -256,22 +255,45 @@ function Main() {
                   </div>
                 </button>
               </div>
-              {cardExpanded && (
-                <div className="mt-2 pl-2 text-sm text-gray-500">
-                  &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;Scans is an attendance system
-                  developed by Renz Pasagdan - a Grade 12 STEM-1B student of
-                  Sumulong College of Arts and Sciences as a research project
-                  titled &ldquo;
-                  <span className="text-violet-400">
-                    Development of QR Code Technology as an Attendance System
-                    for Enhancing Attendance and Punctuality
-                  </span>
-                  &rdquo;. One of the key advantages of Scans, is its
-                  cost-effectiveness. Unlike the other systems utilized by many
-                  prominent private schools, scans incurs zero expenses in its
-                  operation.
+              <div
+                className="bg-white shadow-lg rounded-lg overflow-hidden"
+                style={{ animation: "slide-from-left 1s ease forwards" }}>
+                <div
+                  className="px-4 py-5 sm:p-6 cursor-pointer"
+                  onClick={toggleCard}>
+                  <div className="flex justify-between items-center">
+                    <h3 className="text-lg font-bold leading-6  text-gray-900">
+                      What is{" "}
+                      <span class="bg-gradient-to-r from-blue-400 to-violet-400 text-transparent bg-clip-text">
+                        Scans
+                      </span>
+                    </h3>
+                    <div className="flex items-center">
+                      <FaChevronDown
+                        className={`transition-transform ${
+                          cardExpanded ? "rotate-180" : ""
+                        }`}
+                      />
+                    </div>
+                  </div>
+                  {cardExpanded && (
+                    <div className="mt-2 pl-2 text-sm text-gray-500">
+                      &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;Scans is an attendance
+                      system developed by Renz Pasagdan - a Grade 12 STEM-1B
+                      student of Sumulong College of Arts and Sciences as a
+                      research project titled &ldquo;
+                      <span className="text-violet-400">
+                        Development of QR Code Technology as an Attendance
+                        System for Enhancing Attendance and Punctuality
+                      </span>
+                      &rdquo;. One of the key advantages of Scans, is its
+                      cost-effectiveness. Unlike the other systems utilized by
+                      many prominent private schools, scans incurs zero expenses
+                      in its operation.
+                    </div>
+                  )}
                 </div>
-              )}
+              </div>
             </div>
             <BobbingImage />
           </div>
@@ -284,7 +306,6 @@ function Main() {
         className="bg-gray-500 text-white font-bold py-2 px-4 rounded-lg transition-all duration-300 ease-in-out transform hover:scale-110 focus:outline-none focus:ring-2"
         onClick={handleBackButtonClick}>
         <IoMdArrowRoundBack className="text-2xl" />
-
       </button>
     </div>
   ) : null;
