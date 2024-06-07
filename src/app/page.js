@@ -1,9 +1,7 @@
 "use client";
-// import Image from "next/image.js";
 import Main from "./Main.jsx";
-import Head from "next/head.js";
-import React, { useState, Fragment } from "react";
-
+import Head from "next/head";
+import React from "react";
 
 export default function Home() {
   return (
@@ -17,7 +15,7 @@ export default function Home() {
         />
         {/* Open Graph meta tags */}
         <meta property="og:title" content="Rescue Zone | DVBS 2024" />
-        <meta property="og:image" content="./firefighter.png" />
+        <meta property="og:image" content="https://example.com/firefighter.png" />
         {/* Add more Open Graph meta tags as needed */}
       </Head>
 
