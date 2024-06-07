@@ -288,7 +288,7 @@ function Visitors({ config, currentConfigIndex, setCurrentConfigIndex, isVisitor
   </div>
 )}
 
-      <div className="w-full bg-white shadow-md rounded-lg border  mx-auto">
+      <div className="w-full max-w-md bg-white shadow-md rounded-lg border  mx-auto">
         <div className="p-6">
           <h2 className="text-xl font-semibold text-gray-800 mb-4">
             Add New Visitor
