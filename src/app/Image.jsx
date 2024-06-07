@@ -22,7 +22,7 @@ const BobbingImage = () => {
     <div className="absolute top-20 overflow-hidden  right-0 animate-bob">
       <div className="relative h-100 w-100"> {/* Adjusted size */}
         <Image
-          src="/firefighter.png"
+          src="/zirefighter.png"
           alt="Bobbing Image"
           layout="responsive"
           width={100} // Adjusted width
