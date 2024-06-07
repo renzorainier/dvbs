@@ -103,7 +103,7 @@ const StudentRanking = () => {
       unsubscribeStudents();
       unsubscribeConfig();
     };
-  }, [groupedStudents]);
+  }, []);
 
   useEffect(() => {
     let interval;
