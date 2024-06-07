@@ -126,9 +126,10 @@ function Main() {
               <h3 className="text-3xl font-bold ">D V B S &nbsp;2 0 2 4</h3>
             </div>
 
-            <Weather />
+
 
             <div className="container mx-auto relative z-10">
+              
               <div className="grid grid-cols-2 md:grid-cols-2 gap-2">
                 <button
                   className="focus:outline-none  bg-white-500 backdrop-blur-lg  text-white font-semibold py-4 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
