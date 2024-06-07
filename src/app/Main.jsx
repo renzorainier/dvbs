@@ -261,8 +261,7 @@ function Main() {
                 </div>
               </div>
               <div
-                className="shadow-lg rounded-lg"
-                style={{ animation: "slide-from-left 1s ease forwards" }}>
+                className=" rounded-lg">
                 <div
                   className="px-4 py-5 sm:p-6 cursor-pointer"
                   onClick={toggleCard}>
