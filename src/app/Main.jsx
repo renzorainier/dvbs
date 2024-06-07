@@ -250,7 +250,7 @@ function Main() {
                 </button>
               </div>
             </div>
-            <BobbingImage />
+            {/* <BobbingImage /> */}
           </div>
         );
     }
