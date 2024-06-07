@@ -268,7 +268,7 @@ function Main() {
                     <div className="flex text-white items-center">
                       <FaChevronDown
                         className={`transition-transform ${
-                          cardExpanded ? "rotate-180" : ""
+                          cardExpanded ? "rotate-180 mb-4" : ""
                         }`}
                       />
                     </div>
