@@ -135,8 +135,8 @@ function Main() {
             <div className="container mx-auto mb-5 relative z-10">
               <Weather />
             </div>
-            <div>
-              <div className="container mx-auto relative z-10">
+            <div className="z-10">
+              <div className="container mx-auto relative ">
                 <div className="grid grid-cols-2 md:grid-cols-2 gap-2">
                   <button
                     className="focus:outline-none  bg-white-500 backdrop-blur-lg  text-white font-semibold py-4 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
@@ -260,47 +260,47 @@ function Main() {
                   </button>
                 </div>
               </div>
-
-            </div>
-            <div
-              className="shadow-lg rounded-lg"
-              style={{ animation: "slide-from-left 1s ease forwards" }}>
               <div
-                className="px-4 py-5 sm:p-6 cursor-pointer"
-                onClick={toggleCard}>
-                <div className="flex justify-between items-center">
-                  <div className="flex text-white items-center">
-                    <FaChevronDown
-                      className={`transition-transform  ${
-                        cardExpanded ? "rotate-180" : ""
-                      }`}
-                    />
+                className="shadow-lg rounded-lg"
+                style={{ animation: "slide-from-left 1s ease forwards" }}>
+                <div
+                  className="px-4 py-5 sm:p-6 cursor-pointer"
+                  onClick={toggleCard}>
+                  <div className="flex justify-between items-center">
+                    <div className="flex text-white items-center">
+                      <FaChevronDown
+                        className={`transition-transform  ${
+                          cardExpanded ? "rotate-180" : ""
+                        }`}
+                      />
+                    </div>
                   </div>
-                </div>
-                {cardExpanded && (
-                  <div>
-                    <button
-                      className="focus:outline-none bg-white-500 backdrop-blur-lg  text-white font-semibold py-4 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
-                      onClick={() => handleButtonClick("DisplayControl")}
-                      style={{
-                        animation: "slide-from-left 1s ease forwards",
-                      }}>
-                      <div
+                  {cardExpanded && (
+                    <div>
+                      <button
+                        className="focus:outline-none bg-white-500 backdrop-blur-lg  text-white font-semibold py-4 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
+                        onClick={() => handleButtonClick("DisplayControl")}
                         style={{
-                          display: "flex",
-                          flexDirection: "column",
-                          alignItems: "center",
+                          animation: "slide-from-left 1s ease forwards",
                         }}>
-                        <FiMonitor style={{ fontSize: "3.5em" }} />{" "}
-                        <span style={{ marginTop: "0.5em" }}>
-                          Monitor Control
-                        </span>
-                      </div>
-                    </button>
-                  </div>
-                )}
+                        <div
+                          style={{
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "center",
+                          }}>
+                          <FiMonitor style={{ fontSize: "3.5em" }} />{" "}
+                          <span style={{ marginTop: "0.5em" }}>
+                            Monitor Control
+                          </span>
+                        </div>
+                      </button>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
+
             <BobbingImage />
           </div>
         );
