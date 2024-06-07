@@ -111,7 +111,7 @@ function Main() {
                 "linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0.05))",
             }}>
             <div className="text-white text-center mb-4 relative z-10">
-              <h1 className="font-bold text-7xl sm:text-8xl md:text-9xl lg:text-9xl">
+              <h1 className="font-bold text-8xl sm:text-8xl md:text-9xl lg:text-9xl">
                 <span className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-orange-500 text-transparent bg-clip-text">
                   Re
                 </span>
@@ -119,7 +119,7 @@ function Main() {
                   scue
                 </span>
               </h1>
-              <h1 className="font-bold text-6xl sm:text-7xl md:text-8xl lg:text-9xl">
+              <h1 className="font-bold text-7xl sm:text-7xl md:text-8xl lg:text-9xl">
                 <span className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-orange-500 text-transparent bg-clip-text">
                   Z
                 </span>

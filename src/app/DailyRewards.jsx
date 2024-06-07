@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, Fragment } from "react";
 import { doc, updateDoc, getDoc } from "firebase/firestore";
 import { db } from "./firebase.js"; // Import your Firebase config
 import Confetti from "react-confetti";
-import { Menu, Transition } from "@headlessui/react";
+import { Menu, Transition, Dialog } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { FaCheckCircle } from "react-icons/fa";
 
@@ -14,6 +14,16 @@ function DailyRewards() {
   const [currentConfigIndex, setCurrentConfigIndex] = useState(0);
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [studentToUnmark, setStudentToUnmark] = useState(null);
+
+  let [isOpen, setIsOpen] = useState(true);
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
+  function openModal() {
+    setIsOpen(true);
+  }
 
   const configurations = [
     {
@@ -44,9 +54,9 @@ function DailyRewards() {
 
   const pointsMapping = {
     memoryVerse: 3,
-    bestInCraft: 2,
-    bestInActivitySheet: 2,
-    bible: 1,
+    bestInCraft: 4,
+    bestInActivitySheet: 4,
+    bible: 3,
   };
 
   const currentConfig = configurations[currentConfigIndex];
@@ -87,7 +97,7 @@ function DailyRewards() {
     const fieldToUpdate = `${prefix}${dayLetter}${selectedField}`;
 
     if (primaryData[fieldToUpdate]) {
-      setStudentToUnmark({ fieldName, fieldToUpdate });
+      setStudentToUnmark({ fieldName, fieldToUpdate }); 
       setShowConfirmation(true);
     } else {
       updateStudentAttendance(fieldToUpdate, true);
@@ -166,6 +176,55 @@ function DailyRewards() {
         <div className="w-full rounded-lg mx-auto" style={{ maxWidth: "90%" }}>
           <div className="flex   flex-col gap-4">
             <div className="w-full  ">
+              <Transition appear show={isOpen} as={Fragment}>
+                <Dialog as="div" className="relative z-10" onClose={closeModal}>
+                  <Transition.Child
+                    as={Fragment}
+                    enter="ease-out duration-300"
+                    enterFrom="opacity-0"
+                    enterTo="opacity-100"
+                    leave="ease-in duration-200"
+                    leaveFrom="opacity-100"
+                    leaveTo="opacity-0">
+                    <div className="fixed inset-0 bg-black/25" />
+                  </Transition.Child>
+
+                  <div className="fixed inset-0 overflow-y-auto">
+                    <div className="flex min-h-full items-center justify-center p-4 text-center">
+                      <Transition.Child
+                        as={Fragment}
+                        enter="ease-out duration-300"
+                        enterFrom="opacity-0 scale-95"
+                        enterTo="opacity-100 scale-100"
+                        leave="ease-in duration-200"
+                        leaveFrom="opacity-100 scale-100"
+                        leaveTo="opacity-0 scale-95">
+                        <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                          <Dialog.Title
+                            as="h3"
+                            className="text-lg font-medium leading-6 text-gray-900">
+                            Rewards
+                          </Dialog.Title>
+                          <div className="mt-2">
+                            <p className="text-sm text-gray-500">
+                              Allows us to give different rewards to students by clicking the dropdown. Rewards are indicated by 5 bars.
+                            </p>
+                          </div>
+
+                          <div className="mt-4">
+                            <button
+                              type="button"
+                              className="inline-flex justify-center rounded-md border border-transparent bg-[#9BCF53] px-4 py-2 text-sm font-medium text-gray-900 hover:bg-gray-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-500 focus-visible:ring-offset-2"
+                              onClick={closeModal}>
+                              Got it, thanks!
+                            </button>
+                          </div>
+                        </Dialog.Panel>
+                      </Transition.Child>
+                    </div>
+                  </div>
+                </Dialog>
+              </Transition>
               <Menu as="div" className="relative inline-block mt-4">
                 <div>
                   <Menu.Button className="inline-flex justify-center w-full rounded-md bg-black/20 px-4 py-2 text-sm font-bold text-white hover:bg-black/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75">
