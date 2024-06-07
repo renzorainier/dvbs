@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Visitors from "./Visitors";
 import Tab from "./Tab";
 import Primary from "./Primary";
@@ -208,7 +208,7 @@ function Main() {
                 </button>
 
                 <button
-                  className="focus:outline-none bg-white-500 backdrop-blur-lg   text-white font-semibold py-4 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
+                  className="focus:outline-none bg-white-500 backdrop-blur-lg   text-white font-semibold py-4 px-6 rounded-lg                   shadow-lg transition duration-300 transform hover:scale-105"
                   onClick={() => handleButtonClick("SalvationDecision")}
                   style={{ animation: "slide-from-left 1s ease forwards" }}>
                   <div
@@ -279,18 +279,16 @@ function Main() {
     </div>
   ) : null;
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [currentComponent]);
+
   return (
     <div className="fade-in">
       <div className="fade-in">
         <div>
           {backButton}
-          {/* <ScrollToTopButton /> */}
           {renderCurrentComponent()}
-          {/* <StudentPointsRanking/> */}
-          {/* <AttendanceChart/> */}
-          {/* <CopyDataComponent />; */}
-          {/* <CopyScheduleData/> */}
-          {/* <Analytics />  */}
         </div>
       </div>
     </div>
@@ -298,6 +296,7 @@ function Main() {
 }
 
 export default Main;
+
 
 {
   /* <button
