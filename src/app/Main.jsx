@@ -112,7 +112,8 @@ function Main() {
                 </span>
               </h1>
               <h1 className="font-bold text-9xl bg-gradient-to-r from-yellow-500 via-red-500 to-yellow-500 text-transparent bg-clip-text ">
-                Zone
+                <span className="text-yellow-500">Z</span>
+                one
               </h1>
               <h2 className="text-3xl font-bold ">2024</h2>
               <h3 className="text-5xl font-semibold ">Rescue&nbsp; Zone</h3>
