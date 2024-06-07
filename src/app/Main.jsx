@@ -122,8 +122,7 @@ function Main() {
                   one
                 </span>
               </h1>
-              <h2 className="text-3xl font-bold ">2024</h2>
-              <h3 className="text-5xl font-semibold ">Rescue&nbsp; Zone</h3>
+              <h3 className="text-3xl font-bold ">D V B S &nbsp;2 0 2 4</h3>
             </div>
 
             <div className="container mx-auto relative z-10">
