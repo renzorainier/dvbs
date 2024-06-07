@@ -277,17 +277,22 @@ function Main() {
     </div>
   ) : null;
 
-  const currentYear = new Date().getFullYear();
 
   return (
-    <div className="fade-in h-screen overflow-auto">
     <div className="fade-in">
-      <div>
-        {backButton}
-        {renderCurrentComponent()}
+      <div className="fade-in">
+        <div>
+          {backButton}
+          {/* <ScrollToTopButton /> */}
+          {renderCurrentComponent()}
+          {/* <StudentPointsRanking/> */}
+          {/* <AttendanceChart/> */}
+          {/* <CopyDataComponent />; */}
+          {/* <CopyScheduleData/> */}
+          {/* <Analytics />  */}
+        </div>
       </div>
     </div>
-  </div>
   );
 }
 
