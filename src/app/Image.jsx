@@ -19,7 +19,7 @@ const BobbingImage = () => {
   }, []);
 
   return shouldRender ? (
-    <div className="absolute top-20  right-0 animate-bob">
+    <div className="absolute top-20 overflow-hidden  right-0 animate-bob">
       <div className="relative h-100 w-100"> {/* Adjusted size */}
         <Image
           src="/firefighter.png"
@@ -34,3 +34,5 @@ const BobbingImage = () => {
 };
 
 export default BobbingImage;
+
+
