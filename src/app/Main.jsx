@@ -106,7 +106,7 @@ function Main() {
             }}>
             <div className="text-white text-center mb-10 relative z-10">
               <h1 className=" text-9xl"></h1>
-              <h1 className="font-bold text-9xl bg-gradient-to-r from-white to-yellow bg-clip-text text-transparent">
+              <h1 className="font-bold text-9xl">
                 DVBS
               </h1>
 
