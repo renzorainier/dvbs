@@ -257,8 +257,6 @@ function Main() {
         );
     }
   };
-
-  // Style the back button with modern UI
   const backButton = currentComponent ? (
     <div className="fixed bottom-4 left-4 z-50">
       <button
