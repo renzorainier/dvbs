@@ -247,7 +247,7 @@ function StudentOutTime({ isVisitorView }) {
             </Transition>
           </Menu>
 
-          <div className="flex justify-center mb-5 font-bold">
+          <div className="flex  justify-center mb-5 font-bold">
             <div className="flex items-center bg-white border rounded-lg shadow-md p-4">
             <FaUserCheck style={{ fontSize: "1.5em" }}/>
 
@@ -263,7 +263,7 @@ function StudentOutTime({ isVisitorView }) {
             </div>
           </div>
 
-          <div className="w-full  text-gray-700 bg-white mt-5 p-5 border rounded-lg shadow-lg mx-auto">
+          <div className="w-ful max-w-md  text-gray-700 bg-white mt-5 p-5 border rounded-lg shadow-lg mx-auto">
             <input
               type="text"
               className="w-full p-2 mb-4 border border-gray-300 rounded-lg"
