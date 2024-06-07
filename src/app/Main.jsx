@@ -20,6 +20,7 @@ import Password from "./Password.jsx";
 import StudentPointsRanking from "./StudentPointsRanking";
 import DisplayControl from "./DisplayControl";
 import BobbingImage from "./Image";
+import Weather from "./Weather";
 
 import { MdOutlineLocalGroceryStore } from "react-icons/md";
 import { FaListCheck } from "react-icons/fa6";
@@ -124,6 +125,7 @@ function Main() {
               </h1>
               <h3 className="text-3xl font-bold ">D V B S &nbsp;2 0 2 4</h3>
             </div>
+            <Weather />
 
             <div className="container mx-auto relative z-10">
               <div className="grid grid-cols-2 md:grid-cols-2 gap-2">
