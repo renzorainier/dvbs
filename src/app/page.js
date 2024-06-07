@@ -17,7 +17,7 @@ export default function Home() {
         />
         {/* Open Graph meta tags */}
         <meta property="og:title" content="Rescue Zone | DVBS 2024" />
-        <meta property="og:image" content="https://example.com/your-image.jpg" />
+        <meta property="og:image" content="./firefighter.png" />
         {/* Add more Open Graph meta tags as needed */}
       </Head>
 
