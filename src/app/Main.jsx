@@ -261,7 +261,7 @@ function Main() {
                 </div>
               </div>
               <div
-                className=" rounded-lg">
+                className=" flex justify-between items-center">
                 <div
                   className="px-4 py-5 sm:p-6 cursor-pointer"
                   onClick={toggleCard}>
