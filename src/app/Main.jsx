@@ -260,24 +260,23 @@ function Main() {
                   </button>
                 </div>
               </div>
-              <div
-                className=" flex justify-between items-center">
+              <div className="flex justify-center items-center">
                 <div
                   className="px-4 py-5 sm:p-6 cursor-pointer"
                   onClick={toggleCard}>
-                  <div className="flex justify-between items-center">
+                  <div className="flex justify-center items-center">
                     <div className="flex text-white items-center">
                       <FaChevronDown
-                        className={`transition-transform  ${
+                        className={`transition-transform ${
                           cardExpanded ? "rotate-180" : ""
                         }`}
                       />
                     </div>
                   </div>
                   {cardExpanded && (
-                    <div>
+                    <div className="flex justify-center items-center">
                       <button
-                        className="focus:outline-none bg-white-500 backdrop-blur-lg  text-white font-semibold py-4 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
+                        className="focus:outline-none bg-white-500 backdrop-blur-lg text-white font-semibold py-4 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
                         onClick={() => handleButtonClick("DisplayControl")}
                         style={{
                           animation: "slide-from-left 1s ease forwards",
@@ -288,7 +287,7 @@ function Main() {
                             flexDirection: "column",
                             alignItems: "center",
                           }}>
-                          <FiMonitor style={{ fontSize: "3.5em" }} />{" "}
+                          <FiMonitor style={{ fontSize: "3.5em" }} />
                           <span style={{ marginTop: "0.5em" }}>
                             Monitor Control
                           </span>
