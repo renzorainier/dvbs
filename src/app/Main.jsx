@@ -104,15 +104,14 @@ function Main() {
               background:
                 "linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0.05))",
             }}>
-            <div className="text-white text-center mb-10 relative z-10">
-              <h1 className=" text-9xl"></h1>
-              <h1 className="font-bold text-9xl">
-                DVBS
-              </h1>
+        <div className="text-white text-center mb-10 relative z-10">
+  <h1 className="font-bold text-9xl bg-gradient-to-r from-yellow-500 via-red-500 to-purple-500 text-transparent bg-clip-text shadow-md">
+    DVBS
+  </h1>
+  <h2 className="text-2xl font-thin shadow-sm">2024</h2>
+  <h3 className="text-3xl font-semibold shadow-sm">R e s c u e&nbsp; Z o n e</h3>
+</div>
 
-              <h2 className="text-2xl font-thin">2024</h2>
-              <h3 className="text-3xl font-semibold">R e s c u e‎ &nbsp; Z o n e</h3>
-            </div>
             <div className="container mx-auto relative z-10">
               <div className="grid grid-cols-2 md:grid-cols-2 gap-2">
                 <button
