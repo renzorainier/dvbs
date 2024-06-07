@@ -65,7 +65,7 @@ function AttendanceChart() {
     };
 
     fetchAttendanceData();
-  }, [selectedDay]);
+  }, [selectedDay, groupedStudents]);
 
   useEffect(() => {
     const renderChart = () => {
