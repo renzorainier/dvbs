@@ -292,7 +292,7 @@ function Main() {
                          }}>
                          <FiMonitor style={{ fontSize: "3.5em" }} />{" "}
                          <span style={{ marginTop: "0.5em" }}>
-                           DisplayControl
+                           Monitor Control
                          </span>
                        </div>
                      </button>
