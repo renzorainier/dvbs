@@ -101,7 +101,7 @@ function Tab() {
             </Menu>
 
             <div className="flex justify-center pt-7 pb-4 items-center">
-              <div className="w-full rounded-lg mx-auto">
+              <div className="w-full rounded-lg max-w-md mx-auto">
                 <Switch
                   checked={state}
                   onChange={setState}
