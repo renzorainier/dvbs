@@ -370,42 +370,43 @@ function Visitors({
             </div>
 
             <div className="flex items-center">
-              <Menu as="div" className="relative">
-                <div>
-                  <Menu.Button
-                    className={`bg-[${config.color}] mr-2 z-50 inline-flex rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700`}>
-                    {age ? `Age: ${age}` : "Age"}
-                  </Menu.Button>
-                </div>
-                <Transition
-                  as={Fragment}
-                  enter="transition ease-out duration-100"
-                  enterFrom="transform opacity-0 scale-95"
-                  enterTo="transform opacity-100 scale-100"
-                  leave="transition ease-in duration-75"
-                  leaveFrom="transform opacity-100 scale-100"
-                  leaveTo="transform opacity-0 scale-95">
-                  <Menu.Items className="origin-top-left z-50 w-20  absolute left-0 mt-2 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-                    <div className="py-1 ">
-                      {ageOptions.map((ageOption) => (
-                        <Menu.Item key={ageOption}>
-                          {({ active }) => (
-                            <button
-                              onClick={() => handleAgeSelect(ageOption)}
-                              className={`${
-                                active
-                                  ? "bg-gray-100 text-gray-900"
-                                  : "text-gray-700"
-                              } block w-full px-4 py-2 text-sm`}>
-                              {ageOption}
-                            </button>
-                          )}
-                        </Menu.Item>
-                      ))}
-                    </div>
-                  </Menu.Items>
-                </Transition>
-              </Menu>
+            <Menu as="div" className="relative">
+  <div>
+    <Menu.Button
+      className={`bg-[${config.color}] mr-2 z-50 inline-flex rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700`}>
+      {age ? `Age: ${age}` : "Age"}
+    </Menu.Button>
+  </div>
+  <Transition
+    as={Fragment}
+    enter="transition ease-out duration-100"
+    enterFrom="transform opacity-0 scale-95"
+    enterTo="transform opacity-100 scale-100"
+    leave="transition ease-in duration-75"
+    leaveFrom="transform opacity-100 scale-100"
+    leaveTo="transform opacity-0 scale-95">
+    <Menu.Items className="origin-top-left z-50 w-20 absolute left-0 mt-2 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+      <div className="p-2 divide-y divide-gray-200">
+        {ageOptions.map((ageOption) => (
+          <Menu.Item key={ageOption}>
+            {({ active }) => (
+              <button
+                onClick={() => handleAgeSelect(ageOption)}
+                className={`${
+                  active
+                    ? "bg-gray-100 text-gray-900"
+                    : "text-gray-700"
+                } block w-full px-4 py-2 text-sm`}>
+                {ageOption}
+              </button>
+            )}
+          </Menu.Item>
+        ))}
+      </div>
+    </Menu.Items>
+  </Transition>
+</Menu>
+
 
               <input
                 type="text"
