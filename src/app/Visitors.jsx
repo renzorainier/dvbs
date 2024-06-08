@@ -329,8 +329,8 @@ function Visitors({ config, currentConfigIndex, setCurrentConfigIndex, isVisitor
     leave="transition ease-in duration-75"
     leaveFrom="transform opacity-100 scale-100"
     leaveTo="transform opacity-0 scale-95">
-    <Menu.Items className="origin-top-right absolute z-50 right-0 mt-2 w-full rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-      <div className="py-2 px-4 grid grid-cols-2 gap-4">
+    <Menu.Items className="origin-top-right absolute z-50 right-0 mt-2 w-96 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+      <div className="p-2 grid grid-cols-2 ">
         {predefinedRoutes.map((route) => (
           <Menu.Item key={route}>
             {({ active }) => (
@@ -350,6 +350,7 @@ function Visitors({ config, currentConfigIndex, setCurrentConfigIndex, isVisitor
     </Menu.Items>
   </Transition>
 </Menu>
+
 
 
             </div>
