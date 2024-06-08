@@ -168,7 +168,7 @@ function Main() {
                     </div>
                   </button>
                   <button
-                    className="focus:outline-none bg-white-500 backdrop-blur-lg border-6 border-yellow-300 text-white font-semibold py-4 px-4 rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
+                    className="focus:outline-none bg-white-500 backdrop-blur-lg border-4 border-yellow-400 text-white font-semibold py-4 px-4 rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
                     onClick={() => handleButtonClick("Schedule")}
                     style={{ animation: "slide-from-left 1s ease forwards" }}>
                     <div
@@ -198,7 +198,7 @@ function Main() {
                   </button>
 
                   <button
-                    className="focus:outline-none bg-white-500 backdrop-blur-lg  text-white font-semibold py-4 px-4 rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
+                    className="focus:outline-none bg-white-500 backdrop-blur-lg  border-4 border-yellow-400 text-white font-semibold py-4 px-4 rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
                     onClick={() => handleButtonClick("Rewards")}
                     style={{ animation: "slide-from-left 1s ease forwards" }}>
                     <div
@@ -213,7 +213,7 @@ function Main() {
                   </button>
 
                   <button
-                    className="focus:outline-none bg-white-500 backdrop-blur-lg   text-white font-semibold py-4 px-4 rounded-lg                   shadow-lg transition duration-300 transform hover:scale-105"
+                    className="focus:outline-none bg-white-500 backdrop-blur-lg border-4 border-yellow-400  text-white font-semibold py-4 px-4 rounded-lg                   shadow-lg transition duration-300 transform hover:scale-105"
                     onClick={() => handleButtonClick("SalvationDecision")}
                     style={{ animation: "slide-from-left 1s ease forwards" }}>
                     <div
