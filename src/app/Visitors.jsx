@@ -310,7 +310,7 @@ function Visitors({ config, currentConfigIndex, setCurrentConfigIndex, isVisitor
                 placeholder="Address/Select Route"
                 className="border border-gray-300 rounded-lg px-4 py-2 w-full focus:outline-none focus:border-[${config.color}]"
               />
-    <Menu as="div" className="relative w-1/2">
+<Menu as="div" className="relative w-1/2">
   <div>
     <Menu.Button
       className={`bg-[${config.color}] flex justify-center text-white text-center inline-flex justify-between w-full rounded-md shadow-sm px-4 py-2 text-xl font-bold text-gray-700`}>
@@ -330,7 +330,7 @@ function Visitors({ config, currentConfigIndex, setCurrentConfigIndex, isVisitor
     leaveFrom="transform opacity-100 scale-100"
     leaveTo="transform opacity-0 scale-95">
     <Menu.Items className="origin-top-right absolute z-50 right-0 mt-2 w-full rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-      <div className="py-1 grid grid-cols-2 gap-2">
+      <div className="py-2 px-4 grid grid-cols-2 gap-4">
         {predefinedRoutes.map((route) => (
           <Menu.Item key={route}>
             {({ active }) => (
@@ -340,7 +340,7 @@ function Visitors({ config, currentConfigIndex, setCurrentConfigIndex, isVisitor
                   active
                     ? "bg-gray-100 text-gray-900"
                     : "text-gray-700"
-                } block w-full text-left px-4 py-2 text-lg font-medium`}>
+                } block w-full text-left px-4 py-2 text-lg font-medium rounded-md`}>
                 {route}
               </button>
             )}
@@ -350,6 +350,7 @@ function Visitors({ config, currentConfigIndex, setCurrentConfigIndex, isVisitor
     </Menu.Items>
   </Transition>
 </Menu>
+
 
             </div>
 
