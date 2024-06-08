@@ -167,9 +167,8 @@ function Main() {
                       <span style={{ marginTop: "0.5em" }}>List</span>
                     </div>
                   </button>
-
                   <button
-                    className="focus:outline-none bg-white-500 backdrop-blur-lg  text-white font-semibold py-4 px-4 rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
+                    className="focus:outline-none bg-white-500 backdrop-blur-lg border-6 border-yellow-300 text-white font-semibold py-4 px-4 rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
                     onClick={() => handleButtonClick("Schedule")}
                     style={{ animation: "slide-from-left 1s ease forwards" }}>
                     <div
