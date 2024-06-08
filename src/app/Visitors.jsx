@@ -9,7 +9,12 @@ import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { Checkbox } from "@headlessui/react";
 import { FaBookBible } from "react-icons/fa6";
 
-function Visitors({ config, currentConfigIndex, setCurrentConfigIndex, isVisitorView }) {
+function Visitors({
+  config,
+  currentConfigIndex,
+  setCurrentConfigIndex,
+  isVisitorView,
+}) {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [newVisitorAddress, setNewVisitorAddress] = useState("");
@@ -26,9 +31,26 @@ function Visitors({ config, currentConfigIndex, setCurrentConfigIndex, isVisitor
   const [visitorName, setVisitorName] = useState("");
   const [showVisitorPrompt, setShowVisitorPrompt] = useState(false); // New state for visitor prompt
 
-
   const predefinedRoutes = [
-    "Antipolo Hills", "Banaba", "Famous", "Insular", "Kaysipot", "LaSalle", "Mira Verde", "Monte Oro", "Queenstown 1", "Queenstown 2", "Samba Homes", "Sampaga", "San Luis", "Santana", "Sarimanok", "Solid", "Sta. Elena", "TakTak Road", "Town and Country"
+    "Antipolo Hills",
+    "Banaba",
+    "Famous",
+    "Insular",
+    "Kaysipot",
+    "LaSalle",
+    "Mira Verde",
+    "Monte Oro",
+    "Queenstown 1",
+    "Queenstown 2",
+    "Samba Homes",
+    "Sampaga",
+    "San Luis",
+    "Santana",
+    "Sarimanok",
+    "Solid",
+    "Sta. Elena",
+    "TakTak Road",
+    "Town and Country",
   ];
 
   const handleClick = () => {
@@ -54,15 +76,13 @@ function Visitors({ config, currentConfigIndex, setCurrentConfigIndex, isVisitor
     fetchPrimary();
   }, [config.dbPath]);
 
-//wala lang trey rey adfafdasfasfdaf
-
+  //wala lang trey rey adfafdasfasfdaf
 
   const getCurrentDayLetter = () => {
     const days = ["A", "B", "C", "D", "E"];
     const dayIndex = new Date().getDay();
     return days[dayIndex >= 1 && dayIndex <= 5 ? dayIndex - 1 : 4];
   };
-
 
   // const getCurrentDayLetter = () => {
   //   const days = ["A", "B", "C", "D", "E", "F", "G"];
@@ -260,24 +280,21 @@ function Visitors({ config, currentConfigIndex, setCurrentConfigIndex, isVisitor
         </div>
       )}
 
-
-
-{showVisitorPrompt && (
-  <div className="fixed inset-0 z-50 flex items-center justify-center">
-    <div className="fixed inset-0 bg-black opacity-50"></div>
-    <div className="bg-white rounded-lg p-5 shadow-md z-10 flex flex-col items-center">
-      <p className="mb-4 text-center">
-        You are in visitor view. This feature is disabled.
-      </p>
-      <button
-        className="bg-blue-500 text-white font-bold py-2 px-6 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-        onClick={() => setShowVisitorPrompt(false)}
-      >
-        OK
-      </button>
-    </div>
-  </div>
-)}
+      {showVisitorPrompt && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
+          <div className="fixed inset-0 bg-black opacity-50"></div>
+          <div className="bg-white rounded-lg p-5 shadow-md z-10 flex flex-col items-center">
+            <p className="mb-4 text-center">
+              You are in visitor view. This feature is disabled.
+            </p>
+            <button
+              className="bg-blue-500 text-white font-bold py-2 px-6 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              onClick={() => setShowVisitorPrompt(false)}>
+              OK
+            </button>
+          </div>
+        </div>
+      )}
 
       <div className="w-full max-w-md bg-white shadow-md rounded-lg border  mx-auto">
         <div className="p-6">
@@ -310,49 +327,46 @@ function Visitors({ config, currentConfigIndex, setCurrentConfigIndex, isVisitor
                 placeholder="Address/Select Route"
                 className="border border-gray-300 rounded-lg px-4 py-2 w-full focus:outline-none focus:border-[${config.color}]"
               />
-<Menu as="div" className="relative w-1/2">
-  <div>
-    <Menu.Button
-      className={`bg-[${config.color}] flex justify-center text-white text-center inline-flex justify-between w-full rounded-md shadow-sm px-4 py-2 text-xl font-bold text-gray-700`}>
-      {"Route"}
-      <ChevronDownIcon
-        className="ml-2 -mr-1 h-7 w-7"
-        aria-hidden="true"
-      />
-    </Menu.Button>
-  </div>
-  <Transition
-    as={Fragment}
-    enter="transition ease-out duration-100"
-    enterFrom="transform opacity-0 scale-95"
-    enterTo="transform opacity-100 scale-100"
-    leave="transition ease-in duration-75"
-    leaveFrom="transform opacity-100 scale-100"
-    leaveTo="transform opacity-0 scale-95">
-    <Menu.Items className="origin-top-right absolute z-50 -right-6 mt-2 w-96 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-      <div className="p-2 grid grid-cols-2 ">
-        {predefinedRoutes.map((route) => (
-          <Menu.Item key={route}>
-            {({ active }) => (
-              <button
-                onClick={() => handleRouteSelect(route)}
-                className={`${
-                  active
-                    ? "bg-gray-100 text-gray-900"
-                    : "text-gray-700"
-                } block w-full text-left px-4 py-2 text-lg font-medium rounded-md`}>
-                {route}
-              </button>
-            )}
-          </Menu.Item>
-        ))}
-      </div>
-    </Menu.Items>
-  </Transition>
-</Menu>
-
-
-
+              <Menu as="div" className="relative w-1/2">
+                <div>
+                  <Menu.Button
+                    className={`bg-[${config.color}] flex justify-center text-white text-center inline-flex justify-between w-full rounded-md shadow-sm px-4 py-2 text-xl font-bold text-gray-700`}>
+                    {"Route"}
+                    <ChevronDownIcon
+                      className="ml-2 -mr-1 h-7 w-7"
+                      aria-hidden="true"
+                    />
+                  </Menu.Button>
+                </div>
+                <Transition
+                  as={Fragment}
+                  enter="transition ease-out duration-100"
+                  enterFrom="transform opacity-0 scale-95"
+                  enterTo="transform opacity-100 scale-100"
+                  leave="transition ease-in duration-75"
+                  leaveFrom="transform opacity-100 scale-100"
+                  leaveTo="transform opacity-0 scale-95">
+                  <Menu.Items className="origin-top-right absolute z-50 -right-6 mt-2 w-96 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+                    <div className="p-2 grid grid-cols-2 ">
+                      {predefinedRoutes.map((route) => (
+                        <Menu.Item key={route}>
+                          {({ active }) => (
+                            <button
+                              onClick={() => handleRouteSelect(route)}
+                              className={`${
+                                active
+                                  ? "bg-gray-100 text-gray-900"
+                                  : "text-gray-700"
+                              } block w-full text-left px-4 py-2 text-lg font-medium rounded-md`}>
+                              {route}
+                            </button>
+                          )}
+                        </Menu.Item>
+                      ))}
+                    </div>
+                  </Menu.Items>
+                </Transition>
+              </Menu>
             </div>
 
             <div className="flex items-center">
@@ -371,8 +385,8 @@ function Visitors({ config, currentConfigIndex, setCurrentConfigIndex, isVisitor
                   leave="transition ease-in duration-75"
                   leaveFrom="transform opacity-100 scale-100"
                   leaveTo="transform opacity-0 scale-95">
-                  <Menu.Items className="origin-top-left z-50  absolute left-0 mt-2 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-                    <div className="py-1">
+                  <Menu.Items className="origin-top-left z-50 w-20  absolute left-0 mt-2 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+                    <div className="py-1 ">
                       {ageOptions.map((ageOption) => (
                         <Menu.Item key={ageOption}>
                           {({ active }) => (
@@ -428,14 +442,14 @@ function Visitors({ config, currentConfigIndex, setCurrentConfigIndex, isVisitor
               </button>
             </div>
             <button
-             className={`bg-[${config.color}] gap-2 text-white font-semibold py-3 px-6 rounded-lg mt-4 w-full flex items-center justify-center transition duration-300 ease-in-out`}
-             onClick={() => {
-               if (!isVisitorView) {
-                 addVisitor();
-               } else {
-                 setShowVisitorPrompt(true); // Show visitor prompt if in visitor view
-               }
-             }}>
+              className={`bg-[${config.color}] gap-2 text-white font-semibold py-3 px-6 rounded-lg mt-4 w-full flex items-center justify-center transition duration-300 ease-in-out`}
+              onClick={() => {
+                if (!isVisitorView) {
+                  addVisitor();
+                } else {
+                  setShowVisitorPrompt(true); // Show visitor prompt if in visitor view
+                }
+              }}>
               <IoMdPersonAdd />
               Add Visitor
             </button>
