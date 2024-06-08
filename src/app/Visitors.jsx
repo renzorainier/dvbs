@@ -28,16 +28,7 @@ function Visitors({ config, currentConfigIndex, setCurrentConfigIndex, isVisitor
 
 
   const predefinedRoutes = [
-    "Solid",
-    "TakTak Road",
-    "Town and Country",
-    "Insular",
-    "Antipolo Hills",
-    "Samba Homes",
-    "Sarimanok",
-    "Kaysipot",
-    "LaSalle",
-    "Mira Verde", "Queenstown 1", "Queenstown 2", "Santana", "Banaba", "Famous", "Sampaga", "San Luis", "Monte Oro", " Sta. Elena"
+    "Antipolo Hills", "Banaba", "Famous", "Insular", "Kaysipot", "LaSalle", "Mira Verde", "Monte Oro", "Queenstown 1", "Queenstown 2", "Samba Homes", "Sampaga", "San Luis", "Santana", "Sarimanok", "Solid", "Sta. Elena", "TakTak Road", "Town and Country"
   ];
 
   const handleClick = () => {
