@@ -373,7 +373,7 @@ function Visitors({
               <Menu as="div" className="relative">
                 <div>
                   <Menu.Button
-                    className={`bg-[${config.color}] mr-2 z-50 inline-flex rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700`}>
+                    className={`bg-[${config.color}] mr-2 z-50 inline-flex rounded-md  shadow-sm px-4 py-2  text-sm font-medium text-white`}>
                     {age ? `Age: ${age}` : "Age"}
                   </Menu.Button>
                 </div>
