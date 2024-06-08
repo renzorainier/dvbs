@@ -37,7 +37,7 @@ function Visitors({ config, currentConfigIndex, setCurrentConfigIndex, isVisitor
     "Sarimanok",
     "Kaysipot",
     "LaSalle",
-    "Mira Verde",
+    "Mira Verde", "Queenstown 1", "Queenstown 2", "Santana", "Banaba", "Famous", "Sampaga", "San Luis", "Monte Oro", " Sta. Elena"
   ];
 
   const handleClick = () => {
