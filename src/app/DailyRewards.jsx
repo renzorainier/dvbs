@@ -54,8 +54,8 @@ function DailyRewards() {
 
   const pointsMapping = {
     memoryVerse: 3,
-    bestInCraft: 4,
-    bestInActivitySheet: 4,
+    bestInCraft: 2,
+    bestInActivitySheet: 2,
     bible: 3,
   };
 
@@ -97,7 +97,7 @@ function DailyRewards() {
     const fieldToUpdate = `${prefix}${dayLetter}${selectedField}`;
 
     if (primaryData[fieldToUpdate]) {
-      setStudentToUnmark({ fieldName, fieldToUpdate }); 
+      setStudentToUnmark({ fieldName, fieldToUpdate });
       setShowConfirmation(true);
     } else {
       updateStudentAttendance(fieldToUpdate, true);
