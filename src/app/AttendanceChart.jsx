@@ -225,7 +225,7 @@ function AttendanceChart() {
                 ],
               }}
               className="h-full w-full flex flex-col items-center rounded-lg justify-center cursor-pointer p-4">
-              <div className="text-5xl md:text-12xl text-white font-bold">
+              <div className="text-5xl md:text-18xl text-white font-bold">
                 {countPresentForDay(attendanceData[group], selectedDay)}
               </div>
               <div className="md:text-6xl text-4xl text-white font-bold">
@@ -236,7 +236,7 @@ function AttendanceChart() {
         </div>
 
         <div className="w-full flex flex-col items-center rounded-lg m-2 justify-center bg-gray-300 cursor-pointer">
-          <div className="text-5xl md:text-12xl text-white font-bold">
+          <div className="text-5xl md:text-18xl text-white font-bold">
             {getTotalAttendanceForDay(selectedDay)}
           </div>
           <div className="text-4xl md:text-4xl md:mb-4 text-black font-bold">
