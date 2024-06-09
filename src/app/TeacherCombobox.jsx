@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Combobox, Transition } from "@headlessui/react";
 
-const predefinedTeachers = ["Renz", "Aaliyah", "Angelica", "Bel Tio", "Bernadette", "Calvin", "CJ", "Christine", "Cloe Nicole", "Earl", "Elen", "Eunice", "Hanny", "Io Bell", "Jane", "Keily", "Kisha", "Leonor", "Marjorie", "Mary Joy", "Maybell", "Princess", "RJ", "Robelyn", "Sarah", "Sean Samaniego", "Shane", "Sheryl", "Alebert", "Aneah", "Arlyanna", "Cesar", "Chris", "Ivy", "Jensine", "Tom", "Joan", "Jhun", "Kay", "Maureen", "Mellissa", "Michael", "Ralph", "" ];
+const predefinedTeachers = ["Renz", "Sean Tio", "Drei", "Vince", "Vaughn",  "Aaliyah", "Angelica", "Bel Tio", "Bernadette", "Calvin", "CJ", "Christine", "Cloe Nicole", "Earl", "Elen", "Eunice", "Hanny", "Io Bell", "Jane", "Keily", "Kisha", "Leonor", "Marjorie", "Mary Joy", "Maybell", "Princess", "RJ", "Robelyn", "Sarah", "Sean Samaniego", "Shane", "Sheryl", "Alebert", "Aneah", "Arlyanna", "Cesar", "Chris", "Ivy", "Jensine", "Tom", "Joan", "Jhun", "Kay", "Maureen", "Mellissa", "Michael", "Ralph", "" ];
 
 function TeacherCombobox({ invitedBy, handleInputChange, config }) {
   const [query, setQuery] = useState("");
