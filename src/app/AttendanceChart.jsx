@@ -236,7 +236,7 @@ function AttendanceChart() {
         </div>
 
         <div className="w-full flex flex-col items-center rounded-lg m-2 justify-center bg-gray-300 cursor-pointer">
-          <div className="text-5xl md:text-9xl text-black font-bold">
+          <div className="text-5xl md:text-10xl text-white font-bold">
             {getTotalAttendanceForDay(selectedDay)}
           </div>
           <div className="text-4xl md:text-4xl md:mb-4 text-black font-bold">
@@ -250,24 +250,6 @@ function AttendanceChart() {
 }
 
 export default AttendanceChart;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // import React, { useState, useEffect, useRef } from "react";
 // import Chart from "chart.js/auto";
@@ -521,90 +503,6 @@ export default AttendanceChart;
 // }
 
 // export default AttendanceChart;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // import React, { useState, useEffect, useRef } from "react";
 // import Chart from "chart.js/auto";
