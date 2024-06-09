@@ -35,22 +35,26 @@ function Visitors({
     "Antipolo Hills",
     "Banaba",
     "Famous",
+    "Fatima",
     "Insular",
     "Kaysipot",
     "LaSalle",
     "Mira Verde",
     "Monte Oro",
+    "Oreta",
     "Queenstown 1",
     "Queenstown 2",
     "Samba Homes",
     "Sampaga",
-    "San Luis",
+    "Brgy. San Luis",
     "Santana",
     "Sarimanok",
     "Solid",
     "Sta. Elena",
     "TakTak Road",
     "Town and Country",
+
+
   ];
 
   const handleClick = () => {
