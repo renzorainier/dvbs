@@ -42,6 +42,7 @@ function Primary({
     fetchPrimary();
   }, [config.dbPath]);
 
+
   const getCurrentDayLetter = () => {
     const days = ["A", "B", "C", "D", "E"];
     const dayIndex = new Date().getDay();
@@ -55,10 +56,22 @@ function Primary({
   };
 
   const getLastValidPoints = (fieldName, dayLetter) => {
+    // Return 0 if today is "A" and we need to backtrack
+    if (dayLetter === "A") {
+      return 0;
+    }
+
     let pointsField = `${fieldName.slice(0, 2)}${dayLetter}points`;
     let points = primaryData[pointsField] || 0;
+
     while (points === 0 && dayLetter !== "A") {
       dayLetter = getPreviousDayLetter(dayLetter);
+
+      // If the new dayLetter is "A", return 0
+      if (dayLetter === "A") {
+        return 0;
+      }
+
       pointsField = `${fieldName.slice(0, 2)}${dayLetter}points`;
       points = primaryData[pointsField] || 0;
 
@@ -67,8 +80,38 @@ function Primary({
         return 0; // Return 0 if the student was present but had 0 points
       }
     }
+
     return points;
   };
+
+
+  // const getCurrentDayLetter = () => {
+  //   const days = ["A", "B", "C", "D", "E"];
+  //   const dayIndex = new Date().getDay();
+  //   return days[dayIndex >= 1 && dayIndex <= 5 ? dayIndex - 1 : 4];
+  // };
+
+  // const getPreviousDayLetter = (dayLetter) => {
+  //   const days = ["A", "B", "C", "D", "E"];
+  //   const index = days.indexOf(dayLetter);
+  //   return index === 0 ? days[4] : days[index - 1];
+  // };
+
+  // const getLastValidPoints = (fieldName, dayLetter) => {
+  //   let pointsField = `${fieldName.slice(0, 2)}${dayLetter}points`;
+  //   let points = primaryData[pointsField] || 0;
+  //   while (points === 0 && dayLetter !== "A") {
+  //     dayLetter = getPreviousDayLetter(dayLetter);
+  //     pointsField = `${fieldName.slice(0, 2)}${dayLetter}points`;
+  //     points = primaryData[pointsField] || 0;
+
+  //     const attendanceField = `${fieldName.slice(0, 2)}${dayLetter}`;
+  //     if (points === 0 && primaryData[attendanceField]) {
+  //       return 0; // Return 0 if the student was present but had 0 points
+  //     }
+  //   }
+  //   return points;
+  // };
 
   const handleClick = (fieldName) => {
     if (isVisitorView) {
