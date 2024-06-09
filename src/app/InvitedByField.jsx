@@ -97,7 +97,7 @@ function InvitedByField({
       if (inviterDocSnap.exists()) {
         const inviterData = inviterDocSnap.data();
         const currentPoints = inviterData[pointsField] || 0;
-        const updatedPoints = currentPoints + 5;
+        const updatedPoints = currentPoints + 2;
 
         console.log(`Field name to update: ${pointsField}`); // Log the field name
 
