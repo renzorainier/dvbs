@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       fontSize: {
-        '16xl': '16rem', // Custom font size
+        '15xl': '15rem', // Custom font size
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
