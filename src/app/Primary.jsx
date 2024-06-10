@@ -454,7 +454,21 @@ function Primary({
                   {primaryData[savedFieldName] && <FaCheckCircle />}{" "}
                   {/* Check if saved is true */}
                 </button>
-                <div
+
+                <div className="flex flex-row ml-1 border-2 border-gray-400 p-1 rounded-md">
+                  {["A", "B", "C", "D", "E"].map((dayLetter) => {
+                    const fieldName = `${studentIndex.slice(0, 2)}${dayLetter}`;
+                    return (
+                      <div
+                        key={dayLetter}
+                        className={`w-4 h-7 rounded-lg ${
+                          primaryData[fieldName]
+                            ? config.colors.present
+                            : config.colors.absent
+                        } mr-1`}></div>
+                    );
+                  })}
+                </div>  <div
                   className="ml-2 cursor-pointer text-blue-500 underline"
                   onClick={() => {
                     setShowStudentInfo(true);
@@ -472,20 +486,6 @@ function Primary({
                     });
                   }}>
                   Info
-                </div>
-                <div className="flex flex-row ml-1 border-2 border-gray-400 p-1 rounded-md">
-                  {["A", "B", "C", "D", "E"].map((dayLetter) => {
-                    const fieldName = `${studentIndex.slice(0, 2)}${dayLetter}`;
-                    return (
-                      <div
-                        key={dayLetter}
-                        className={`w-4 h-7 rounded-lg ${
-                          primaryData[fieldName]
-                            ? config.colors.present
-                            : config.colors.absent
-                        } mr-1`}></div>
-                    );
-                  })}
                 </div>
               </div>
             );
