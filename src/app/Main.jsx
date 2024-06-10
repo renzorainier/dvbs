@@ -269,20 +269,7 @@ function Main() {
                     </div>
                   </button>
 
-                  <button
-                    className="focus:outline-none bg-white-500 backdrop-blur-lg  text-white font-semibold py-4 px-4 rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
-                    onClick={() => handleButtonClick("AdditionalPoints")}
-                    style={{ animation: "slide-from-left 1s ease forwards" }}>
-                    <div
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                      }}>
-                      <IoIosAddCircle  style={{ fontSize: "3.5em" }} />{" "}
-                      <span style={{ marginTop: "0.5em" }}>Additional Points</span>
-                    </div>
-                  </button>
+           
                 </div>
               </div>
               <div className="flex justify-center items-center">
