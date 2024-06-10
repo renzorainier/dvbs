@@ -300,7 +300,7 @@ function AdditionalPoints({ isVisitorView }) {
                 <div
                   className="ml-4 h-10 p-2 rounded-lg flex items-center justify-center"
                   style={{
-                    backgroundColor: getBackgroundColor(student.prefix),
+                    backgroundColor: getBackgroundColor(student.id),
                     width: "80px",
                   }}>
                   <span className="font-bold">{student.points} pts</span>
