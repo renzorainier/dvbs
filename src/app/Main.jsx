@@ -34,6 +34,7 @@ import { TbDoorExit } from "react-icons/tb";
 import { BsGraphUpArrow } from "react-icons/bs";
 import { FiMonitor } from "react-icons/fi";
 import { IoMdArrowRoundBack } from "react-icons/io";
+import { IoIosAddCircle } from "react-icons/io";
 
 function Main() {
   const [currentComponent, setCurrentComponent] = useState(null);
@@ -107,7 +108,7 @@ function Main() {
             <Password
               isVisitorView={isVisitorView}
               setIsVisitorView={setIsVisitorView}
-              correctPassword="0000">
+              correctPassword="2222">
               <AdditionalPoints isVisitorView={isVisitorView} />
             </Password>
           );
@@ -278,7 +279,7 @@ function Main() {
                         flexDirection: "column",
                         alignItems: "center",
                       }}>
-                      <TbDoorExit style={{ fontSize: "3.5em" }} />{" "}
+                      <IoIosAddCircle  style={{ fontSize: "3.5em" }} />{" "}
                       <span style={{ marginTop: "0.5em" }}>Additional Points</span>
                     </div>
                   </button>
@@ -317,6 +318,20 @@ function Main() {
                           </span>
                         </div>
                       </button>
+                      <button
+                    className="focus:outline-none bg-white-500 backdrop-blur-lg  text-white font-semibold py-4 px-4 rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
+                    onClick={() => handleButtonClick("AdditionalPoints")}
+                    style={{ animation: "slide-from-left 1s ease forwards" }}>
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                      }}>
+                      <IoIosAddCircle  style={{ fontSize: "3.5em" }} />{" "}
+                      <span style={{ marginTop: "0.5em" }}>Additional Points</span>
+                    </div>
+                  </button>
                     </div>
                   )}
                 </div>
