@@ -383,8 +383,8 @@ function Primary({
                   {primaryData[savedFieldName] && <FaCheckCircle />}{" "}
                   {/* Check if saved is true */}
                 </button>
-                <div>
-                  
+                <div  className="">
+                  {contactNumber}
                 </div>
                 <div className="flex flex-row ml-1 border-2 border-gray-400 p-1 rounded-md">
                   {["A", "B", "C", "D", "E"].map((dayLetter) => {
