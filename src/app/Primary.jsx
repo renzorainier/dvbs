@@ -316,19 +316,19 @@ function Primary({
               <div className={`bg-[${config.color}] text-lg  rounded-lg shadow-md p-6`}>
   <h3 className="text-xl font-semibold mb-4 text-gray-800">Points</h3>
   <div className="grid grid-cols-2 gap-4 text-lg">
-    <div className="flex items-center border-b border-gray-300 pb-3">
+    <div className="flex items-center pb-3">
       <strong className="mr-2 text-gray-700">Monday:</strong>
       <span className="text-gray-900">{selectedStudentInfo?.Apoints || "NA"}</span>
     </div>
-    <div className="flex items-center border-b border-gray-300 pb-3">
+    <div className="flex items-center pb-3">
       <strong className="mr-2 text-gray-700">Tuesday:</strong>
       <span className="text-gray-900">{selectedStudentInfo?.Bpoints || "NA"}</span>
     </div>
-    <div className="flex items-center border-b border-gray-300 pb-3">
+    <div className="flex items-center pb-3">
       <strong className="mr-2 text-gray-700">Wednesday:</strong>
       <span className="text-gray-900">{selectedStudentInfo?.Cpoints || "NA"}</span>
     </div>
-    <div className="flex items-center border-b border-gray-300 pb-3">
+    <div className="flex items-center pb-3">
       <strong className="mr-2 text-gray-700">Thursday:</strong>
       <span className="text-gray-900">{selectedStudentInfo?.Dpoints || "NA"}</span>
     </div>
