@@ -366,7 +366,7 @@ function Primary({
             );
             const savedFieldName = `${studentIndex.slice(0, -4)}saved`; // Construct the saved field name
             const id = savedFieldName.slice(0, -5);
-            const loc = id
+            const loc = id + "loc"
             console.log({
               name,
               studentIndex,
@@ -393,7 +393,7 @@ function Primary({
                   {/* Check if saved is true */}
                 </button>
                 <div  className="">
-                  {id}
+                  {primaryData.loc}
                 </div>
                 <div className="flex flex-row ml-1 border-2 border-gray-400 p-1 rounded-md">
                   {["A", "B", "C", "D", "E"].map((dayLetter) => {
