@@ -294,34 +294,36 @@ function Store({ isVisitorView }) {
               </Menu.Items>
             </Transition>
           </Menu>
-
           <div className="w-full max-w-md text-gray-700 bg-white mt-5 p-5 border rounded-lg shadow-lg mx-auto">
-            <input
-              type="text"
-              className="w-full p-2 mb-4 border border-gray-300 rounded-lg"
-              placeholder="Search by name"
-              value={searchQuery}
-              onChange={handleSearchChange}
-            />
+  <input
+    type="text"
+    className="w-full p-2 mb-4 border border-gray-300 rounded-lg"
+    placeholder="Search by name"
+    value={searchQuery}
+    onChange={handleSearchChange}
+  />
 
-            {filteredStudents.map((student) => (
-              <div
-                key={`${student.id}-${student.prefix}`}
-                className="flex items-center mb-4">
-                <button
-                  className="flex-1 text-white font-bold py-2 px-4 rounded-lg bg-gray-400 hover:bg-gray-700"
-                  onClick={() => handleClick(student)}>
-                  {student.name}
-                </button>
-                <div
-                  className="ml-4 h-10 p-2 rounded-lg"
-                  style={{
-                    backgroundColor: getBackgroundColor(student.id),
-                  }}></div>{" "}
-                {/* Add colored div */}
-              </div>
-            ))}
-          </div>
+  {filteredStudents.map((student) => (
+    <div
+      key={`${student.id}-${student.prefix}`}
+      className="flex items-center mb-4">
+      <button
+        className="flex-1 text-white font-bold py-2 px-4 rounded-lg bg-gray-400 hover:bg-gray-700"
+        onClick={() => handleClick(student)}>
+        {student.name}
+      </button>
+      <span className="ml-4 text-lg font-bold">
+        {student.points} points
+      </span>
+      <div
+        className="ml-4 h-10 p-2 rounded-lg"
+        style={{
+          backgroundColor: getBackgroundColor(student.id),
+        }}></div>
+    </div>
+  ))}
+</div>
+
 
           {showPoints && (
             <div className="fixed inset-0 z-40 flex items-center justify-center">
