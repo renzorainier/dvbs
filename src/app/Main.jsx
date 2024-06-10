@@ -21,6 +21,7 @@ import StudentPointsRanking from "./StudentPointsRanking";
 import DisplayControl from "./DisplayControl";
 import BobbingImage from "./Image";
 import Weather from "./Weather";
+import AdditionalPoints from  "./AdditionalPoints"
 
 import { FaChevronDown } from "react-icons/fa";
 import { MdOutlineLocalGroceryStore } from "react-icons/md";
@@ -101,6 +102,15 @@ function Main() {
             <DisplayControl isVisitorView={isVisitorView} />
           </Password>
         );
+        case "AdditionalPoints":
+          return (
+            <Password
+              isVisitorView={isVisitorView}
+              setIsVisitorView={setIsVisitorView}
+              correctPassword="0000">
+              <AdditionalPoints isVisitorView={isVisitorView} />
+            </Password>
+          );
 
       default:
         return (
@@ -246,6 +256,21 @@ function Main() {
                   <button
                     className="focus:outline-none bg-white-500 backdrop-blur-lg  text-white font-semibold py-4 px-4 rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
                     onClick={() => handleButtonClick("Out")}
+                    style={{ animation: "slide-from-left 1s ease forwards" }}>
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                      }}>
+                      <TbDoorExit style={{ fontSize: "3.5em" }} />{" "}
+                      <span style={{ marginTop: "0.5em" }}>Out</span>
+                    </div>
+                  </button>
+
+                  <button
+                    className="focus:outline-none bg-white-500 backdrop-blur-lg  text-white font-semibold py-4 px-4 rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
+                    onClick={() => handleButtonClick("AdditionalPoints")}
                     style={{ animation: "slide-from-left 1s ease forwards" }}>
                     <div
                       style={{
