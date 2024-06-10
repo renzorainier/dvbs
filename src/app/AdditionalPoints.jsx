@@ -212,7 +212,7 @@ function AdditionalPoints({ isVisitorView }) {
                       <div className="mt-2">
                         <p className="text-sm text-gray-500">
                           Manually add points to students for the current day based on their classroom performance. Click on a
-                          student's name to enter the points.
+                          student name to enter the points.
                         </p>
                       </div>
 
