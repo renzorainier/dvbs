@@ -365,7 +365,7 @@ function Primary({
               (key) => primaryData[key] === name
             );
             const savedFieldName = `${studentIndex.slice(0, -4)}saved`; // Construct the saved field name
-
+            const id = savedFieldName.slice(0, -4);
             console.log({
               name,
               studentIndex,
