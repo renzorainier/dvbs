@@ -22,6 +22,10 @@ function Primary({
   const [showVisitorPrompt, setShowVisitorPrompt] = useState(false); // New state for visitor prompt
   const audioRef = useRef(null);
 
+  const [showStudentInfo, setShowStudentInfo] = useState(false);
+  const [selectedStudentInfo, setSelectedStudentInfo] = useState(null);
+
+
   const uploadTime = new Date().toLocaleString();
 
   useEffect(() => {
@@ -290,6 +294,33 @@ function Primary({
         </div>
       )}
 
+{showStudentInfo && (
+  <div className="fixed inset-0 z-50 flex items-center justify-center">
+    <div className="fixed inset-0 bg-black opacity-50"></div>
+    <div className="bg-white rounded-lg p-5 shadow-md z-10 flex flex-col items-center">
+      <p className="mb-4 text-center">Student Information</p>
+      <div className="text-left">
+        <p>Address: {selectedStudentInfo?.loc}</p>
+        <p>Contact Number: {selectedStudentInfo?.contactNumber}</p>
+        <p>Points</p>
+        <p>Mon: {selectedStudentInfo?.Apoints}</p>
+        <p>Tue: {selectedStudentInfo?.Bpoints}</p>
+        <p>Wed: {selectedStudentInfo?.Cpoints}</p>
+        <p>Thu: {selectedStudentInfo?.Dpoints}</p>
+        <p>Fri: {selectedStudentInfo?.Epoints}</p>
+        <p>Invites: {selectedStudentInfo?.invites}</p>
+        <p>Age: {selectedStudentInfo?.age}</p>
+      </div>
+      <button
+        className="bg-blue-500 text-white font-bold py-2 px-6 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 mt-4"
+        onClick={() => setShowStudentInfo(false)}>
+        OK
+      </button>
+    </div>
+  </div>
+)}
+
+
       {showBiblePopup && (
         <div className="fixed inset-0 z-50 flex items-center justify-center">
           <div className="fixed inset-0 bg-black opacity-50" />
@@ -357,61 +388,75 @@ function Primary({
           onChange={(e) => setSearchQuery(e.target.value)}
           className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 mb-4"
         />
-        <div className="flex flex-col gap-4">
-          {filteredNames.map((name, index) => {
-            const studentIndex = Object.keys(primaryData).find(
-              (key) => primaryData[key] === name
-            );
-            const savedFieldName = `${studentIndex.slice(0, -4)}saved`; // Construct the saved field name
-            const id = savedFieldName.slice(0, -5);
-            const loc = id + "loc";
-            const contactNumber = id + "contactNumber";
-            const Apoints = id + "Apoints";
-            const Bpoints = id + "Bpoints";
-            const Cpoints = id + "Cpoints";
-            const Dpoints = id + "Dpoints";
-            const Epoints = id + "Epoints";
-            const invites = id + "invites";
-            const age = id + "age";
+      <div className="flex flex-col gap-4">
+  {filteredNames.map((name, index) => {
+    const studentIndex = Object.keys(primaryData).find(
+      (key) => primaryData[key] === name
+    );
+    const savedFieldName = `${studentIndex.slice(0, -4)}saved`; // Construct the saved field name
+    const id = savedFieldName.slice(0, -5);
+    const loc = id + "loc";
+    const contactNumber = id + "contactNumber";
+    const Apoints = id + "Apoints";
+    const Bpoints = id + "Bpoints";
+    const Cpoints = id + "Cpoints";
+    const Dpoints = id + "Dpoints";
+    const Epoints = id + "Epoints";
+    const invites = id + "invites";
+    const age = id + "age";
 
-            // Inside the mapfunction where you render student names
+    return (
+      <div key={index} className="flex items-center">
+        <button
+          className={`w-70percent flex items-center justify-center hover:bg-blue-700 text-white font-bold py-2 px-3 rounded-lg ${getButtonColor(
+            studentIndex
+          )}`}
+          onClick={() => {
+            if (!isVisitorView) {
+              handleClick(studentIndex);
+            } else {
+              setShowVisitorPrompt(true); // Show visitor prompt if in visitor view
+            }
+          }}>
+          <span className="mr-2">{name}</span> {/* Name */}
+          {primaryData[savedFieldName] && <FaCheckCircle />}{" "}
+          {/* Check if saved is true */}
+        </button>
+        <div className="ml-2 cursor-pointer text-blue-500 underline" onClick={() => {
+          setShowStudentInfo(true);
+          setSelectedStudentInfo({
+            loc: primaryData[loc],
+            contactNumber: primaryData[contactNumber],
+            Apoints: primaryData[Apoints],
+            Bpoints: primaryData[Bpoints],
+            Cpoints: primaryData[Cpoints],
+            Dpoints: primaryData[Dpoints],
+            Epoints: primaryData[Epoints],
+            invites: primaryData[invites],
+            age: primaryData[age],
+          });
+        }}>
+          Info
+        </div>
+        <div className="flex flex-row ml-1 border-2 border-gray-400 p-1 rounded-md">
+          {["A", "B", "C", "D", "E"].map((dayLetter) => {
+            const fieldName = `${studentIndex.slice(0, 2)}${dayLetter}`;
             return (
-              <div key={index} className="flex items-center">
-                <button
-                  className={`w-70percent flex items-center justify-center hover:bg-blue-700 text-white font-bold py-2 px-3 rounded-lg ${getButtonColor(
-                    studentIndex
-                  )}`}
-                  onClick={() => {
-                    if (!isVisitorView) {
-                      handleClick(studentIndex);
-                    } else {
-                      setShowVisitorPrompt(true); // Show visitor prompt if in visitor view
-                    }
-                  }}>
-                  <span className="mr-2">{name}</span> {/* Name */}
-                  {primaryData[savedFieldName] && <FaCheckCircle />}{" "}
-                  {/* Check if saved is true */}
-                </button>
-                <div className="ml-2">{primaryData[loc]}</div>{" "}
-                {/* Render loc field */}
-                <div className="flex flex-row ml-1 border-2 border-gray-400 p-1 rounded-md">
-                  {["A", "B", "C", "D", "E"].map((dayLetter) => {
-                    const fieldName = `${studentIndex.slice(0, 2)}${dayLetter}`;
-                    return (
-                      <div
-                        key={dayLetter}
-                        className={`w-4 h-7 rounded-lg ${
-                          primaryData[fieldName]
-                            ? config.colors.present
-                            : config.colors.absent
-                        } mr-1`}></div>
-                    );
-                  })}
-                </div>
-              </div>
+              <div
+                key={dayLetter}
+                className={`w-4 h-7 rounded-lg ${
+                  primaryData[fieldName]
+                    ? config.colors.present
+                    : config.colors.absent
+                } mr-1`}></div>
             );
           })}
         </div>
+      </div>
+    );
+  })}
+</div>
+
       </div>
       <audio ref={audioRef} />
     </div>
