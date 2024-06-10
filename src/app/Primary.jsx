@@ -313,31 +313,32 @@ function Primary({
                 <strong>Contact Number:</strong>{" "}
                 {selectedStudentInfo?.contactNumber || "NA"}
               </p>
-              <div className="text-lg bg-gray-400">
-  <p className="text-xl font-semibold mb-2">Points</p>
+              <div className="text-lg bg-white rounded-lg shadow-md p-6">
+  <h3 className="text-xl font-semibold mb-4 text-gray-800">Points</h3>
   <div className="grid grid-cols-2 gap-4 text-lg">
-    <div className="flex items-center">
-      <strong className="mr-2">Mon:</strong>
-      <span>{selectedStudentInfo?.Apoints || "NA"}</span>
+    <div className="flex items-center border-b border-gray-300 pb-3">
+      <strong className="mr-2 text-gray-700">Monday:</strong>
+      <span className="text-gray-900">{selectedStudentInfo?.Apoints || "NA"}</span>
+    </div>
+    <div className="flex items-center border-b border-gray-300 pb-3">
+      <strong className="mr-2 text-gray-700">Tuesday:</strong>
+      <span className="text-gray-900">{selectedStudentInfo?.Bpoints || "NA"}</span>
+    </div>
+    <div className="flex items-center border-b border-gray-300 pb-3">
+      <strong className="mr-2 text-gray-700">Wednesday:</strong>
+      <span className="text-gray-900">{selectedStudentInfo?.Cpoints || "NA"}</span>
+    </div>
+    <div className="flex items-center border-b border-gray-300 pb-3">
+      <strong className="mr-2 text-gray-700">Thursday:</strong>
+      <span className="text-gray-900">{selectedStudentInfo?.Dpoints || "NA"}</span>
     </div>
     <div className="flex items-center">
-      <strong className="mr-2">Tue:</strong>
-      <span>{selectedStudentInfo?.Bpoints || "NA"}</span>
-    </div>
-    <div className="flex items-center">
-      <strong className="mr-2">Wed:</strong>
-      <span>{selectedStudentInfo?.Cpoints || "NA"}</span>
-    </div>
-    <div className="flex items-center">
-      <strong className="mr-2">Thu:</strong>
-      <span>{selectedStudentInfo?.Dpoints || "NA"}</span>
-    </div>
-    <div className="flex items-center">
-      <strong className="mr-2">Fri:</strong>
-      <span>{selectedStudentInfo?.Epoints || "NA"}</span>
+      <strong className="mr-2 text-gray-700">Friday:</strong>
+      <span className="text-gray-900">{selectedStudentInfo?.Epoints || "NA"}</span>
     </div>
   </div>
 </div>
+
 
               <p className="text-lg">
                 <strong>Invites:</strong> {selectedStudentInfo?.invites || "NA"}
