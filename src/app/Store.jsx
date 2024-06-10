@@ -316,14 +316,12 @@ function Store({ isVisitorView }) {
                 </button>
 
                 <div
-                  className="ml-4 h-10 p-2 rounded-lg"
+                  className="ml-4 h-10 p-2 rounded-lg flex items-center justify-center"
                   style={{
                     backgroundColor: getBackgroundColor(student.id),
+                    width: "80px", // Set a fixed width for the points div
                   }}>
-                  {" "}
-                  <span className="font-bold">
-                    {student.points} pts
-                  </span>
+                  <span className="font-bold">{student.points} pts</span>
                 </div>
               </div>
             ))}
