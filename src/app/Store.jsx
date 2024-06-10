@@ -312,8 +312,8 @@ function Store({ isVisitorView }) {
         onClick={() => handleClick(student)}>
         {student.name}
       </button>
-      <span className="ml-4 text-lg font-bold">
-        {student.points} points
+      <span className="ml-4 text-lg bg-gray-400 font-bold">
+        {student.points} pts
       </span>
       <div
         className="ml-4 h-10 p-2 rounded-lg"
