@@ -438,6 +438,7 @@ function Primary({
             Epoints: primaryData[Epoints],
             invites: primaryData[invites],
             age: primaryData[age],
+            id: id
           });
         }}>
           Info
