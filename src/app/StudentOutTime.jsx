@@ -370,6 +370,9 @@ function StudentOutTime({ isVisitorView }) {
               <div className="fixed inset-0 bg-black opacity-50" />
               <div className="bg-white rounded-lg p-5 shadow-md z-10 flex flex-col items-center">
                 <p className="mb-2">Unmark student as out?</p>
+                <p>
+                (student is still in church?)
+                </p>
                 <div className="flex space-x-4">
                   <button
                     className="bg-red-500 text-white font-bold py-2 px-4 rounded"
