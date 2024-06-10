@@ -297,26 +297,27 @@ function Primary({
 {showStudentInfo && (
   <div className="fixed inset-0 z-50 flex items-center justify-center">
     <div className="fixed inset-0 bg-black opacity-50"></div>
-    <div className="bg-white rounded-lg p-6 shadow-lg z-10 flex flex-col items-center">
-      <h2 className="mb-4 text-xl font-semibold text-center">Student Information</h2>
-      <div className="text-left space-y-2 w-full">
-        <p>id: {selectedStudentInfo?.id} </p>
-        <p><strong>Address:</strong> {selectedStudentInfo?.loc}</p>
-        <p><strong>Age:</strong> {selectedStudentInfo?.age}</p>
-        <p><strong>Contact Number:</strong> {selectedStudentInfo?.contactNumber}</p>
-        <p className="font-semibold">Points</p>
-        <div className="grid grid-cols-2 gap-2">
-          <p><strong>Mon:</strong> {selectedStudentInfo?.Apoints}</p>
-          <p><strong>Tue:</strong> {selectedStudentInfo?.Bpoints}</p>
-          <p><strong>Wed:</strong> {selectedStudentInfo?.Cpoints}</p>
-          <p><strong>Thu:</strong> {selectedStudentInfo?.Dpoints}</p>
-          <p><strong>Fri:</strong> {selectedStudentInfo?.Epoints}</p>
+    <div className="bg-white rounded-lg p-8 shadow-2xl z-10 flex flex-col items-center w-11/12 max-w-lg">
+      <h2 className="mb-6 text-2xl font-bold text-center text-gray-800">Student Information</h2>
+      <div className="text-left space-y-4 w-full text-gray-700">
+        <p className="text-lg"><strong>ID:</strong> {selectedStudentInfo?.id}</p>
+        <p className="text-lg"><strong>Address:</strong> {selectedStudentInfo?.loc}</p>
+        <p className="text-lg"><strong>Age:</strong> {selectedStudentInfo?.age}</p>
+        <p className="text-lg"><strong>Contact Number:</strong> {selectedStudentInfo?.contactNumber}</p>
+        <div>
+          <p className="text-lg font-semibold mb-2">Points</p>
+          <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-lg">
+            <p><strong>Mon:</strong> {selectedStudentInfo?.Apoints}</p>
+            <p><strong>Tue:</strong> {selectedStudentInfo?.Bpoints}</p>
+            <p><strong>Wed:</strong> {selectedStudentInfo?.Cpoints}</p>
+            <p><strong>Thu:</strong> {selectedStudentInfo?.Dpoints}</p>
+            <p><strong>Fri:</strong> {selectedStudentInfo?.Epoints}</p>
+          </div>
         </div>
-        <p><strong>Invites:</strong> {selectedStudentInfo?.invites}</p>
-
+        <p className="text-lg"><strong>Invites:</strong> {selectedStudentInfo?.invites}</p>
       </div>
       <button
-        className="bg-blue-500 text-white font-bold py-2 px-6 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 mt-4"
+        className="bg-blue-500 text-white font-bold py-3 px-8 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mt-6"
         onClick={() => setShowStudentInfo(false)}>
         OK
       </button>
