@@ -313,7 +313,7 @@ function Primary({
                 <strong>Contact Number:</strong>{" "}
                 {selectedStudentInfo?.contactNumber || "NA"}
               </p>
-              <div className="text-lg">
+              <div className="text-lg bg-gray-400">
   <p className="text-xl font-semibold mb-2">Points</p>
   <div className="grid grid-cols-2 gap-4 text-lg">
     <div className="flex items-center">
