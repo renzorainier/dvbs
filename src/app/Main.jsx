@@ -279,7 +279,7 @@ function Main() {
                         alignItems: "center",
                       }}>
                       <TbDoorExit style={{ fontSize: "3.5em" }} />{" "}
-                      <span style={{ marginTop: "0.5em" }}>Out</span>
+                      <span style={{ marginTop: "0.5em" }}>Additional Points</span>
                     </div>
                   </button>
                 </div>
