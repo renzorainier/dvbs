@@ -371,7 +371,9 @@ function Primary({
             const Cpoints = id + "Cpoints";
             const Dpoints = id + "Dpoints";
             const Epoints = id + "Epoints";
-            const invites = id + "invites"
+            const invites = id + "invites";
+            const age = id + "age";
+            const 
 
 
 
