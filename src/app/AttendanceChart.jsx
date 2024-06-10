@@ -236,7 +236,7 @@ function AttendanceChart() {
         </div>
 
         <div className="w-full flex flex-col items-center rounded-lg m-2 justify-center bg-gray-300 cursor-pointer">
-          <div className="text-5xl md:text-15xl text-white font-bold">
+          <div className="text-5xl md:text-15xl text-black font-bold">
             {getTotalAttendanceForDay(selectedDay)}
           </div>
           <div className="text-4xl md:text-4xl md:mb-4 text-black font-bold">
