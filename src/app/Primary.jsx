@@ -366,7 +366,14 @@ function Primary({
             const id = savedFieldName.slice(0, -5);
             const loc = id + "loc";
             const contactNumber = id + "contactNumber";
-            const 
+            const Apoints = id + "Apoints";
+            const Bpoints = id + "Bpoints";
+            const Cpoints = id + "Cpoints";
+            const Dpoints = id + "Dpoints";
+            const Epoints = id + "Epoints";
+            const invites = id + "invites"
+
+
 
             // Inside the map function where you render student names
             return (
