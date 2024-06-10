@@ -36,6 +36,8 @@ function AdditionalPoints({ isVisitorView }) {
         ...doc.data(),
       }));
 
+      console.log("Fetched student data:", studentData); // Log fetched student data
+
       const currentDayLetter = getCurrentDayLetter();
       const presentStudents = studentData
         .map((group) => {
@@ -61,6 +63,8 @@ function AdditionalPoints({ isVisitorView }) {
           return groupStudents;
         })
         .flat();
+
+      console.log("Present students:", presentStudents); // Log present students
 
       presentStudents.sort((a, b) => a.name.localeCompare(b.name));
 
