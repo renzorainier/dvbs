@@ -300,6 +300,7 @@ function Primary({
     <div className="bg-white rounded-lg p-6 shadow-lg z-10 flex flex-col items-center">
       <h2 className="mb-4 text-xl font-semibold text-center">Student Information</h2>
       <div className="text-left space-y-2 w-full">
+        <p>id: {selectedStudentInfo?.id} </p>
         <p><strong>Address:</strong> {selectedStudentInfo?.loc}</p>
         <p><strong>Age:</strong> {selectedStudentInfo?.age}</p>
         <p><strong>Contact Number:</strong> {selectedStudentInfo?.contactNumber}</p>
