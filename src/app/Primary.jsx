@@ -375,41 +375,60 @@ function Primary({
             const age = id + "age";
 
             // Inside the mapfunction where you render student names
-            return (
-              <div key={index} className="flex items-center">
-                <button
-                  className={`w-70percent flex items-center justify-center hover:bg-blue-700 text-white font-bold py-2 px-3 rounded-lg ${getButtonColor(
-                    studentIndex
-                  )}`}
-                  onClick={() => {
-                    if (!isVisitorView) {
-                      handleClick(studentIndex);
-                    } else {
-                      setShowVisitorPrompt(true); // Show visitor prompt if in visitor view
-                    }
-                  }}>
-                  <span className="mr-2">{name}</span> {/* Name */}
-                  {primaryData[savedFieldName] && <FaCheckCircle />}{" "}
-                  {/* Check if saved is true */}
-                </button>
-                <div className="ml-2">{primaryData[loc]}</div>{" "}
-                {/* Render loc field */}
-                <div className="flex flex-row ml-1 border-2 border-gray-400 p-1 rounded-md">
-                  {["A", "B", "C", "D", "E"].map((dayLetter) => {
-                    const fieldName = `${studentIndex.slice(0, 2)}${dayLetter}`;
-                    return (
-                      <div
-                        key={dayLetter}
-                        className={`w-4 h-7 rounded-lg ${
-                          primaryData[fieldName]
-                            ? config.colors.present
-                            : config.colors.absent
-                        } mr-1`}></div>
-                    );
-                  })}
-                </div>
-              </div>
-            );
+      // Inside the map function where you render student names
+return (
+  <div key={index} className="flex items-center relative">
+    <button
+      className={`w-70percent flex items-center justify-center hover:bg-blue-700 text-white font-bold py-2 px-3 rounded-lg ${getButtonColor(
+        studentIndex
+      )}`}
+      onClick={() => {
+        if (!isVisitorView) {
+          handleClick(studentIndex);
+        } else {
+          setShowVisitorPrompt(true); // Show visitor prompt if in visitor view
+        }
+      }}>
+      <span className="mr-2">{name}</span> {/* Name */}
+      {primaryData[savedFieldName] && <FaCheckCircle />}{" "}
+      {/* Check if saved is true */}
+    </button>
+    <div className="absolute top-full left-0 mt-2 bg-white border border-gray-300 p-4 rounded-lg shadow-md hidden">
+      <div>{primaryData[loc]}</div>
+      <div>{primaryData[contactNumber]}</div>
+      <div>{primaryData[Apoints]}</div>
+      <div>{primaryData[Bpoints]}</div>
+      <div>{primaryData[Cpoints]}</div>
+      <div>{primaryData[Dpoints]}</div>
+      <div>{primaryData[Epoints]}</div>
+      <div>{primaryData[invites]}</div>
+      <div>{primaryData[age]}</div>
+    </div>
+    <div
+      className="ml-2 cursor-pointer"
+      onClick={(e) => {
+        e.stopPropagation();
+        e.target.nextSibling.classList.toggle("hidden");
+      }}>
+      <span>ℹ️</span>
+    </div>
+    <div className="flex flex-row ml-1 border-2 border-gray-400 p-1 rounded-md">
+      {["A", "B", "C", "D", "E"].map((dayLetter) => {
+        const fieldName = `${studentIndex.slice(0, 2)}${dayLetter}`;
+        return (
+          <div
+            key={dayLetter}
+            className={`w-4 h-7 rounded-lg ${
+              primaryData[fieldName]
+                ? config.colors.present
+                : config.colors.absent
+            } mr-1`}></div>
+        );
+      })}
+    </div>
+  </div>
+);
+
           })}
         </div>
       </div>
