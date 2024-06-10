@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Fragment, useRef } from "react";
 import { collection, getDocs, updateDoc, doc } from "firebase/firestore";
 import { db } from "./firebase.js"; // Import your Firebase config
-import { Menu, Transition, Dialog} from "@headlessui/react";
+import { Menu, Transition, Dialog } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { IoIosBackspace } from "react-icons/io";
 
@@ -28,7 +28,6 @@ function Store({ isVisitorView }) {
   function openModal() {
     setIsOpen(true);
   }
-
 
   useEffect(() => {
     const fetchStudents = async () => {
@@ -194,54 +193,57 @@ function Store({ isVisitorView }) {
       )}
       <div className="flex justify-center items-center overflow-auto">
         <div className="w-full rounded-lg mx-auto" style={{ maxWidth: "90%" }}>
-        <Transition appear show={isOpen} as={Fragment}>
-                <Dialog as="div" className="relative z-10" onClose={closeModal}>
+          <Transition appear show={isOpen} as={Fragment}>
+            <Dialog as="div" className="relative z-10" onClose={closeModal}>
+              <Transition.Child
+                as={Fragment}
+                enter="ease-out duration-300"
+                enterFrom="opacity-0"
+                enterTo="opacity-100"
+                leave="ease-in duration-200"
+                leaveFrom="opacity-100"
+                leaveTo="opacity-0">
+                <div className="fixed inset-0 bg-black/25" />
+              </Transition.Child>
+
+              <div className="fixed inset-0 overflow-y-auto">
+                <div className="flex min-h-full items-center justify-center p-4 text-center">
                   <Transition.Child
                     as={Fragment}
                     enter="ease-out duration-300"
-                    enterFrom="opacity-0"
-                    enterTo="opacity-100"
+                    enterFrom="opacity-0 scale-95"
+                    enterTo="opacity-100 scale-100"
                     leave="ease-in duration-200"
-                    leaveFrom="opacity-100"
-                    leaveTo="opacity-0">
-                    <div className="fixed inset-0 bg-black/25" />
+                    leaveFrom="opacity-100 scale-100"
+                    leaveTo="opacity-0 scale-95">
+                    <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                      <Dialog.Title
+                        as="h3"
+                        className="text-lg font-medium leading-6 text-gray-900">
+                        Store
+                      </Dialog.Title>
+                      <div className="mt-2">
+                        <p className="text-sm text-gray-500">
+                          Allows students to purchase specific items with their
+                          points. Clicking on names displays the points, which
+                          then proceeds to payment.{" "}
+                        </p>
+                      </div>
+
+                      <div className="mt-4">
+                        <button
+                          type="button"
+                          className="inline-flex justify-center rounded-md border border-transparent bg-[#9BCF53] px-4 py-2 text-sm font-medium text-gray-900 hover:bg-gray-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-500 focus-visible:ring-offset-2"
+                          onClick={closeModal}>
+                          Got it, thanks!
+                        </button>
+                      </div>
+                    </Dialog.Panel>
                   </Transition.Child>
-
-                  <div className="fixed inset-0 overflow-y-auto">
-                    <div className="flex min-h-full items-center justify-center p-4 text-center">
-                      <Transition.Child
-                        as={Fragment}
-                        enter="ease-out duration-300"
-                        enterFrom="opacity-0 scale-95"
-                        enterTo="opacity-100 scale-100"
-                        leave="ease-in duration-200"
-                        leaveFrom="opacity-100 scale-100"
-                        leaveTo="opacity-0 scale-95">
-                        <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
-                          <Dialog.Title
-                            as="h3"
-                            className="text-lg font-medium leading-6 text-gray-900">
-                            Store
-                          </Dialog.Title>
-                          <div className="mt-2">
-                            <p className="text-sm text-gray-500">
-                            Allows students to purchase specific items with their points. Clicking on names displays the points, which then proceeds to payment.                            </p>
-                          </div>
-
-                          <div className="mt-4">
-                            <button
-                              type="button"
-                              className="inline-flex justify-center rounded-md border border-transparent bg-[#9BCF53] px-4 py-2 text-sm font-medium text-gray-900 hover:bg-gray-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-500 focus-visible:ring-offset-2"
-                              onClick={closeModal}>
-                              Got it, thanks!
-                            </button>
-                          </div>
-                        </Dialog.Panel>
-                      </Transition.Child>
-                    </div>
-                  </div>
-                </Dialog>
-              </Transition>
+                </div>
+              </div>
+            </Dialog>
+          </Transition>
           <Menu as="div" className="relative inline-block mt-5 mb-3">
             <div>
               <Menu.Button className="inline-flex rounded-md bg-black/20 px-4 py-2 text-sm font-bold text-white hover:bg-black/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75">
@@ -295,35 +297,37 @@ function Store({ isVisitorView }) {
             </Transition>
           </Menu>
           <div className="w-full max-w-md text-gray-700 bg-white mt-5 p-5 border rounded-lg shadow-lg mx-auto">
-  <input
-    type="text"
-    className="w-full p-2 mb-4 border border-gray-300 rounded-lg"
-    placeholder="Search by name"
-    value={searchQuery}
-    onChange={handleSearchChange}
-  />
+            <input
+              type="text"
+              className="w-full p-2 mb-4 border border-gray-300 rounded-lg"
+              placeholder="Search by name"
+              value={searchQuery}
+              onChange={handleSearchChange}
+            />
 
-  {filteredStudents.map((student) => (
-    <div
-      key={`${student.id}-${student.prefix}`}
-      className="flex items-center mb-4">
-      <button
-        className="flex-1 text-white font-bold py-2 px-4 rounded-lg bg-gray-400 hover:bg-gray-700"
-        onClick={() => handleClick(student)}>
-        {student.name}
-      </button>
-      <span className="ml-4 text-lg bg-gray-400 font-bold">
-        {student.points} pts
-      </span>
-      <div
-        className="ml-4 h-10 p-2 rounded-lg"
-        style={{
-          backgroundColor: getBackgroundColor(student.id),
-        }}></div>
-    </div>
-  ))}
-</div>
+            {filteredStudents.map((student) => (
+              <div
+                key={`${student.id}-${student.prefix}`}
+                className="flex items-center mb-4">
+                <button
+                  className="flex-1 text-white font-bold py-2 px-4 rounded-lg bg-gray-400 hover:bg-gray-700"
+                  onClick={() => handleClick(student)}>
+                  {student.name}
+                </button>
 
+                <div
+                  className="ml-4 h-10 p-2 rounded-lg"
+                  style={{
+                    backgroundColor: getBackgroundColor(student.id),
+                  }}>
+                  {" "}
+                  <span className="font-bold">
+                    {student.points} pts
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
 
           {showPoints && (
             <div className="fixed inset-0 z-40 flex items-center justify-center">
