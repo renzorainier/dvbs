@@ -366,51 +366,43 @@ function Primary({
             );
             const savedFieldName = `${studentIndex.slice(0, -4)}saved`; // Construct the saved field name
             const id = savedFieldName.slice(0, -5);
-            const loc = id + "loc"
-            console.log({
-              name,
-              studentIndex,
-              savedFieldName,
-              primaryData: primaryData[studentIndex],
-            });
 
+       // Inside the map function where you render student names
+return (
+  <div key={index} className="flex items-center">
+    <button
+      className={`w-70percent flex items-center justify-center hover:bg-blue-700 text-white font-bold py-2 px-3 rounded-lg ${getButtonColor(
+        studentIndex
+      )}`}
+      onClick={() => {
+        if (!isVisitorView) {
+          handleClick(studentIndex);
+        } else {
+          setShowVisitorPrompt(true); // Show visitor prompt if in visitor view
+        }
+      }}>
+      <span className="mr-2">{name}</span> {/* Name */}
+      {primaryData[savedFieldName] && <FaCheckCircle />}{" "}
+      {/* Check if saved is true */}
+    </button>
+    <div className="ml-2">{primaryData[loc]}</div> {/* Render loc field */}
+    <div className="flex flex-row ml-1 border-2 border-gray-400 p-1 rounded-md">
+      {["A", "B", "C", "D", "E"].map((dayLetter) => {
+        const fieldName = `${studentIndex.slice(0, 2)}${dayLetter}`;
+        return (
+          <div
+            key={dayLetter}
+            className={`w-4 h-7 rounded-lg ${
+              primaryData[fieldName]
+                ? config.colors.present
+                : config.colors.absent
+            } mr-1`}></div>
+        );
+      })}
+    </div>
+  </div>
+);
 
-            return (
-              <div key={index} className="flex items-center">
-                <button
-                  className={`w-70percent flex items-center justify-center hover:bg-blue-700 text-white font-bold py-2 px-3 rounded-lg ${getButtonColor(
-                    studentIndex
-                  )}`}
-                  onClick={() => {
-                    if (!isVisitorView) {
-                      handleClick(studentIndex);
-                    } else {
-                      setShowVisitorPrompt(true); // Show visitor prompt if in visitor view
-                    }
-                  }}>
-                  <span className="mr-2">{name}</span> {/* Name */}
-                  {primaryData[savedFieldName] && <FaCheckCircle />}{" "}
-                  {/* Check if saved is true */}
-                </button>
-                <div  className="">
-                  {filteredNames.loc}
-                </div>
-                <div className="flex flex-row ml-1 border-2 border-gray-400 p-1 rounded-md">
-                  {["A", "B", "C", "D", "E"].map((dayLetter) => {
-                    const fieldName = `${studentIndex.slice(0, 2)}${dayLetter}`;
-                    return (
-                      <div
-                        key={dayLetter}
-                        className={`w-4 h-7 rounded-lg ${
-                          primaryData[fieldName]
-                            ? config.colors.present
-                            : config.colors.absent
-                        } mr-1`}></div>
-                    );
-                  })}
-                </div>
-              </div>
-            );
           })}
         </div>
       </div>
