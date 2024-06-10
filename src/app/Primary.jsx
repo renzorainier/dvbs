@@ -26,16 +26,22 @@ function Primary({
 
   useEffect(() => {
     const fetchPrimary = async () => {
-      const docRef = doc(
-        db,
-        config.dbPath.split("/")[0],
-        config.dbPath.split("/")[1]
-      );
-      const primarySnapshot = await getDoc(docRef);
-      if (primarySnapshot.exists()) {
-        setPrimaryData(primarySnapshot.data());
-      } else {
-        console.error("No such document!");
+      try {
+        const docRef = doc(
+          db,
+          config.dbPath.split("/")[0],
+          config.dbPath.split("/")[1]
+        );
+        const primarySnapshot = await getDoc(docRef);
+        if (primarySnapshot.exists()) {
+          const data = primarySnapshot.data();
+          console.log("Fetched data:", data); // Log the fetched data
+          setPrimaryData(data);
+        } else {
+          console.error("No such document!");
+        }
+      } catch (error) {
+        console.error("Error fetching document:", error);
       }
     };
 
@@ -377,6 +383,9 @@ function Primary({
                   {primaryData[savedFieldName] && <FaCheckCircle />}{" "}
                   {/* Check if saved is true */}
                 </button>
+                <div>
+                  
+                </div>
                 <div className="flex flex-row ml-1 border-2 border-gray-400 p-1 rounded-md">
                   {["A", "B", "C", "D", "E"].map((dayLetter) => {
                     const fieldName = `${studentIndex.slice(0, 2)}${dayLetter}`;
