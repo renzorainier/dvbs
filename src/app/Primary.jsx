@@ -22,9 +22,6 @@ function Primary({
   const [showVisitorPrompt, setShowVisitorPrompt] = useState(false); // New state for visitor prompt
   const audioRef = useRef(null);
 
-  const [showStudentInfo, setShowStudentInfo] = useState(false);
-  const [selectedStudentInfo, setSelectedStudentInfo] = useState(null);
-
   const uploadTime = new Date().toLocaleString();
 
   useEffect(() => {
@@ -395,39 +392,8 @@ function Primary({
                   {primaryData[savedFieldName] && <FaCheckCircle />}{" "}
                   {/* Check if saved is true */}
                 </button>
-                <div className="ml-2">
-                  <div
-                    className="cursor-pointer text-blue-500 underline"
-                    onClick={() => {
-                      setShowStudentInfo(!showStudentInfo);
-                      setSelectedStudentInfo({
-                        loc: primaryData[loc],
-                        contactNumber: primaryData[contactNumber],
-                        Apoints: primaryData[Apoints],
-                        Bpoints: primaryData[Bpoints],
-                        Cpoints: primaryData[Cpoints],
-                        Dpoints: primaryData[Dpoints],
-                        Epoints: primaryData[Epoints],
-                        invites: primaryData[invites],
-                        age: primaryData[age],
-                      });
-                    }}>
-                    Info
-                  </div>
-                  {showStudentInfo && (
-                    <div className="absolute bg-white p-4 border rounded-lg shadow-md top-0 left-full ml-4">
-                      <p>Loc: {selectedStudentInfo.loc}</p>
-                      <p>Contact Number: {selectedStudentInfo.contactNumber}</p>
-                      <p>A Points: {selectedStudentInfo.Apoints}</p>
-                      <p>B Points: {selectedStudentInfo.Bpoints}</p>
-                      <p>C Points: {selectedStudentInfo.Cpoints}</p>
-                      <p>D Points: {selectedStudentInfo.Dpoints}</p>
-                      <p>E Points: {selectedStudentInfo.Epoints}</p>
-                      <p>Invites: {selectedStudentInfo.invites}</p>
-                      <p>Age: {selectedStudentInfo.age}</p>
-                    </div>
-                  )}
-                </div>
+                <div className="ml-2">{primaryData[loc]}</div>{" "}
+                {/* Render loc field */}
                 <div className="flex flex-row ml-1 border-2 border-gray-400 p-1 rounded-md">
                   {["A", "B", "C", "D", "E"].map((dayLetter) => {
                     const fieldName = `${studentIndex.slice(0, 2)}${dayLetter}`;
