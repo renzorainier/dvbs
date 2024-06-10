@@ -365,12 +365,8 @@ function Primary({
             const savedFieldName = `${studentIndex.slice(0, -4)}saved`; // Construct the saved field name
             const id = savedFieldName.slice(0, -5);
             const loc = id + "loc";
-            console.log({
-              name,
-              studentIndex,
-              savedFieldName,
-              primaryData: primaryData[studentIndex],
-            });
+            const contactNumber = id + "contactNumber";
+            const 
 
             // Inside the map function where you render student names
             return (
