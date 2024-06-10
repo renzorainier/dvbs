@@ -25,7 +25,6 @@ function Primary({
   const [showStudentInfo, setShowStudentInfo] = useState(false);
   const [selectedStudentInfo, setSelectedStudentInfo] = useState(null);
 
-
   const uploadTime = new Date().toLocaleString();
 
   useEffect(() => {
@@ -293,39 +292,65 @@ function Primary({
           </div>
         </div>
       )}
-
-{showStudentInfo && (
-  <div className="fixed inset-0 z-50 flex items-center justify-center">
-    <div className="fixed inset-0 bg-black opacity-50"></div>
-    <div className="bg-white rounded-lg p-8 shadow-2xl z-10 flex flex-col items-center w-11/12 max-w-lg">
-      <h2 className="mb-6 text-2xl font-bold text-center text-gray-800">Student Information</h2>
-      <div className="text-left space-y-4 w-full text-gray-700">
-        <p className="text-lg"><strong>ID:</strong> {selectedStudentInfo?.id}</p>
-        <p className="text-lg"><strong>Address:</strong> {selectedStudentInfo?.loc}</p>
-        <p className="text-lg"><strong>Age:</strong> {selectedStudentInfo?.age}</p>
-        <p className="text-lg"><strong>Contact Number:</strong> {selectedStudentInfo?.contactNumber}</p>
-        <div>
-          <p className="text-lg font-semibold mb-2">Points</p>
-          <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-lg">
-            <p><strong>Mon:</strong> {selectedStudentInfo?.Apoints}</p>
-            <p><strong>Tue:</strong> {selectedStudentInfo?.Bpoints}</p>
-            <p><strong>Wed:</strong> {selectedStudentInfo?.Cpoints}</p>
-            <p><strong>Thu:</strong> {selectedStudentInfo?.Dpoints}</p>
-            <p><strong>Fri:</strong> {selectedStudentInfo?.Epoints}</p>
-          </div>
-        </div>
-        <p className="text-lg"><strong>Invites:</strong> {selectedStudentInfo?.invites}</p>
-      </div>
-      <button
-        className="bg-blue-500 text-white font-bold py-3 px-8 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mt-6"
-        onClick={() => setShowStudentInfo(false)}>
-        OK
-      </button>
+      {showStudentInfo && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
+          <div className="fixed inset-0 bg-black opacity-50"></div>
+          <div className="bg-white rounded-lg p-8 shadow-2xl z-10 flex flex-col items-center w-11/12 max-w-lg">
+            <h2 className="mb-6 text-2xl font-bold text-center text-gray-800">
+              Student Information
+            </h2>
+            <div className="text-left space-y-4 w-full text-gray-700">
+              <p className="text-lg">
+                <strong>ID:</strong> {selectedStudentInfo?.id || "NA"}
+              </p>
+              <p className="text-lg">
+                <strong>Address:</strong> {selectedStudentInfo?.loc || "NA"}
+              </p>
+              <p className="text-lg">
+                <strong>Age:</strong> {selectedStudentInfo?.age || "NA"}
+              </p>
+              <p className="text-lg">
+                <strong>Contact Number:</strong>{" "}
+                {selectedStudentInfo?.contactNumber || "NA"}
+              </p>
+              <div className="text-lg">
+  <p className="text-xl font-semibold mb-2">Points</p>
+  <div className="grid grid-cols-2 gap-4 text-lg">
+    <div className="flex items-center">
+      <strong className="mr-2">Mon:</strong>
+      <span>{selectedStudentInfo?.Apoints || "NA"}</span>
+    </div>
+    <div className="flex items-center">
+      <strong className="mr-2">Tue:</strong>
+      <span>{selectedStudentInfo?.Bpoints || "NA"}</span>
+    </div>
+    <div className="flex items-center">
+      <strong className="mr-2">Wed:</strong>
+      <span>{selectedStudentInfo?.Cpoints || "NA"}</span>
+    </div>
+    <div className="flex items-center">
+      <strong className="mr-2">Thu:</strong>
+      <span>{selectedStudentInfo?.Dpoints || "NA"}</span>
+    </div>
+    <div className="flex items-center">
+      <strong className="mr-2">Fri:</strong>
+      <span>{selectedStudentInfo?.Epoints || "NA"}</span>
     </div>
   </div>
-)}
+</div>
 
-
+              <p className="text-lg">
+                <strong>Invites:</strong> {selectedStudentInfo?.invites || "NA"}
+              </p>
+            </div>
+            <button
+              className="bg-blue-500 text-white font-bold py-3 px-8 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mt-6"
+              onClick={() => setShowStudentInfo(false)}>
+              OK
+            </button>
+          </div>
+        </div>
+      )}
 
       {showBiblePopup && (
         <div className="fixed inset-0 z-50 flex items-center justify-center">
@@ -394,76 +419,77 @@ function Primary({
           onChange={(e) => setSearchQuery(e.target.value)}
           className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 mb-4"
         />
-      <div className="flex flex-col gap-4">
-  {filteredNames.map((name, index) => {
-    const studentIndex = Object.keys(primaryData).find(
-      (key) => primaryData[key] === name
-    );
-    const savedFieldName = `${studentIndex.slice(0, -4)}saved`; // Construct the saved field name
-    const id = savedFieldName.slice(0, -5);
-    const loc = id + "loc";
-    const contactNumber = id + "contactNumber";
-    const Apoints = id + "Apoints";
-    const Bpoints = id + "Bpoints";
-    const Cpoints = id + "Cpoints";
-    const Dpoints = id + "Dpoints";
-    const Epoints = id + "Epoints";
-    const invites = id + "invites";
-    const age = id + "age";
+        <div className="flex flex-col gap-4">
+          {filteredNames.map((name, index) => {
+            const studentIndex = Object.keys(primaryData).find(
+              (key) => primaryData[key] === name
+            );
+            const savedFieldName = `${studentIndex.slice(0, -4)}saved`; // Construct the saved field name
+            const id = savedFieldName.slice(0, -5);
+            const loc = id + "loc";
+            const contactNumber = id + "contactNumber";
+            const Apoints = id + "Apoints";
+            const Bpoints = id + "Bpoints";
+            const Cpoints = id + "Cpoints";
+            const Dpoints = id + "Dpoints";
+            const Epoints = id + "Epoints";
+            const invites = id + "invites";
+            const age = id + "age";
 
-    return (
-      <div key={index} className="flex items-center">
-        <button
-          className={`w-70percent flex items-center justify-center hover:bg-blue-700 text-white font-bold py-2 px-3 rounded-lg ${getButtonColor(
-            studentIndex
-          )}`}
-          onClick={() => {
-            if (!isVisitorView) {
-              handleClick(studentIndex);
-            } else {
-              setShowVisitorPrompt(true); // Show visitor prompt if in visitor view
-            }
-          }}>
-          <span className="mr-2">{name}</span> {/* Name */}
-          {primaryData[savedFieldName] && <FaCheckCircle />}{" "}
-          {/* Check if saved is true */}
-        </button>
-        <div className="ml-2 cursor-pointer text-blue-500 underline" onClick={() => {
-          setShowStudentInfo(true);
-          setSelectedStudentInfo({
-            loc: primaryData[loc],
-            contactNumber: primaryData[contactNumber],
-            Apoints: primaryData[Apoints],
-            Bpoints: primaryData[Bpoints],
-            Cpoints: primaryData[Cpoints],
-            Dpoints: primaryData[Dpoints],
-            Epoints: primaryData[Epoints],
-            invites: primaryData[invites],
-            age: primaryData[age],
-            id: id
-          });
-        }}>
-          Info
-        </div>
-        <div className="flex flex-row ml-1 border-2 border-gray-400 p-1 rounded-md">
-          {["A", "B", "C", "D", "E"].map((dayLetter) => {
-            const fieldName = `${studentIndex.slice(0, 2)}${dayLetter}`;
             return (
-              <div
-                key={dayLetter}
-                className={`w-4 h-7 rounded-lg ${
-                  primaryData[fieldName]
-                    ? config.colors.present
-                    : config.colors.absent
-                } mr-1`}></div>
+              <div key={index} className="flex items-center">
+                <button
+                  className={`w-70percent flex items-center justify-center hover:bg-blue-700 text-white font-bold py-2 px-3 rounded-lg ${getButtonColor(
+                    studentIndex
+                  )}`}
+                  onClick={() => {
+                    if (!isVisitorView) {
+                      handleClick(studentIndex);
+                    } else {
+                      setShowVisitorPrompt(true); // Show visitor prompt if in visitor view
+                    }
+                  }}>
+                  <span className="mr-2">{name}</span> {/* Name */}
+                  {primaryData[savedFieldName] && <FaCheckCircle />}{" "}
+                  {/* Check if saved is true */}
+                </button>
+                <div
+                  className="ml-2 cursor-pointer text-blue-500 underline"
+                  onClick={() => {
+                    setShowStudentInfo(true);
+                    setSelectedStudentInfo({
+                      loc: primaryData[loc],
+                      contactNumber: primaryData[contactNumber],
+                      Apoints: primaryData[Apoints],
+                      Bpoints: primaryData[Bpoints],
+                      Cpoints: primaryData[Cpoints],
+                      Dpoints: primaryData[Dpoints],
+                      Epoints: primaryData[Epoints],
+                      invites: primaryData[invites],
+                      age: primaryData[age],
+                      id: id,
+                    });
+                  }}>
+                  Info
+                </div>
+                <div className="flex flex-row ml-1 border-2 border-gray-400 p-1 rounded-md">
+                  {["A", "B", "C", "D", "E"].map((dayLetter) => {
+                    const fieldName = `${studentIndex.slice(0, 2)}${dayLetter}`;
+                    return (
+                      <div
+                        key={dayLetter}
+                        className={`w-4 h-7 rounded-lg ${
+                          primaryData[fieldName]
+                            ? config.colors.present
+                            : config.colors.absent
+                        } mr-1`}></div>
+                    );
+                  })}
+                </div>
+              </div>
             );
           })}
         </div>
-      </div>
-    );
-  })}
-</div>
-
       </div>
       <audio ref={audioRef} />
     </div>
