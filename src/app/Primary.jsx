@@ -366,6 +366,7 @@ function Primary({
             );
             const savedFieldName = `${studentIndex.slice(0, -4)}saved`; // Construct the saved field name
             const id = savedFieldName.slice(0, -5);
+            const loc = id
             console.log({
               name,
               studentIndex,
