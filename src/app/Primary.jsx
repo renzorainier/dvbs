@@ -373,11 +373,8 @@ function Primary({
             const Epoints = id + "Epoints";
             const invites = id + "invites";
             const age = id + "age";
-            const 
 
-
-
-            // Inside the map function where you render student names
+            // Inside the mapfunction where you render student names
             return (
               <div key={index} className="flex items-center">
                 <button
