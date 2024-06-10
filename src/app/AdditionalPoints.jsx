@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Fragment, useRef } from "react";
-import { collection, getDocs, updateDoc, doc } from "firebase/firestore";
+import { collection, updateDoc, doc, onSnapshot } from "firebase/firestore";
 import { db } from "./firebase.js"; // Import your Firebase config
 import { Menu, Transition, Dialog } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
@@ -30,56 +30,50 @@ function AdditionalPoints({ isVisitorView }) {
   }
 
   useEffect(() => {
-    const fetchStudents = async () => {
-      try {
-        const querySnapshot = await getDocs(collection(db, "dvbs"));
-        const studentData = querySnapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
+    const unsubscribe = onSnapshot(collection(db, "dvbs"), (snapshot) => {
+      const studentData = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
 
-        const currentDayLetter = getCurrentDayLetter();
-        const presentStudents = studentData
-          .map((group) => {
-            const groupStudents = [];
-            for (const key in group) {
-              if (key.endsWith(currentDayLetter)) {
-                const prefix = key.slice(0, 2);
-                const inTimeField = `${prefix}${currentDayLetter}`;
-                const pointsField = `${prefix}${currentDayLetter}points`;
-                if (group[inTimeField]) {
-                  groupStudents.push({
-                    id: group.id,
-                    prefix,
-                    inTimeField,
-                    pointsField,
-                    name: group[`${prefix}name`],
-                    location: group[`${prefix}loc`],
-                    points: group[pointsField],
-                  });
-                }
+      const currentDayLetter = getCurrentDayLetter();
+      const presentStudents = studentData
+        .map((group) => {
+          const groupStudents = [];
+          for (const key in group) {
+            if (key.endsWith(currentDayLetter)) {
+              const prefix = key.slice(0, 2);
+              const inTimeField = `${prefix}${currentDayLetter}`;
+              const pointsField = `${prefix}${currentDayLetter}points`;
+              if (group[inTimeField]) {
+                groupStudents.push({
+                  id: group.id,
+                  prefix,
+                  inTimeField,
+                  pointsField,
+                  name: group[`${prefix}name`],
+                  location: group[`${prefix}loc`],
+                  points: group[pointsField],
+                });
               }
             }
-            return groupStudents;
-          })
-          .flat();
+          }
+          return groupStudents;
+        })
+        .flat();
 
-        presentStudents.sort((a, b) => a.name.localeCompare(b.name));
+      presentStudents.sort((a, b) => a.name.localeCompare(b.name));
 
-        const uniqueLocations = [
-          ...new Set(presentStudents.map((student) => student.location)),
-        ];
+      const uniqueLocations = [
+        ...new Set(presentStudents.map((student) => student.location)),
+      ];
 
-        setStudents(presentStudents);
-        setLocations(uniqueLocations);
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching students: ", error);
-        setLoading(false);
-      }
-    };
+      setStudents(presentStudents);
+      setLocations(uniqueLocations);
+      setLoading(false);
+    });
 
-    fetchStudents();
+    return () => unsubscribe();
   }, []);
 
   const getCurrentDayLetter = () => {
@@ -245,131 +239,120 @@ function AdditionalPoints({ isVisitorView }) {
             </div>
             <Transition
               as={Fragment}
-              enter="transition ease-out duration-100"
-              enterFrom="transform opacity-0 scale-95"
-              enterTo="transform opacity-100 scale-100"
-              leave="transition ease-in duration-75"
-              leaveFrom="transform opacity-100 scale-100"
-              leaveTo="transform opacity-0 scale-95">
-              <Menu.Items className="absolute z-10 mt-2 origin-top-left rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                <div className="py-1">
-                  <Menu.Item>
-                    {({ active }) => (
-                      <button
-                        className={`${
-                          active ? "bg-gray-100 text-gray-900" : "text-gray-700"
-                        } block px-4 py-2 text-2xl font-semibold text-left`}
-                        onClick={() => handleLocationChange("")}>
-                        All Locations
-                      </button>
-                    )}
-                  </Menu.Item>
-                  {locations.map((location) => (
-                    <Menu.Item key={location}>
-                      {({ active }) => (
-                        <button
-                          className={`${
-                            active
-                              ? "bg-gray-100 text-gray-900"
-                              : "text-gray-700"
-                          } block px-4 py-2 text-2xl font-semibold text-left`}
-                          onClick={() => handleLocationChange(location)}>
-                          {location}
-                        </button>
-                      )}
-                    </Menu.Item>
-                  ))}
-                </div>
-              </Menu.Items>
-            </Transition>
-          </Menu>
-          <div className="w-full max-w-md text-gray-700 bg-white mt-5 p-5 border rounded-lg shadow-lg mx-auto">
-            <input
-              type="text"
-              className="w-full p-2 mb-4 border border-gray-300 rounded-lg"
-              placeholder="Search by name"
-              value={searchQuery}
-              onChange={handleSearchChange}
-            />
+              enter="transition ease-in duration-75"
+leaveFrom="transform opacity-100 scale-100"
+leaveTo="transform opacity-0 scale-95">
+<Menu.Items className="absolute z-10 mt-2 origin-top-left rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus
+">
+<div className="py-1">
+<Menu.Item>
+{({ active }) => (
+<button
+className={${ active ? "bg-gray-100 text-gray-900" : "text-gray-700" } block px-4 py-2 text-2xl font-semibold text-left}
+onClick={() => handleLocationChange("")}>
+All Locations
+</button>
+)}
+</Menu.Item>
+{locations.map((location) => (
+<Menu.Item key={location}>
+{({ active }) => (
+<button
+className={${ active ? "bg-gray-100 text-gray-900" : "text-gray-700" } block px-4 py-2 text-2xl font-semibold text-left}
+onClick={() => handleLocationChange(location)}>
+{location}
+</button>
+)}
+</Menu.Item>
+))}
+</div>
+</Menu.Items>
+</Transition>
+</Menu>
+<div className="w-full max-w-md text-gray-700 bg-white mt-5 p-5 border rounded-lg shadow-lg mx-auto">
+<input
+           type="text"
+           className="w-full p-2 mb-4 border border-gray-300 rounded-lg"
+           placeholder="Search by name"
+           value={searchQuery}
+           onChange={handleSearchChange}
+         />        {filteredStudents.map((student) => (
+          <div
+            key={`${student.id}-${student.prefix}`}
+            className="flex items-center mb-4">
+            <button
+              className="flex-1 text-white font-bold py-2 px-4 rounded-lg bg-gray-400 hover:bg-gray-700"
+              onClick={() => handleClick(student)}>
+              {student.name}
+            </button>
 
-            {filteredStudents.map((student) => (
-              <div
-                key={`${student.id}-${student.prefix}`}
-                className="flex items-center mb-4">
-                <button
-                  className="flex-1 text-white font-bold py-2 px-4 rounded-lg bg-gray-400 hover:bg-gray-700"
-                  onClick={() => handleClick(student)}>
-                  {student.name}
-                </button>
-
-                <div
-                  className="ml-4 h-10 p-2 rounded-lg flex items-center justify-center"
-                  style={{
-                    backgroundColor: getBackgroundColor(student.id),
-                    width: "80px",
-                  }}>
-                  <span className="font-bold">{student.points} pts</span>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {showPoints && (
-            <div className="fixed inset-0 z-40 flex items-center justify-center">
-              <div className="fixed inset-0 bg-black opacity-50" />
-              <div className="bg-white rounded-lg p-5 shadow-md z-10 flex flex-col items-center">
-                <p className="text-xl font-bold mb-2">
-                  Points: {currentPoints}
-                </p>
-                {updateStatus && (
-                  <p
-                    className={`mb-2 ${
-                      updateStatus === "Points added successfully"
-                        ? "text-green-500"
-                        : "text-red-500"
-                    }`}>
-                    {updateStatus}
-                  </p>
-                )}
-                <input
-                  type="number"
-                  className="w-full p-2 mb-4 border border-gray-300 rounded-lg"
-                  placeholder="Enter points to add"
-                  value={additionalPoints}
-                  onChange={(e) => setAdditionalPoints(e.target.value)}
-                />
-                <button
-                  className="bg-green-500 text-white font-bold py-2 px-4 rounded mb-4"
-                  onClick={() => {
-                    if (!isVisitorView) {
-                      handleAddPoints();
-                    } else {
-                      setShowVisitorPrompt(true);
-                    }
-                  }}>
-                  Confirm
-                </button>
-                <button
-                  className="bg-red-500 text-white font-bold py-2 px-4 rounded"
-                  onClick={() => {
-                    if (additionalPoints !== "") {
-                      setUpdateStatus("Remove the typed number first");
-                    } else {
-                      setShowPoints(false);
-                      setUpdateStatus(null);
-                    }
-                  }}>
-                  <IoIosBackspace style={{ fontSize: "2.0em" }} />
-                </button>
-              </div>
+            <div
+              className="ml-4 h-10 p-2 rounded-lg flex items-center justify-center"
+              style={{
+                backgroundColor: getBackgroundColor(student.prefix),
+                width: "80px",
+              }}>
+              <span className="font-bold">{student.points} pts</span>
             </div>
-          )}
-        </div>
+          </div>
+        ))}
       </div>
-      <audio ref={audioRef} />
+
+      {showPoints && (
+        <div className="fixed inset-0 z-40 flex items-center justify-center">
+          <div className="fixed inset-0 bg-black opacity-50" />
+          <div className="bg-white rounded-lg p-5 shadow-md z-10 flex flex-col items-center">
+            <p className="text-xl font-bold mb-2">
+              Points: {currentPoints}
+            </p>
+            {updateStatus && (
+              <p
+                className={`mb-2 ${
+                  updateStatus === "Points added successfully"
+                    ? "text-green-500"
+                    : "text-red-500"
+                }`}>
+                {updateStatus}
+              </p>
+            )}
+            <input
+              type="number"
+              className="w-full p-2 mb-4 border border-gray-300 rounded-lg"
+              placeholder="Enter points to add"
+              value={additionalPoints}
+              onChange={(e) => setAdditionalPoints(e.target.value)}
+            />
+            <button
+              className="bg-green-500 text-white font-bold py-2 px-4 rounded mb-4"
+              onClick={() => {
+                if (!isVisitorView) {
+                  handleAddPoints();
+                } else {
+                  setShowVisitorPrompt(true);
+                }
+              }}>
+              Confirm
+            </button>
+            <button
+              className="bg-red-500 text-white font-bold py-2 px-4 rounded"
+              onClick={() => {
+                if (additionalPoints !== "") {
+                  setUpdateStatus("Remove the typed number first");
+                } else {
+                  setShowPoints(false);
+                  setUpdateStatus(null);
+                }
+              }}>
+              <IoIosBackspace style={{ fontSize: "2.0em" }} />
+            </button>
+          </div>
+        </div>
+      )}
     </div>
-  );
+  </div>
+  <audio ref={audioRef} />
+</div>
+);
 }
 
 export default AdditionalPoints;
-
