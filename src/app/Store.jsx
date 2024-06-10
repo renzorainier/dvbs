@@ -312,8 +312,8 @@ function Store({ isVisitorView }) {
                 <button
                   className="flex-1 text-white font-bold py-2 px-4 rounded-lg bg-gray-400 hover:bg-gray-700"
                   onClick={() => handleClick(student)}>
-                  {student.name}
-                </button>
+                  {student.name} - {student.id.charAt(0).toUpperCase()}{student.prefix}
+                  </button>
 
                 <div
                   className="ml-4 h-10 p-2 rounded-lg flex items-center justify-center"
