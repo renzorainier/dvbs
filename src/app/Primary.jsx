@@ -6,6 +6,7 @@ import { FaCheckCircle } from "react-icons/fa";
 import { FaUserCheck } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
 import { HiClipboardList } from "react-icons/hi";
+import { MdOutlineMoreHoriz } from "react-icons/md";
 
 function Primary({
   config,
@@ -469,7 +470,7 @@ function Primary({
                     );
                   })}
                 </div>  <div
-                  className="ml-2 cursor-pointer text-blue-500 underline"
+                  className="ml-2 cursor-pointer text-gray-400"
                   onClick={() => {
                     setShowStudentInfo(true);
                     setSelectedStudentInfo({
@@ -485,7 +486,7 @@ function Primary({
                       id: id,
                     });
                   }}>
-                  Info
+              <MdOutlineMoreHoriz />
                 </div>
               </div>
             );
