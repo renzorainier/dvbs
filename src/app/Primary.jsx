@@ -366,6 +366,14 @@ function Primary({
             );
             const savedFieldName = `${studentIndex.slice(0, -4)}saved`; // Construct the saved field name
 
+            console.log({
+              name,
+              studentIndex,
+              savedFieldName,
+              primaryData: primaryData[studentIndex],
+            });
+
+
             return (
               <div key={index} className="flex items-center">
                 <button
