@@ -297,19 +297,22 @@ function Primary({
 {showStudentInfo && (
   <div className="fixed inset-0 z-50 flex items-center justify-center">
     <div className="fixed inset-0 bg-black opacity-50"></div>
-    <div className="bg-white rounded-lg p-5 shadow-md z-10 flex flex-col items-center">
-      <p className="mb-4 text-center">Student Information</p>
-      <div className="text-left">
-        <p>Address: {selectedStudentInfo?.loc}</p>
-        <p>Contact Number: {selectedStudentInfo?.contactNumber}</p>
-        <p>Points</p>
-        <p>Mon: {selectedStudentInfo?.Apoints}</p>
-        <p>Tue: {selectedStudentInfo?.Bpoints}</p>
-        <p>Wed: {selectedStudentInfo?.Cpoints}</p>
-        <p>Thu: {selectedStudentInfo?.Dpoints}</p>
-        <p>Fri: {selectedStudentInfo?.Epoints}</p>
-        <p>Invites: {selectedStudentInfo?.invites}</p>
-        <p>Age: {selectedStudentInfo?.age}</p>
+    <div className="bg-white rounded-lg p-6 shadow-lg z-10 flex flex-col items-center">
+      <h2 className="mb-4 text-xl font-semibold text-center">Student Information</h2>
+      <div className="text-left space-y-2 w-full">
+        <p><strong>Address:</strong> {selectedStudentInfo?.loc}</p>
+        <p><strong>Age:</strong> {selectedStudentInfo?.age}</p>
+        <p><strong>Contact Number:</strong> {selectedStudentInfo?.contactNumber}</p>
+        <p className="font-semibold">Points</p>
+        <div className="grid grid-cols-2 gap-2">
+          <p><strong>Mon:</strong> {selectedStudentInfo?.Apoints}</p>
+          <p><strong>Tue:</strong> {selectedStudentInfo?.Bpoints}</p>
+          <p><strong>Wed:</strong> {selectedStudentInfo?.Cpoints}</p>
+          <p><strong>Thu:</strong> {selectedStudentInfo?.Dpoints}</p>
+          <p><strong>Fri:</strong> {selectedStudentInfo?.Epoints}</p>
+        </div>
+        <p><strong>Invites:</strong> {selectedStudentInfo?.invites}</p>
+
       </div>
       <button
         className="bg-blue-500 text-white font-bold py-2 px-6 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 mt-4"
@@ -319,6 +322,7 @@ function Primary({
     </div>
   </div>
 )}
+
 
 
       {showBiblePopup && (
