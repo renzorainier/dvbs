@@ -318,23 +318,23 @@ function Primary({
   <div className="grid grid-cols-2 gap-4 text-lg">
     <div className="flex items-center pb-3">
       <strong className="mr-2 text-gray-700">Monday:</strong>
-      <span className="text-gray-900">{selectedStudentInfo?.Apoints || "NA"}</span>
+      <span className="text-gray-900">{selectedStudentInfo?.Apoints}</span>
     </div>
     <div className="flex items-center pb-3">
       <strong className="mr-2 text-gray-700">Tuesday:</strong>
-      <span className="text-gray-900">{selectedStudentInfo?.Bpoints || "NA"}</span>
+      <span className="text-gray-900">{selectedStudentInfo?.Bpoints}</span>
     </div>
     <div className="flex items-center pb-3">
       <strong className="mr-2 text-gray-700">Wednesday:</strong>
-      <span className="text-gray-900">{selectedStudentInfo?.Cpoints || "NA"}</span>
+      <span className="text-gray-900">{selectedStudentInfo?.Cpoints }</span>
     </div>
     <div className="flex items-center pb-3">
       <strong className="mr-2 text-gray-700">Thursday:</strong>
-      <span className="text-gray-900">{selectedStudentInfo?.Dpoints || "NA"}</span>
+      <span className="text-gray-900">{selectedStudentInfo?.Dpoints}</span>
     </div>
     <div className="flex items-center">
       <strong className="mr-2 text-gray-700">Friday:</strong>
-      <span className="text-gray-900">{selectedStudentInfo?.Epoints || "NA"}</span>
+      <span className="text-gray-900">{selectedStudentInfo?.Epoints }</span>
     </div>
   </div>
 </div>
