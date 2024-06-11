@@ -240,12 +240,14 @@ function Primary({
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    console.log(`Name: ${name}`);  // Log the name to the console
+    const fullName = `${selectedStudentInfo?.id}${name}`;
+    console.log(`Full Name: ${fullName}`);  // Log the full name to the console
     setEditableStudentInfo((prevState) => ({
       ...prevState,
-      [name]: Number(value),
+      [fullName]: Number(value),
     }));
   };
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
