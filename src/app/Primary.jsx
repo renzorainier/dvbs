@@ -241,13 +241,18 @@ function Primary({
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     console.log(`Name: ${name}`);  // Log the name to the console
-    const strippedName = name.replace(selectedStudentInfo.id, '');
+    const updatedName = concatenateFieldName(name, selectedStudentInfo.id);
     console.log(selectedStudentInfo.id)
     setEditableStudentInfo((prevState) => ({
       ...prevState,
-      [strippedName]: Number(value),
+      [updatedName]: Number(value),
     }));
   };
+
+  const concatenateFieldName = (name, id) => {
+    return `${id}${name}`;
+  };
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
