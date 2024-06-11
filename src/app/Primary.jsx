@@ -301,6 +301,7 @@ function Primary({
       setEditableStudentInfo({});
       playEnterSound();
       console.log("Document successfully updated!");
+      setShowSuccessMessage(true); 
     } catch (error) {
       console.error("Error updating document: ", error);
     }
