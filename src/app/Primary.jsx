@@ -457,7 +457,10 @@ function Primary({
               </button>
               <button
                 className="bg-red-500 text-white font-bold py-3 px-8 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 ml-4 w-full"
-                onClick={() => setShowStudentInfo(false)}>
+                onClick={() => {
+                  setShowStudentInfo(false);
+                  setEditableStudentInfo({});
+                }}>
                 Cancel{" "}
               </button>
             </div>
