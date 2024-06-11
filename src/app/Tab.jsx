@@ -42,13 +42,7 @@ function Tab() {
       color: "#027df7",
       ageRange: [10, 11, 12],
     },
-    {
-      name: "Uniors",
-      colors: { present: "bg-[#027df7]", absent: "bg-gray-400" },
-      dbPath: "dvbs/uniors",
-      color: "#027df7",
-      ageRange: [10, 11, 12],
-    },
+
     {
       name: "Youth",
       colors: { present: "bg-[#f70233]", absent: "bg-gray-400" },
