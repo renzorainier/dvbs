@@ -34,23 +34,13 @@ function InvitedByField({
     return days[dayIndex === 0 ? 6 : dayIndex - 1];
   };
 
-
   const getVisitorId = useCallback(() => {
     const path = config.dbPath.replace("dvbs/", "");
     const documentInitial = path.charAt(0).toUpperCase();
-    const formattedIndex = parseInt(paddedIndex) < 10 ? `0${paddedIndex}` : paddedIndex;
-    const visitorId = `${documentInitial}${formattedIndex}-${visitorName}`;
-    console.log("Visitor ID:", visitorId);
+    const visitorId = `${documentInitial}${paddedIndex}-${visitorName}`;
+    console.log("Visitor ID:", visitorId); // Log the visitor ID
     return visitorId;
   }, [config.dbPath, paddedIndex, visitorName]);
-
-  // const getVisitorId = useCallback(() => {
-  //   const path = config.dbPath.replace("dvbs/", "");
-  //   const documentInitial = path.charAt(0).toUpperCase();
-  //   const visitorId = `${documentInitial}${paddedIndex}-${visitorName}`;
-  //   console.log("Visitor ID:", visitorId); // Log the visitor ID
-  //   return visitorId;
-  // }, [config.dbPath, paddedIndex, visitorName]);
 
   const handleDocumentChange = async (documentPath) => {
     setSelectedDocument(documentPath);
