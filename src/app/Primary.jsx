@@ -242,6 +242,7 @@ function Primary({
     const { name, value } = e.target;
     console.log(`Name: ${name}`);  // Log the name to the console
     const strippedName = name.replace(selectedStudentInfo.id, '');
+    console.log(selectedStudentInfo.id)
     setEditableStudentInfo((prevState) => ({
       ...prevState,
       [strippedName]: Number(value),
