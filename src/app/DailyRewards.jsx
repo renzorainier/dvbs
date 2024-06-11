@@ -147,7 +147,7 @@ function DailyRewards() {
   const sortedNames = Object.keys(primaryData)
     .filter((fieldName) => fieldName.endsWith("name"))
     .map((fieldName) => {
-      const prefix = fieldName.slice(0, 2);
+      const prefix = fieldName.slice(0, 3);
       const dayLetter = getCurrentDayLetter();
       const fieldToCheck = `${prefix}${dayLetter}${selectedField}`;
       return {
