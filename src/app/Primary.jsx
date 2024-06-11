@@ -28,29 +28,34 @@ function Primary({
   const audioRef = useRef(null);
   const uploadTime = new Date().toLocaleString();
 
-  useEffect(() => {
-    const fetchPrimary = async () => {
-      try {
-        const docRef = doc(
-          db,
-          config.dbPath.split("/")[0],
-          config.dbPath.split("/")[1]
-        );
-        const primarySnapshot = await getDoc(docRef);
-        if (primarySnapshot.exists()) {
-          const data = primarySnapshot.data();
-          console.log("Fetched data:", data); // Log the fetched data
-          setPrimaryData(data);
-        } else {
-          console.error("No such document!");
-        }
-      } catch (error) {
-        console.error("Error fetching document:", error);
+  const fetchPrimary = async () => {
+    try {
+      const docRef = doc(
+        db,
+        config.dbPath.split("/")[0],
+        config.dbPath.split("/")[1]
+      );
+      const primarySnapshot = await getDoc(docRef);
+      if (primarySnapshot.exists()) {
+        const data = primarySnapshot.data();
+        console.log("Fetched data:", data); // Log the fetched data
+        setPrimaryData(data);
+      } else {
+        console.error("No such document!");
       }
-    };
+    } catch (error) {
+      console.error("Error fetching document:", error);
+    }
+  };
 
+  useEffect(() => {
     fetchPrimary();
   }, [config.dbPath]);
+
+
+  const handleFetchClick = () => {
+    fetchPrimary();
+  };
 
   const getCurrentDayLetter = () => {
     const days = ["A", "B", "C", "D", "E"];
