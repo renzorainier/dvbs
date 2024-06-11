@@ -26,7 +26,7 @@ function InvitedByField({
     handleInputChange({ target: { value: "" } }, "invitedBy");
   };
 
-  const documentPaths = ["primary", "middlers", "juniors", "youth"];
+  const documentPaths = ["primary", "middlers", "uniors", "youth"];
 
   const getCurrentDayLetter = () => {
     const days = ["A", "B", "C", "D", "E"];
@@ -34,11 +34,13 @@ function InvitedByField({
     return days[dayIndex === 0 ? 6 : dayIndex - 1];
   };
 
+
   const getVisitorId = useCallback(() => {
     const path = config.dbPath.replace("dvbs/", "");
     const documentInitial = path.charAt(0).toUpperCase();
-    const visitorId = `${documentInitial}${paddedIndex}-${visitorName}`;
-    console.log("Visitor ID:", visitorId); // Log the visitor ID
+    const formattedIndex = paddedIndex.toString().padStart(3, '0');
+    const visitorId = `${documentInitial}${formattedIndex}-${visitorName}`;
+    console.log("Visitor ID:", visitorId);
     return visitorId;
   }, [config.dbPath, paddedIndex, visitorName]);
 
@@ -51,10 +53,13 @@ function InvitedByField({
         const data = docSnap.data();
         const extractedEntries = Object.keys(data)
           .filter((key) => key.endsWith("name"))
-          .map((key) => ({ id: key.substring(0, 2), name: data[key] }))
+          .map((key) => {
+            const id = key.match(/\d+/)[0];
+            return { id: id, name: data[key] };
+          })
           .filter((entry) => entry.name);
         setEntries(extractedEntries);
-        console.log("Fetched entries:", extractedEntries); // Log the entries
+        console.log("Fetched entries:", extractedEntries);
       } else {
         console.log("No such document!");
         setEntries([]);
@@ -64,6 +69,38 @@ function InvitedByField({
       setEntries([]);
     }
   };
+
+
+  // const getVisitorId = useCallback(() => {
+  //   const path = config.dbPath.replace("dvbs/", "");
+  //   const documentInitial = path.charAt(0).toUpperCase();
+  //   const visitorId = `${documentInitial}${paddedIndex}-${visitorName}`;
+  //   console.log("Visitor ID:", visitorId); // Log the visitor ID
+  //   return visitorId;
+  // }, [config.dbPath, paddedIndex, visitorName]);
+
+  // const handleDocumentChange = async (documentPath) => {
+  //   setSelectedDocument(documentPath);
+  //   const docRef = doc(db, "dvbs", documentPath);
+  //   try {
+  //     const docSnap = await getDoc(docRef);
+  //     if (docSnap.exists()) {
+  //       const data = docSnap.data();
+  //       const extractedEntries = Object.keys(data)
+  //         .filter((key) => key.endsWith("name"))
+  //         .map((key) => ({ id: key.substring(0, 2), name: data[key] }))
+  //         .filter((entry) => entry.name);
+  //       setEntries(extractedEntries);
+  //       console.log("Fetched entries:", extractedEntries); // Log the entries
+  //     } else {
+  //       console.log("No such document!");
+  //       setEntries([]);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error fetching document:", error);
+  //     setEntries([]);
+  //   }
+  // };
 
   const filteredEntries =
     query === ""

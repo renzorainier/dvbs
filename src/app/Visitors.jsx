@@ -3,7 +3,7 @@ import React, { useState, useEffect, Fragment, useRef } from "react";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "./firebase.js";
 import { Menu, Transition, Combobox } from "@headlessui/react";
-import InvitedByField from "./InvitedByField";
+import InvitedByField from "./InvitedByField.jsx";
 import { IoMdPersonAdd } from "react-icons/io";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { Checkbox } from "@headlessui/react";
@@ -53,7 +53,6 @@ function Visitors({
     "Sta. Elena",
     "TakTak Road",
     "Town and Country",
-
 
   ];
 

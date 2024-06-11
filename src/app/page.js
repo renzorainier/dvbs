@@ -1,6 +1,6 @@
 "use client";
 import Main from "./Main.jsx";
-import Head from "next/head";
+import Head from "next/head.js";
 import React from "react";
 
 export default function Home() {

@@ -70,14 +70,14 @@ function Primary({
   };
 
   const getLastValidPoints = (fieldName, dayLetter) => {
-    let pointsField = `${fieldName.slice(0, 2)}${dayLetter}points`;
+    let pointsField = `${fieldName.slice(0, 3)}${dayLetter}points`;
     let points = primaryData[pointsField] || 0;
     while (points === 0 && dayLetter !== "A") {
       dayLetter = getPreviousDayLetter(dayLetter);
-      pointsField = `${fieldName.slice(0, 2)}${dayLetter}points`;
+      pointsField = `${fieldName.slice(0, 3)}${dayLetter}points`;
       points = primaryData[pointsField] || 0;
 
-      const attendanceField = `${fieldName.slice(0, 2)}${dayLetter}`;
+      const attendanceField = `${fieldName.slice(0, 3)}${dayLetter}`;
       if (points === 0 && primaryData[attendanceField]) {
         return 0; // Return 0 if the student was present but had 0 points
       }
@@ -120,7 +120,7 @@ function Primary({
       return;
     }
 
-    const prefix = fieldName.slice(0, 2);
+    const prefix = fieldName.slice(0, 3);
     const dayLetter = getCurrentDayLetter();
     const fieldToUpdate = `${prefix}${dayLetter}`;
 
@@ -146,7 +146,7 @@ function Primary({
       // Calculate the new points value
       const pointsField = `${fieldName.slice(
         0,
-        2
+        3
       )}${getCurrentDayLetter()}points`;
       const previousDayLetter = getPreviousDayLetter(getCurrentDayLetter());
       const previousPoints = getLastValidPoints(fieldName, previousDayLetter);
@@ -187,8 +187,8 @@ function Primary({
         config.dbPath.split("/")[1]
       );
       const dayLetter = getCurrentDayLetter();
-      const bibleField = `${fieldName.slice(0, 2)}${dayLetter}bible`;
-      const pointsField = `${fieldName.slice(0, 2)}${dayLetter}points`;
+      const bibleField = `${fieldName.slice(0, 3)}${dayLetter}bible`;
+      const pointsField = `${fieldName.slice(0, 3)}${dayLetter}points`;
 
       // Update Bible status and points
       const currentPoints = primaryData[pointsField] || 0;
@@ -213,7 +213,7 @@ function Primary({
   };
 
   const getButtonColor = (fieldName) => {
-    const prefix = fieldName.slice(0, 2);
+    const prefix = fieldName.slice(0, 3);
     const dayLetter = getCurrentDayLetter();
     const fieldToCheck = `${prefix}${dayLetter}`;
     return primaryData[fieldToCheck]
@@ -595,7 +595,7 @@ function Primary({
                 </button>
                 <div className="flex flex-row ml-1 border-2 border-gray-400 p-1 rounded-md">
                   {["A", "B", "C", "D", "E"].map((dayLetter) => {
-                    const fieldName = `${studentIndex.slice(0, 2)}${dayLetter}`;
+                    const fieldName = `${studentIndex.slice(0, 3)}${dayLetter}`;
                     return (
                       <div
                         key={dayLetter}

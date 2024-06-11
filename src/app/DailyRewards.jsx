@@ -92,7 +92,7 @@ function DailyRewards() {
   // };
 
   const handleClick = (fieldName) => {
-    const prefix = fieldName.slice(0, 2);
+    const prefix = fieldName.slice(0, 3);
     const dayLetter = getCurrentDayLetter();
     const fieldToUpdate = `${prefix}${dayLetter}${selectedField}`;
 
@@ -105,7 +105,7 @@ function DailyRewards() {
   };
 
   const updateStudentAttendance = async (fieldToUpdate, markAs) => {
-    const prefix = fieldToUpdate.slice(0, 2);
+    const prefix = fieldToUpdate.slice(0, 3);
     const dayLetter = getCurrentDayLetter();
     const pointField = `${prefix}${dayLetter}points`;
     const increment = pointsMapping[selectedField];
@@ -138,7 +138,7 @@ function DailyRewards() {
   };
 
   const getButtonColor = (fieldName) => {
-    const prefix = fieldName.slice(0, 2);
+    const prefix = fieldName.slice(0, 3);
     const dayLetter = getCurrentDayLetter();
     const fieldToCheck = `${prefix}${dayLetter}${selectedField}`;
     return primaryData[fieldToCheck];

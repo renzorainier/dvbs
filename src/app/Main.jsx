@@ -22,6 +22,7 @@ import DisplayControl from "./DisplayControl";
 import BobbingImage from "./Image";
 import Weather from "./Weather";
 import AdditionalPoints from  "./AdditionalPoints"
+import UpdateFieldNames from "./UpdateFieldNames"
 
 import { FaChevronDown } from "react-icons/fa";
 import { MdOutlineLocalGroceryStore } from "react-icons/md";
@@ -269,7 +270,7 @@ function Main() {
                     </div>
                   </button>
 
-           
+
                 </div>
               </div>
               <div className="flex justify-center items-center">
@@ -350,6 +351,7 @@ function Main() {
         <div>
           {backButton}
           {renderCurrentComponent()}
+          {/* <UpdateFieldNames/> */}
         </div>
       </div>
     </div>
