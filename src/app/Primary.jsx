@@ -404,7 +404,11 @@ function Primary({
       <div className="flex justify-center mt-6 w-full">
         <button
           type="submit"
-          onClick={handleSubmit}
+          onClick={() => {
+            handleSubmit();
+            handleFetchClick();
+          }}
+
           className="bg-blue-500 text-white font-bold py-3 px-8 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-full">
           Update
         </button>
