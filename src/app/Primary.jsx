@@ -605,7 +605,7 @@ function Primary({
                   })}
                 </div>{" "}
                 <div
-                  className="ml-2 cursor-pointer text-gray-400"
+                  className="ml-2 cursor-pointer border border-4 rounded-lg  text-gray-400"
                   onClick={() => {
                     setShowStudentInfo(true);
                     setSelectedStudentInfo({
