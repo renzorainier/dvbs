@@ -281,11 +281,6 @@ function Primary({
     }
   };
 
-
-
-
-
-
   return (
     <div className="flex flex-col items-center">
       {showConfirmation && (
