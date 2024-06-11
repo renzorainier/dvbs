@@ -296,7 +296,7 @@ function Primary({
           </div>
         </div>
       )}
-      {showStudentInfo && (
+{showStudentInfo && (
   <div className="fixed inset-0 z-50 flex items-center justify-center">
     <div className="fixed inset-0 bg-black opacity-50"></div>
     <div className="bg-white rounded-lg p-8 shadow-2xl z-10 flex flex-col items-center w-11/12 max-w-lg">
