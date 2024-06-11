@@ -263,7 +263,7 @@ function Primary({
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+ 
     try {
       const docRef = doc(
         db,
