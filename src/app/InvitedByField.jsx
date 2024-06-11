@@ -26,7 +26,7 @@ function InvitedByField({
     handleInputChange({ target: { value: "" } }, "invitedBy");
   };
 
-  const documentPaths = ["primary", "middlers", "uniors", "youth"];
+  const documentPaths = ["primary", "middlers", "juniors", "youth"];
 
   const getCurrentDayLetter = () => {
     const days = ["A", "B", "C", "D", "E"];
