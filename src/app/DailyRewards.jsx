@@ -342,7 +342,7 @@ function DailyRewards() {
                         backgroundColor: primaryData[
                           `${studentIndex.slice(
                             0,
-                            2
+                            3
                           )}${getCurrentDayLetter()}${selectedField}`
                         ]
                           ? currentConfig.color
@@ -359,7 +359,7 @@ function DailyRewards() {
                       {["A", "B", "C", "D", "E"].map((dayLetter) => {
                         const fieldName = `${studentIndex.slice(
                           0,
-                          2
+                          3
                         )}${dayLetter}${selectedField}`;
                         const indicatorColor = primaryData[fieldName]
                           ? currentConfig.color
