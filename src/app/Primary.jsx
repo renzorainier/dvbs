@@ -357,6 +357,10 @@ function Primary({
                 <strong>Contact Number:</strong>{" "}
                 <span>{selectedStudentInfo.contactNumber || "NA"}</span>
               </p>
+              <p className="text-lg">
+                <strong>Invited By:</strong>{" "}
+                <span>{selectedStudentInfo.invitedBy || "NA"}</span>
+              </p>
               <div
                 className={`bg-[${config.color}] text-lg rounded-lg shadow-md p-6 w-full`}>
                 <h3 className="text-2xl font-semibold mb-4 text-gray-800">
@@ -566,6 +570,7 @@ function Primary({
             const Epoints = id + "Epoints";
             const invites = id + "invites";
             const age = id + "age";
+            const invitedBy = id + "invitedBy"
 
             return (
               <div key={index} className="flex items-center">
@@ -613,6 +618,7 @@ function Primary({
                       invites: primaryData[invites],
                       age: primaryData[age],
                       id: id,
+                      invitedBy: primaryData[invitedBy]
                     });
                   }}>
                   <MdOutlineMoreHoriz />
