@@ -238,16 +238,16 @@ function Primary({
     audio.play();
   };
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    const fullName = `${selectedStudentInfo?.id}${name}`;
-    console.log(`Full Name: ${fullName}`);  // Log the full name to the console
-    setEditableStudentInfo((prevState) => ({
-      ...prevState,
-      [fullName]: Number(value),
-    }));
-  };
-  
+const handleInputChange = (e) => {
+  const { name, value } = e.target;
+  const fullName = `${selectedStudentInfo?.id}${name}`;
+  console.log(`Full Name: ${fullName}`);  // Log the full name to the console
+  setEditableStudentInfo((prevState) => ({
+    ...prevState,
+    [fullName]: Number(value),
+  }));
+};
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
