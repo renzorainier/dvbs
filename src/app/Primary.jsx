@@ -308,6 +308,9 @@ function Primary({
           </div>
         </div>
       )}
+
+
+
 {showStudentInfo && (
   <div className="fixed inset-0 z-50 flex items-center justify-center">
     <div className="fixed inset-0 bg-black opacity-50"></div>
@@ -331,59 +334,59 @@ function Primary({
           <strong>Contact Number:</strong>{" "}
           <span>{selectedStudentInfo.contactNumber || "NA"}</span>
         </p>
-        <div className={`bg-[${config.color}] text-lg rounded-lg shadow-md p-6`}>
+        <div className={`bg-[${config.color}] text-lg rounded-lg shadow-md p-6 w-full`}>
           <h3 className="text-2xl font-semibold mb-4 text-gray-800">
             Points
           </h3>
-          <div className="grid grid-cols-2 gap-4 text-lg">
-            <div className="flex items-center pb-3">
-              <strong className="mr-2 text-gray-700">Monday:</strong>{" "}
+          <div className="space-y-4">
+            <div className="flex flex-col">
+              <label className="mb-2 text-gray-700">Monday:</label>
               <input
                 type="number"
                 name="Apoints"
                 value={editableStudentInfo.Apoints !== undefined ? editableStudentInfo.Apoints : selectedStudentInfo.Apoints || ""}
                 onChange={handleInputChange}
-                className="text-lg border rounded-md px-2 py-1"
+                className="text-lg border rounded-md px-4 py-2 w-full"
               />
             </div>
-            <div className="flex items-center pb-3">
-              <strong className="mr-2 text-gray-700">Tuesday:</strong>{" "}
+            <div className="flex flex-col">
+              <label className="mb-2 text-gray-700">Tuesday:</label>
               <input
                 type="number"
                 name="Bpoints"
                 value={editableStudentInfo.Bpoints !== undefined ? editableStudentInfo.Bpoints : selectedStudentInfo.Bpoints || ""}
                 onChange={handleInputChange}
-                className="text-lg border rounded-md px-2 py-1"
+                className="text-lg border rounded-md px-4 py-2 w-full"
               />
             </div>
-            <div className="flex items-center pb-3">
-              <strong className="mr-2 text-gray-700">Wednesday:</strong>{" "}
+            <div className="flex flex-col">
+              <label className="mb-2 text-gray-700">Wednesday:</label>
               <input
                 type="number"
                 name="Cpoints"
                 value={editableStudentInfo.Cpoints !== undefined ? editableStudentInfo.Cpoints : selectedStudentInfo.Cpoints || ""}
                 onChange={handleInputChange}
-                className="text-lg border rounded-md px-2 py-1"
+                className="text-lg border rounded-md px-4 py-2 w-full"
               />
             </div>
-            <div className="flex items-center pb-3">
-              <strong className="mr-2 text-gray-700">Thursday:</strong>{" "}
+            <div className="flex flex-col">
+              <label className="mb-2 text-gray-700">Thursday:</label>
               <input
                 type="number"
                 name="Dpoints"
                 value={editableStudentInfo.Dpoints !== undefined ? editableStudentInfo.Dpoints : selectedStudentInfo.Dpoints || ""}
                 onChange={handleInputChange}
-                className="text-lg border rounded-md px-2 py-1"
+                className="text-lg border rounded-md px-4 py-2 w-full"
               />
             </div>
-            <div className="flex items-center">
-              <strong className="mr-2 text-gray-700">Friday:</strong>{" "}
+            <div className="flex flex-col">
+              <label className="mb-2 text-gray-700">Friday:</label>
               <input
                 type="number"
                 name="Epoints"
                 value={editableStudentInfo.Epoints !== undefined ? editableStudentInfo.Epoints : selectedStudentInfo.Epoints || ""}
                 onChange={handleInputChange}
-                className="text-lg border rounded-md px-2 py-1"
+                className="text-lg border rounded-md px-4 py-2 w-full"
               />
             </div>
           </div>
@@ -393,15 +396,15 @@ function Primary({
           <span>{selectedStudentInfo.invites || "NA"}</span>
         </p>
       </div>
-      <div className="flex justify-center">
+      <div className="flex justify-center mt-6 w-full">
         <button
           type="submit"
           onClick={handleSubmit}
-          className="bg-blue-500 text-white font-bold py-3 px-8 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mt-6">
+          className="bg-blue-500 text-white font-bold py-3 px-8 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-full">
           Update
         </button>
         <button
-          className="bg-red-500 text-white font-bold py-3 px-8 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 mt-6 ml-4"
+          className="bg-red-500 text-white font-bold py-3 px-8 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 ml-4 w-full"
           onClick={() => setShowStudentInfo(false)}>
           Cancel
         </button>
@@ -409,6 +412,7 @@ function Primary({
     </div>
   </div>
 )}
+
 
       {showBiblePopup && (
         <div className="fixed inset-0 z-50 flex items-center justify-center">
