@@ -240,10 +240,11 @@ function Primary({
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    const strippedName = name.replace(selectedStudentInfo.id, '');
+    console.log(`Name: ${name}`);  // Log the name to the console
+    // const strippedName = name.replace(selectedStudentInfo.id, '');
     setEditableStudentInfo((prevState) => ({
       ...prevState,
-      [strippedName]: Number(value),
+      [name]: Number(value),
     }));
   };
 
