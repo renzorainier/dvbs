@@ -341,7 +341,7 @@ function Primary({
             <h2 className="mb-6 text-2xl font-bold text-center text-gray-800">
               Student Information
             </h2>
-            <div className="text-left space-y-4 w-full text-gray-700">
+            <div className="text-left space-y-1 w-full text-gray-700">
               <p className="text-lg">
                 <strong>ID:</strong> {selectedStudentInfo?.id || "NA"}
               </p>
