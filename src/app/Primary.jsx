@@ -238,16 +238,14 @@ function Primary({
     audio.play();
   };
 
-const handleInputChange = (e) => {
-  const { name, value } = e.target;
-  const fullName = `${selectedStudentInfo?.id}${name}`;
-  console.log(`Full Name: ${fullName}`);  // Log the full name to the console
-  setEditableStudentInfo((prevState) => ({
-    ...prevState,
-    [fullName]: Number(value),
-  }));
-};
-
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    console.log(`Name: ${name}`);  // Log the name to the console
+    setEditableStudentInfo((prevState) => ({
+      ...prevState,
+      [name]: Number(value),
+    }));
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -300,7 +298,7 @@ const handleInputChange = (e) => {
           </div>
         </div>
       )}
-{showStudentInfo && (
+ {showStudentInfo && (
   <div className="fixed inset-0 z-50 flex items-center justify-center">
     <div className="fixed inset-0 bg-black opacity-50"></div>
     <div className="bg-white rounded-lg p-8 shadow-2xl z-10 flex flex-col items-center w-11/12 max-w-lg">
@@ -332,7 +330,7 @@ const handleInputChange = (e) => {
               <strong className="mr-2 text-gray-700">Monday:</strong>{" "}
               <input
                 type="number"
-                name="Apoints"
+                name={`${selectedStudentInfo.id}Apoints`}
                 value={editableStudentInfo.Apoints !== undefined ? editableStudentInfo.Apoints : selectedStudentInfo.Apoints || ""}
                 onChange={handleInputChange}
                 className="text-lg border rounded-md px-2 py-1"
@@ -342,7 +340,7 @@ const handleInputChange = (e) => {
               <strong className="mr-2 text-gray-700">Tuesday:</strong>{" "}
               <input
                 type="number"
-                name="Bpoints"
+                name={`${selectedStudentInfo.id}Bpoints`}
                 value={editableStudentInfo.Bpoints !== undefined ? editableStudentInfo.Bpoints : selectedStudentInfo.Bpoints || ""}
                 onChange={handleInputChange}
                 className="text-lg border rounded-md px-2 py-1"
@@ -352,7 +350,7 @@ const handleInputChange = (e) => {
               <strong className="mr-2 text-gray-700">Wednesday:</strong>{" "}
               <input
                 type="number"
-                name="Cpoints"
+                name={`${selectedStudentInfo.id}Cpoints`}
                 value={editableStudentInfo.Cpoints !== undefined ? editableStudentInfo.Cpoints : selectedStudentInfo.Cpoints || ""}
                 onChange={handleInputChange}
                 className="text-lg border rounded-md px-2 py-1"
@@ -362,7 +360,7 @@ const handleInputChange = (e) => {
               <strong className="mr-2 text-gray-700">Thursday:</strong>{" "}
               <input
                 type="number"
-                name="Dpoints"
+                name={`${selectedStudentInfo.id}Dpoints`}
                 value={editableStudentInfo.Dpoints !== undefined ? editableStudentInfo.Dpoints : selectedStudentInfo.Dpoints || ""}
                 onChange={handleInputChange}
                 className="text-lg border rounded-md px-2 py-1"
@@ -372,7 +370,7 @@ const handleInputChange = (e) => {
               <strong className="mr-2 text-gray-700">Friday:</strong>{" "}
               <input
                 type="number"
-                name="Epoints"
+                name={`${selectedStudentInfo.id}Epoints`}
                 value={editableStudentInfo.Epoints !== undefined ? editableStudentInfo.Epoints : selectedStudentInfo.Epoints || ""}
                 onChange={handleInputChange}
                 className="text-lg border rounded-md px-2 py-1"
@@ -401,7 +399,6 @@ const handleInputChange = (e) => {
     </div>
   </div>
 )}
-
       {showBiblePopup && (
         <div className="fixed inset-0 z-50 flex items-center justify-center">
           <div className="fixed inset-0 bg-black opacity-50"></div>
