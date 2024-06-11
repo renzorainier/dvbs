@@ -242,7 +242,7 @@ function Primary({
     const { name, value } = e.target;
     console.log(`Name: ${name}`);  // Log the name to the console
     const updatedName = concatenateFieldName(name, selectedStudentInfo.id);
-    console.log(selectedStudentInfo.id)
+    console.log(concatenateFieldName)
     setEditableStudentInfo((prevState) => ({
       ...prevState,
       [updatedName]: Number(value),
