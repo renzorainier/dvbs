@@ -240,11 +240,10 @@ function Primary({
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    const [studentId, fieldName] = name.split('_');
-
+    const strippedName = name.replace(selectedStudentInfo.id, '');
     setEditableStudentInfo((prevState) => ({
       ...prevState,
-      [fieldName]: fieldName.match(/points$/) ? Number(value) : value,
+      [strippedName]: Number(value),
     }));
   };
 
@@ -260,6 +259,11 @@ function Primary({
       const updateData = {
         ...selectedStudentInfo,
         ...editableStudentInfo,
+        Apoints: Number(editableStudentInfo.Apoints),
+        Bpoints: Number(editableStudentInfo.Bpoints),
+        Cpoints: Number(editableStudentInfo.Cpoints),
+        Dpoints: Number(editableStudentInfo.Dpoints),
+        Epoints: Number(editableStudentInfo.Epoints),
       };
 
       await updateDoc(docRef, updateData);
@@ -270,6 +274,7 @@ function Primary({
       console.error("Error updating document: ", error);
     }
   };
+
 
 
   return (
