@@ -346,6 +346,10 @@ function Primary({
                 <strong>ID:</strong> {selectedStudentInfo?.id || "NA"}
               </p>
               <p className="text-lg">
+                <strong>Invited By:</strong>{" "}
+                <span>{selectedStudentInfo.invitedBy || "NA"}</span>
+              </p>
+              <p className="text-lg">
                 <strong>Address:</strong>{" "}
                 <span>{selectedStudentInfo.loc || "NA"}</span>
               </p>
@@ -357,10 +361,7 @@ function Primary({
                 <strong>Contact Number:</strong>{" "}
                 <span>{selectedStudentInfo.contactNumber || "NA"}</span>
               </p>
-              <p className="text-lg">
-                <strong>Invited By:</strong>{" "}
-                <span>{selectedStudentInfo.invitedBy || "NA"}</span>
-              </p>
+
               <div
                 className={`bg-[${config.color}] text-lg rounded-lg shadow-md p-6 w-full`}>
                 <h3 className="text-2xl font-semibold mb-4 text-gray-800">
