@@ -47,7 +47,7 @@ function StudentOutTime({ isVisitorView }) {
                 const groupStudents = [];
                 for (const key in group) {
                   if (key.endsWith(currentDayLetter)) {
-                    const prefix = key.slice(0, 2);
+                    const prefix = key.slice(0, 3);
                     const inTimeField = `${prefix}${currentDayLetter}`;
                     const outTimeField = `${prefix}${currentDayLetter}out`;
                     if (group[inTimeField]) {
