@@ -298,7 +298,7 @@ function Primary({
           </div>
         </div>
       )}
- {showStudentInfo && (
+{showStudentInfo && (
   <div className="fixed inset-0 z-50 flex items-center justify-center">
     <div className="fixed inset-0 bg-black opacity-50"></div>
     <div className="bg-white rounded-lg p-8 shadow-2xl z-10 flex flex-col items-center w-11/12 max-w-lg">
@@ -330,7 +330,7 @@ function Primary({
               <strong className="mr-2 text-gray-700">Monday:</strong>{" "}
               <input
                 type="number"
-                name={`${selectedStudentInfo.id}Apoints`}
+                name="Apoints"
                 value={editableStudentInfo.Apoints !== undefined ? editableStudentInfo.Apoints : selectedStudentInfo.Apoints || ""}
                 onChange={handleInputChange}
                 className="text-lg border rounded-md px-2 py-1"
@@ -340,7 +340,7 @@ function Primary({
               <strong className="mr-2 text-gray-700">Tuesday:</strong>{" "}
               <input
                 type="number"
-                name={`${selectedStudentInfo.id}Bpoints`}
+                name="Bpoints"
                 value={editableStudentInfo.Bpoints !== undefined ? editableStudentInfo.Bpoints : selectedStudentInfo.Bpoints || ""}
                 onChange={handleInputChange}
                 className="text-lg border rounded-md px-2 py-1"
@@ -350,7 +350,7 @@ function Primary({
               <strong className="mr-2 text-gray-700">Wednesday:</strong>{" "}
               <input
                 type="number"
-                name={`${selectedStudentInfo.id}Cpoints`}
+                name="Cpoints"
                 value={editableStudentInfo.Cpoints !== undefined ? editableStudentInfo.Cpoints : selectedStudentInfo.Cpoints || ""}
                 onChange={handleInputChange}
                 className="text-lg border rounded-md px-2 py-1"
@@ -360,7 +360,7 @@ function Primary({
               <strong className="mr-2 text-gray-700">Thursday:</strong>{" "}
               <input
                 type="number"
-                name={`${selectedStudentInfo.id}Dpoints`}
+                name="Dpoints"
                 value={editableStudentInfo.Dpoints !== undefined ? editableStudentInfo.Dpoints : selectedStudentInfo.Dpoints || ""}
                 onChange={handleInputChange}
                 className="text-lg border rounded-md px-2 py-1"
@@ -370,7 +370,7 @@ function Primary({
               <strong className="mr-2 text-gray-700">Friday:</strong>{" "}
               <input
                 type="number"
-                name={`${selectedStudentInfo.id}Epoints`}
+                name="Epoints"
                 value={editableStudentInfo.Epoints !== undefined ? editableStudentInfo.Epoints : selectedStudentInfo.Epoints || ""}
                 onChange={handleInputChange}
                 className="text-lg border rounded-md px-2 py-1"
@@ -399,6 +399,7 @@ function Primary({
     </div>
   </div>
 )}
+
       {showBiblePopup && (
         <div className="fixed inset-0 z-50 flex items-center justify-center">
           <div className="fixed inset-0 bg-black opacity-50"></div>
