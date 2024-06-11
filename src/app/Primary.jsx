@@ -238,38 +238,83 @@ function Primary({
     audio.play();
   };
 
+  const prepareUpdateData = (data, studentId) => {
+    const updatedData = {};
+    for (const key in data) {
+      if (data.hasOwnProperty(key)) {
+        updatedData[`${studentId}${key}`] = data[key];
+      }
+    }
+    return updatedData;
+  };
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     console.log(`Name: ${name}`);  // Log the name to the console
-    const strippedName = name.replace(selectedStudentInfo.id, '');
-    console.log(selectedStudentInfo.id)
     setEditableStudentInfo((prevState) => ({
       ...prevState,
       [name]: Number(value),
     }));
   };
-const handleSubmit = async (e) => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-        const docRef = doc(
-            db,
-            config.dbPath.split("/")[0],
-            config.dbPath.split("/")[1]
-        );
+      const docRef = doc(
+        db,
+        config.dbPath.split("/")[0],
+        config.dbPath.split("/")[1]
+      );
 
-        const updateData = { ...editableStudentInfo };
+      // Use the background function to prepare the update data
+      const updateData = prepareUpdateData(editableStudentInfo, selectedStudentInfo.id);
 
-        await updateDoc(docRef, updateData);
-        setSelectedStudentInfo((prevState) => ({
-            ...prevState,
-            ...editableStudentInfo,
-        }));
-        setEditableStudentInfo({});
-        console.log("Document successfully updated!");
+      await updateDoc(docRef, updateData);
+      setSelectedStudentInfo((prevState) => ({
+        ...prevState,
+        ...editableStudentInfo,
+      }));
+      setEditableStudentInfo({});
+      console.log("Document successfully updated!");
     } catch (error) {
-        console.error("Error updating document: ", error);
+      console.error("Error updating document: ", error);
     }
-};
+  };
+
+
+
+//   const handleInputChange = (e) => {
+//     const { name, value } = e.target;
+//     console.log(`Name: ${name}`);  // Log the name to the console
+//     const strippedName = name.replace(selectedStudentInfo.id, '');
+//     console.log(selectedStudentInfo.id)
+//     setEditableStudentInfo((prevState) => ({
+//       ...prevState,
+//       [name]: Number(value),
+//     }));
+//   };
+// const handleSubmit = async (e) => {
+//     e.preventDefault();
+//     try {
+//         const docRef = doc(
+//             db,
+//             config.dbPath.split("/")[0],
+//             config.dbPath.split("/")[1]
+//         );
+
+//         const updateData = { ...editableStudentInfo };
+
+//         await updateDoc(docRef, updateData);
+//         setSelectedStudentInfo((prevState) => ({
+//             ...prevState,
+//             ...editableStudentInfo,
+//         }));
+//         setEditableStudentInfo({});
+//         console.log("Document successfully updated!");
+//     } catch (error) {
+//         console.error("Error updating document: ", error);
+//     }
+// };
 
 
 
@@ -402,10 +447,6 @@ const handleSubmit = async (e) => {
   </div>
 )}
  */}
-
-
-
-
 
 
 
