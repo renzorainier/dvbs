@@ -145,7 +145,7 @@ function Main() {
             </div>
 
             <div className="container mx-auto mb-5 relative z-10">
-              <Weather />
+              {/* <Weather /> */}
             </div>
             <div className="z-10">
               <div className="container mx-auto relative ">
