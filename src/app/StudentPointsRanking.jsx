@@ -27,7 +27,7 @@ const StudentRanking = () => {
             const groupStudents = [];
             for (const key in group) {
               if (key.endsWith(currentDayLetter)) {
-                const prefix = key.slice(0, 2);
+                const prefix = key.slice(0, 3);
                 const pointsField = `${prefix}${currentDayLetter}points`;
                 if (group[pointsField]) {
                   groupStudents.push({
@@ -104,7 +104,7 @@ const StudentRanking = () => {
       unsubscribeConfig();
     };
   }, []);
-//fix here 
+//fix here
   useEffect(() => {
     let interval;
     if (configGroup === "play" && Object.keys(groupedStudents).length > 0) {
@@ -219,4 +219,5 @@ const StudentRanking = () => {
   );
 };
 
-export default StudentRanking;
+export default Studen;
+//sana gumana hehehhehe
