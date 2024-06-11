@@ -326,7 +326,7 @@ function Main() {
               </div>
             </div>
 
-            <BobbingImage />
+            {/* <BobbingImage /> */}
           </div>
         );
     }
