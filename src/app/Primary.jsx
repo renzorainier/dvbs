@@ -245,7 +245,7 @@ function Primary({
     console.log(selectedStudentInfo.id)
     setEditableStudentInfo((prevState) => ({
       ...prevState,
-      [strippedName]: Number(value),
+      [name]: Number(value),
     }));
   };
 const handleSubmit = async (e) => {
