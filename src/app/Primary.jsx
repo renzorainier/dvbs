@@ -24,7 +24,6 @@ function Primary({
   const [showStudentInfo, setShowStudentInfo] = useState(false);
   const [selectedStudentInfo, setSelectedStudentInfo] = useState(null);
   const [editableStudentInfo, setEditableStudentInfo] = useState({});
-  const [updateSuccess, setUpdateSuccess] = useState(false);
 
   const audioRef = useRef(null);
   const uploadTime = new Date().toLocaleString();
@@ -334,125 +333,112 @@ function Primary({
       )}
 
 
-  {showStudentInfo && (
-    <div className="fixed inset-0 z-50 flex items-center justify-center">
-      <div className="fixed inset-0 bg-black opacity-50"></div>
-      <div className="bg-white rounded-lg p-8 shadow-2xl z-10 flex flex-col items-center w-11/12 max-w-lg">
-        <h2 className="mb-6 text-2xl font-bold text-center text-gray-800">
-          Student Information
-        </h2>
-        <div className="text-left space-y-4 w-full text-gray-700">
-          <p className="text-lg">
-            <strong>ID:</strong> {selectedStudentInfo?.id || "NA"}
-          </p>
-          <p className="text-lg">
-            <strong>Address:</strong>{" "}
-            <span>{selectedStudentInfo.loc || "NA"}</span>
-          </p>
-          <p className="text-lg">
-            <strong>Age:</strong>{" "}
-            <span>{selectedStudentInfo.age || "NA"}</span>
-          </p>
-          <p className="text-lg">
-            <strong>Contact Number:</strong>{" "}
-            <span>{selectedStudentInfo.contactNumber || "NA"}</span>
-          </p>
-          <div className={`bg-[${config.color}] text-lg rounded-lg shadow-md p-6 w-full`}>
-            <h3 className="text-2xl font-semibold mb-4 text-gray-800">
-              Points
-            </h3>
-            <div className="space-y-4">
-              <div className="flex flex-col">
-                <label className="mb-2 text-gray-700">Monday:</label>
-                <input
-                  type="number"
-                  name="Apoints"
-                  value={editableStudentInfo.Apoints !== undefined ? editableStudentInfo.Apoints : selectedStudentInfo.Apoints || ""}
-                  onChange={handleInputChange}
-                  className="text-lg border rounded-md px-4 py-2 w-full"
-                />
-              </div>
-              <div className="flex flex-col">
-                <label className="mb-2 text-gray-700">Tuesday:</label>
-                <input
-                  type="number"
-                  name="Bpoints"
-                  value={editableStudentInfo.Bpoints !== undefined ? editableStudentInfo.Bpoints : selectedStudentInfo.Bpoints || ""}
-                  onChange={handleInputChange}
-                  className="text-lg border rounded-md px-4 py-2 w-full"
-                />
-              </div>
-              <div className="flex flex-col">
-                <label className="mb-2 text-gray-700">Wednesday:</label>
-                <input
-                  type="number"
-                  name="Cpoints"
-                  value={editableStudentInfo.Cpoints !== undefined ? editableStudentInfo.Cpoints : selectedStudentInfo.Cpoints || ""}
-                  onChange={handleInputChange}
-                  className="text-lg border rounded-md px-4 py-2 w-full"
-                />
-              </div>
-              <div className="flex flex-col">
-                <label className="mb-2 text-gray-700">Thursday:</label>
-                <input
-                  type="number"
-                  name="Dpoints"
-                  value={editableStudentInfo.Dpoints !== undefined ? editableStudentInfo.Dpoints : selectedStudentInfo.Dpoints || ""}
-                  onChange={handleInputChange}
-                  className="text-lg border rounded-md px-4 py-2 w-full"
-                />
-              </div>
-              <div className="flex flex-col">
-                <label className="mb-2 text-gray-700">Friday:</label>
-                <input
-                  type="number"
-                  name="Epoints"
-                  value={editableStudentInfo.Epoints !== undefined ? editableStudentInfo.Epoints : selectedStudentInfo.Epoints || ""}
-                  onChange={handleInputChange}
-                  className="text-lg border rounded-md px-4 py-2 w-full"
-                />
-              </div>
+
+{showStudentInfo && (
+  <div className="fixed inset-0 z-50 flex items-center justify-center">
+    <div className="fixed inset-0 bg-black opacity-50"></div>
+    <div className="bg-white rounded-lg p-8 shadow-2xl z-10 flex flex-col items-center w-11/12 max-w-lg">
+      <h2 className="mb-6 text-2xl font-bold text-center text-gray-800">
+        Student Information
+      </h2>
+      <div className="text-left space-y-4 w-full text-gray-700">
+        <p className="text-lg">
+          <strong>ID:</strong> {selectedStudentInfo?.id || "NA"}
+        </p>
+        <p className="text-lg">
+          <strong>Address:</strong>{" "}
+          <span>{selectedStudentInfo.loc || "NA"}</span>
+        </p>
+        <p className="text-lg">
+          <strong>Age:</strong>{" "}
+          <span>{selectedStudentInfo.age || "NA"}</span>
+        </p>
+        <p className="text-lg">
+          <strong>Contact Number:</strong>{" "}
+          <span>{selectedStudentInfo.contactNumber || "NA"}</span>
+        </p>
+        <div className={`bg-[${config.color}] text-lg rounded-lg shadow-md p-6 w-full`}>
+          <h3 className="text-2xl font-semibold mb-4 text-gray-800">
+            Points
+          </h3>
+          <div className="space-y-4">
+            <div className="flex flex-col">
+              <label className="mb-2 text-gray-700">Monday:</label>
+              <input
+                type="number"
+                name="Apoints"
+                value={editableStudentInfo.Apoints !== undefined ? editableStudentInfo.Apoints : selectedStudentInfo.Apoints || ""}
+                onChange={handleInputChange}
+                className="text-lg border rounded-md px-4 py-2 w-full"
+              />
+            </div>
+            <div className="flex flex-col">
+              <label className="mb-2 text-gray-700">Tuesday:</label>
+              <input
+                type="number"
+                name="Bpoints"
+                value={editableStudentInfo.Bpoints !== undefined ? editableStudentInfo.Bpoints : selectedStudentInfo.Bpoints || ""}
+                onChange={handleInputChange}
+                className="text-lg border rounded-md px-4 py-2 w-full"
+              />
+            </div>
+            <div className="flex flex-col">
+              <label className="mb-2 text-gray-700">Wednesday:</label>
+              <input
+                type="number"
+                name="Cpoints"
+                value={editableStudentInfo.Cpoints !== undefined ? editableStudentInfo.Cpoints : selectedStudentInfo.Cpoints || ""}
+                onChange={handleInputChange}
+                className="text-lg border rounded-md px-4 py-2 w-full"
+              />
+            </div>
+            <div className="flex flex-col">
+              <label className="mb-2 text-gray-700">Thursday:</label>
+              <input
+                type="number"
+                name="Dpoints"
+                value={editableStudentInfo.Dpoints !== undefined ? editableStudentInfo.Dpoints : selectedStudentInfo.Dpoints || ""}
+                onChange={handleInputChange}
+                className="text-lg border rounded-md px-4 py-2 w-full"
+              />
+            </div>
+            <div className="flex flex-col">
+              <label className="mb-2 text-gray-700">Friday:</label>
+              <input
+                type="number"
+                name="Epoints"
+                value={editableStudentInfo.Epoints !== undefined ? editableStudentInfo.Epoints : selectedStudentInfo.Epoints || ""}
+                onChange={handleInputChange}
+                className="text-lg border rounded-md px-4 py-2 w-full"
+              />
             </div>
           </div>
-          <p className="text-lg">
-            <strong>Invites:</strong>{" "}
-            <span>{selectedStudentInfo.invites || "NA"}</span>
-          </p>
         </div>
-        {updateSuccess ? (
-          <div className="text-lg text-green-500 mb-4">Update successful!</div>
-        ) : (
-          <div className="flex justify-center mt-6 w-full">
-            <button
-              type="submit"
-              onClick={() => {
-                handleSubmit();
-                handleFetchClick();
-              }}
-              className="bg-blue-500 text-white font-bold py-3 px-8 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
-            >
-              Update
-            </button>
-            <button
-              className="bg-red-500 text-white font-bold py-3 px-8 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 ml-4 w-full"
-              onClick={() => setShowStudentInfo(false)}
-            >
-              Cancel
-            </button>
-          </div>
-        )}
-        {updateSuccess && (
-          <button
-            className="bg-green-500 text-white font-bold py-3 px-8 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 mt-4 w-full"
-            onClick={() => setShowStudentInfo(false)}
-          >
-            Okay
-          </button>
-        )}
+        <p className="text-lg">
+          <strong>Invites:</strong>{" "}
+          <span>{selectedStudentInfo.invites || "NA"}</span>
+        </p>
+      </div>
+      <div className="flex justify-center mt-6 w-full">
+        <button
+          type="submit"
+          onClick={() => {
+            handleSubmit();
+            handleFetchClick();
+          }}
+
+          className="bg-blue-500 text-white font-bold py-3 px-8 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-full">
+          Update
+        </button>
+        <button
+          className="bg-red-500 text-white font-bold py-3 px-8 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 ml-4 w-full"
+          onClick={() => setShowStudentInfo(false)}>
+          Cancel
+        </button>
       </div>
     </div>
-  )}
-
+  </div>
+)}
 
 
       {showBiblePopup && (
