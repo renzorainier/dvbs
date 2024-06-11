@@ -153,7 +153,9 @@ function Visitors({
       const newIndex = existingIndexes.length
         ? Math.max(...existingIndexes) + 1
         : 1;
-      const paddedIndex = String(newIndex).padStart(2, "0");
+        const paddedIndex = String(newIndex).padStart(3, "0");
+
+      // const paddedIndex = String(newIndex).padStart(2, "0");
 
       const visitorName = `${
         lastName.trim().charAt(0).toUpperCase() + lastName.trim().slice(1)
