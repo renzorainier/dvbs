@@ -219,5 +219,5 @@ const StudentRanking = () => {
   );
 };
 
-export default Studen;
+export default StudentRanking;
 //sana gumana hehehhehe
