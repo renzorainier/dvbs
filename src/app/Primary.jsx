@@ -53,7 +53,6 @@ function Primary({
     fetchPrimary();
   }, [config.dbPath]);
 
-
   const handleFetchClick = () => {
     fetchPrimary();
   };
@@ -70,7 +69,6 @@ function Primary({
     return index === 0 ? days[4] : days[index - 1];
   };
 
-
   const getLastValidPoints = (fieldName, dayLetter) => {
     let pointsField = `${fieldName.slice(0, 2)}${dayLetter}points`;
     let points = primaryData[pointsField] || 0;
@@ -86,7 +84,6 @@ function Primary({
     }
     return points;
   };
-
 
   // const getLastValidPoints = (fieldName, dayLetter) => {
   //   // Return 0 if today is "A" and we need to backtrack
@@ -274,7 +271,7 @@ function Primary({
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    console.log(`Name: ${name}`);  // Log the name to the console
+    console.log(`Name: ${name}`); // Log the name to the console
     setEditableStudentInfo((prevState) => ({
       ...prevState,
       [name]: Number(value),
@@ -282,7 +279,6 @@ function Primary({
   };
 
   const handleSubmit = async (e) => {
-
     try {
       const docRef = doc(
         db,
@@ -291,7 +287,10 @@ function Primary({
       );
 
       // Use the background function to prepare the update data
-      const updateData = prepareUpdateData(editableStudentInfo, selectedStudentInfo.id);
+      const updateData = prepareUpdateData(
+        editableStudentInfo,
+        selectedStudentInfo.id
+      );
 
       await updateDoc(docRef, updateData);
       setSelectedStudentInfo((prevState) => ({
@@ -335,8 +334,7 @@ function Primary({
         </div>
       )}
 
-
-{showStudentInfo && !showSuccessMessage && (
+      {showStudentInfo && !showSuccessMessage && (
         <div className="fixed inset-0 z-50 flex items-center justify-center">
           <div className="fixed inset-0 bg-black opacity-50"></div>
           <div className="bg-white rounded-lg p-8 shadow-2xl z-10 flex flex-col items-center w-11/12 max-w-lg">
@@ -359,7 +357,8 @@ function Primary({
                 <strong>Contact Number:</strong>{" "}
                 <span>{selectedStudentInfo.contactNumber || "NA"}</span>
               </p>
-              <div className={`bg-[${config.color}] text-lg rounded-lg shadow-md p-6 w-full`}>
+              <div
+                className={`bg-[${config.color}] text-lg rounded-lg shadow-md p-6 w-full`}>
                 <h3 className="text-2xl font-semibold mb-4 text-gray-800">
                   Points
                 </h3>
@@ -369,7 +368,11 @@ function Primary({
                     <input
                       type="number"
                       name="Apoints"
-                      value={editableStudentInfo.Apoints !== undefined ? editableStudentInfo.Apoints : selectedStudentInfo.Apoints || ""}
+                      value={
+                        editableStudentInfo.Apoints !== undefined
+                          ? editableStudentInfo.Apoints
+                          : selectedStudentInfo.Apoints || ""
+                      }
                       onChange={handleInputChange}
                       className="text-lg border rounded-md px-4 py-2 w-full"
                     />
@@ -379,7 +382,11 @@ function Primary({
                     <input
                       type="number"
                       name="Bpoints"
-                      value={editableStudentInfo.Bpoints !== undefined ? editableStudentInfo.Bpoints : selectedStudentInfo.Bpoints || ""}
+                      value={
+                        editableStudentInfo.Bpoints !== undefined
+                          ? editableStudentInfo.Bpoints
+                          : selectedStudentInfo.Bpoints || ""
+                      }
                       onChange={handleInputChange}
                       className="text-lg border rounded-md px-4 py-2 w-full"
                     />
@@ -389,7 +396,11 @@ function Primary({
                     <input
                       type="number"
                       name="Cpoints"
-                      value={editableStudentInfo.Cpoints !== undefined ? editableStudentInfo.Cpoints : selectedStudentInfo.Cpoints || ""}
+                      value={
+                        editableStudentInfo.Cpoints !== undefined
+                          ? editableStudentInfo.Cpoints
+                          : selectedStudentInfo.Cpoints || ""
+                      }
                       onChange={handleInputChange}
                       className="text-lg border rounded-md px-4 py-2 w-full"
                     />
@@ -399,7 +410,11 @@ function Primary({
                     <input
                       type="number"
                       name="Dpoints"
-                      value={editableStudentInfo.Dpoints !== undefined ? editableStudentInfo.Dpoints : selectedStudentInfo.Dpoints || ""}
+                      value={
+                        editableStudentInfo.Dpoints !== undefined
+                          ? editableStudentInfo.Dpoints
+                          : selectedStudentInfo.Dpoints || ""
+                      }
                       onChange={handleInputChange}
                       className="text-lg border rounded-md px-4 py-2 w-full"
                     />
@@ -409,7 +424,11 @@ function Primary({
                     <input
                       type="number"
                       name="Epoints"
-                      value={editableStudentInfo.Epoints !== undefined ? editableStudentInfo.Epoints : selectedStudentInfo.Epoints || ""}
+                      value={
+                        editableStudentInfo.Epoints !== undefined
+                          ? editableStudentInfo.Epoints
+                          : selectedStudentInfo.Epoints || ""
+                      }
                       onChange={handleInputChange}
                       className="text-lg border rounded-md px-4 py-2 w-full"
                     />
@@ -428,15 +447,14 @@ function Primary({
                   handleSubmit();
                   handleFetchClick();
                 }}
-                className="bg-blue-500 text-white font-bold py-3 px-8 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
-              >
+                className="bg-blue-500 text-white font-bold py-3 px-8 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-full">
                 Update
               </button>
               <button
                 className="bg-red-500 text-white font-bold py-3 px-8 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 ml-4 w-full"
-                onClick={() => setShowStudentInfo(false)}
-              >
-                Cancel   </button>
+                onClick={() => setShowStudentInfo(false)}>
+                Cancel{" "}
+              </button>
             </div>
           </div>
         </div>
@@ -456,8 +474,10 @@ function Primary({
             <div className="flex justify-center mt-6 w-full">
               <button
                 className="bg-green-500 text-white font-bold py-3 px-8 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 w-full"
-                onClick={() => setShowStudentInfo(false)}
-              >
+                onClick={() => {
+                  setShowStudentInfo(false);
+                  setShowSuccessMessage(false);
+                }}>
                 Okay
               </button>
             </div>
