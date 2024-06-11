@@ -296,107 +296,163 @@ function Primary({
           </div>
         </div>
       )}
-   {showStudentInfo && (
-  <div className="fixed inset-0 z-50 flex items-center justify-center">
-    <div className="fixed inset-0 bg-black opacity-50"></div>
-    <div className="bg-white rounded-lg p-8 shadow-2xl z-10 flex flex-col items-center w-11/12 max-w-lg">
-      <h2 className="mb-6 text-2xl font-bold text-center text-gray-800">
-        Student Information
-      </h2>
-      <form onSubmit={handleSubmit}>
-        <div className="text-left space-y-4 w-full text-gray-700">
-          <p className="text-lg">
-            <strong>ID:</strong> {selectedStudentInfo?.id || "NA"}
-          </p>
-          <p className="text-lg">
-            <strong>Address:</strong>{" "}
-            <input
-              type="text"
-              name="loc"
-              value={
-                editableStudentInfo.loc ||
-                selectedStudentInfo.loc ||
-                "NA"
-              }
-              onChange={handleInputChange}
-              className="text-lg border rounded-md px-2 py-1"
-              readOnly
-            />
-          </p>
-          <p className="text-lg">
-            <strong>Age:</strong>{" "}
-            <input
-              type="text"
-              name="age"
-              value={
-                editableStudentInfo.age ||
-                selectedStudentInfo.age ||
-                "NA"
-              }
-              onChange={handleInputChange}
-              className="text-lg border rounded-md px-2 py-1"
-              readOnly
-            />
-          </p>
-          <p className="text-lg">
-            <strong>Contact Number:</strong>{" "}
-            <input
-              type="text"
-              name="contactNumber"
-              value={
-                editableStudentInfo.contactNumber ||
-                selectedStudentInfo.contactNumber ||
-                "NA"
-              }
-              onChange={handleInputChange}
-              className="text-lg border rounded-md px-2 py-1"
-              readOnly
-            />
-          </p>
-          <div className={`bg-[${config.color}] text-lg rounded-lg shadow-md p-6`}>
-            <h3 className="text-2xl font-semibold mb-4 text-gray-800">
-              Points
-            </h3>
-            <div className="grid grid-cols-2 gap-4 text-lg">
-              {["A", "B", "C", "D", "E"].map((dayLetter) => (
-                <div className="flex items-center pb-3" key={dayLetter}>
-                  <strong className="mr-2 text-gray-700">{dayLetter}day:</strong>{" "}
+      {showStudentInfo && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
+          <div className="fixed inset-0 bg-black opacity-50"></div>
+          <div className="bg-white rounded-lg p-8 shadow-2xl z-10 flex flex-col items-center w-11/12 max-w-lg">
+            <h2 className="mb-6 text-2xl font-bold text-center text-gray-800">
+              Student Information
+            </h2>
+            <form onSubmit={handleSubmit}>
+              <div className="text-left space-y-4 w-full text-gray-700">
+                <p className="text-lg">
+                  <strong>ID:</strong> {selectedStudentInfo?.id || "NA"}
+                </p>
+                <p className="text-lg">
+                  <strong>Address:</strong>{" "}
                   <input
                     type="text"
-                    name={`${dayLetter}points`}
+                    name="loc"
                     value={
-                      editableStudentInfo[`${dayLetter}points`] !== undefined ?
-                      editableStudentInfo[`${dayLetter}points`] :
-                      selectedStudentInfo[`${dayLetter}points`] || ""
+                      editableStudentInfo.loc || selectedStudentInfo.loc || "NA"
                     }
                     onChange={handleInputChange}
                     className="text-lg border rounded-md px-2 py-1"
                   />
+                </p>
+                <p className="text-lg">
+                  <strong>Age:</strong>{" "}
+                  <input
+                    type="text"
+                    name="age"
+                    value={
+                      editableStudentInfo.age || selectedStudentInfo.age || "NA"
+                    }
+                    onChange={handleInputChange}
+                    className="text-lg border rounded-md px-2 py-1"
+                  />
+                </p>
+                <p className="text-lg">
+                  <strong>Contact Number:</strong>{" "}
+                  <input
+                    type="text"
+                    name="contactNumber"
+                    value={
+                      editableStudentInfo.contactNumber ||
+                      selectedStudentInfo.contactNumber ||
+                      "NA"
+                    }
+                    onChange={handleInputChange}
+                    className="text-lg border rounded-md px-2 py-1"
+                  />
+                </p>
+                <div
+                  className={`bg-[${config.color}] text-lg  rounded-lg shadow-md p-6`}>
+                  <h3 className="text-2xl font-semibold mb-4 text-gray-800">
+                    Points
+                  </h3>
+                  <div className="grid grid-cols-2 gap-4 text-lg">
+                    <div className="flex items-center pb-3">
+                      <strong className="mr-2 text-gray-700">Monday:</strong>{" "}
+                      <input
+                        type="text"
+                        name="Apoints"
+                        value={
+                          editableStudentInfo.Apoints ||
+                          selectedStudentInfo.Apoints ||
+                          ""
+                        }
+                        onChange={handleInputChange}
+                        className="text-lg border rounded-md px-2 py-1"
+                      />
+                    </div>
+                    <div className="flex items-center pb-3">
+                      <strong className="mr-2 text-gray-700">Tuesday:</strong>{" "}
+                      <input
+                        type="text"
+                        name="Bpoints"
+                        value={
+                          editableStudentInfo.Bpoints ||
+                          selectedStudentInfo.Bpoints ||
+                          ""
+                        }
+                        onChange={handleInputChange}
+                        className="text-lg border rounded-md px-2 py-1"
+                      />
+                    </div>
+                    <div className="flex items-center pb-3">
+                      <strong className="mr-2 text-gray-700">Wednesday:</strong>{" "}
+                      <input
+                        type="text"
+                        name="Cpoints"
+                        value={
+                          editableStudentInfo.Cpoints ||
+                          selectedStudentInfo.Cpoints ||
+                          ""
+                        }
+                        onChange={handleInputChange}
+                        className="text-lg border rounded-md px-2 py-1"
+                      />
+                    </div>
+                    <div className="flex items-center pb-3">
+                      <strong className="mr-2 text-gray-700">Thursday:</strong>{" "}
+                      <input
+                        type="text"
+                        name="Dpoints"
+                        value={
+                          editableStudentInfo.Dpoints ||
+                          selectedStudentInfo.Dpoints ||
+                          ""
+                        }
+                        onChange={handleInputChange}
+                        className="text-lg border rounded-md px-2 py-1"
+                      />
+                    </div>
+                    <div className="flex items-center">
+                      <strong className="mr-2 text-gray-700">Friday:</strong>{" "}
+                      <input
+                        type="text"
+                        name="Epoints"
+                        value={
+                          editableStudentInfo.Epoints ||
+                          selectedStudentInfo.Epoints ||
+                          ""
+                        }
+                        onChange={handleInputChange}
+                        className="text-lg border rounded-md px-2 py-1"
+                      />
+                    </div>
+                  </div>
                 </div>
-              ))}
-            </div>
+                <p className="text-lg">
+                  <strong>Invites:</strong>{" "}
+                  <input
+                    type="text"
+                    name="invites"
+                    value={
+                      editableStudentInfo.invites ||
+                      selectedStudentInfo.invites ||
+                      "NA"
+                    }
+                    onChange={handleInputChange}
+                    className="text-lg border rounded-md px-2 py-1"
+                  />
+                </p>
+              </div>
+              <button
+                type="submit"
+                className="bg-blue-500 text-white font-bold py-3 px-8 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mt-6">
+                Update
+              </button>
+            </form>
+            <button
+              className="bg-red-500 text-white font-bold py-3 px-8 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 mt-6"
+              onClick={() => setShowStudentInfo(false)}>
+              Cancel
+            </button>
           </div>
-          <p className="text-lg">
-            <strong>Invites:</strong>{" "}
-          </p>
         </div>
-        <button
-          type="submit"
-          className="bg-blue-500 text-white font-bold py-3 px-8 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mt-6"
-        >
-          Update
-        </button>
-      </form>
-      <button
-        className="bg-red-500 text-white font-bold py-3 px-8 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 mt-6"
-        onClick={() => setShowStudentInfo(false)}
-      >
-        Cancel
-      </button>
-    </div>
-  </div>
-)}
-
+      )}
       {showBiblePopup && (
         <div className="fixed inset-0 z-50 flex items-center justify-center">
           <div className="fixed inset-0 bg-black opacity-50"></div>
