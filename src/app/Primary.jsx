@@ -213,7 +213,7 @@ function Primary({
     }
 
     setShowBiblePopup(false);
-    setStudentToUpdateBible(null);
+    // setStudentToUpdateBible(null);
     setShowParentPopup(true);
   };
 
