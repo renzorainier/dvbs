@@ -223,6 +223,7 @@ function Primary({
   // };
 
 
+
   const updateBibleStatus = async (fieldName, broughtBible) => {
     try {
         const docRef = doc(
@@ -261,12 +262,13 @@ function Primary({
 
     console.log("Received fieldName for bible after: ", fieldName);
 
-    // Call updateParentStatus with the same fieldName and false to prevent hiding the popup
-    updateParentStatus(fieldName, false, false); // Adjust 'false' to the appropriate value for broughtParent
+    // Call updateParentStatus with the same fieldName
+    updateParentStatus(fieldName, false); // You can change 'false' to the appropriate value for broughtParent
 };
 
 
-const updateParentStatus = async (fieldName, broughtParent, hidePopup = true) => {
+
+const updateParentStatus = async (fieldName, broughtParent) => {
   try {
       const docRef = doc(
           db,
@@ -275,6 +277,7 @@ const updateParentStatus = async (fieldName, broughtParent, hidePopup = true) =>
       );
       const dayLetter = getCurrentDayLetter();
       const parentField = `${fieldName.slice(0, 3)}${dayLetter}parent`;
+      console.log(fieldName)
       const pointsField = `${fieldName.slice(0, 3)}${dayLetter}points`;
 
       // Update Parent status and points
@@ -297,12 +300,7 @@ const updateParentStatus = async (fieldName, broughtParent, hidePopup = true) =>
       console.error("Error updating Firebase: ", error);
   }
 
-  if (hidePopup) {
-      setTimeout(() => {
-          setShowParentPopup(false);
-      }, 1000); // Delay of 1 second
-  }
-
+  // setShowParentPopup(false);
   setStudentToUpdateParent(null);
 };
 
