@@ -618,7 +618,7 @@ function Primary({
                 <div >
                   {primaryData[`${id}parent`] && (
                     <div className="flex items-center ">
-                      <RiGroup2Fill className={`text-4xl rounded-l  p-1 ${getButtonColor(
+                      <RiGroup2Fill className={`text-5xl rounded-lg p-1 ${getButtonColor(
                     studentIndex
                   )}`}/>
                     </div>
