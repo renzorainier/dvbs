@@ -26,6 +26,9 @@ function Primary({
   const [editableStudentInfo, setEditableStudentInfo] = useState({});
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
+  const [showParentPopup, setShowParentPopup] = useState(false);
+  const [studentToUpdateParent, setStudentToUpdateParent] = useState(null);
+
   const audioRef = useRef(null);
   const uploadTime = new Date().toLocaleString();
 
