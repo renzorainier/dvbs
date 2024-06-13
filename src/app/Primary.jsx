@@ -244,6 +244,13 @@ function Primary({
     ).length;
   };
 
+  const countStudentsWithParents = () => {
+    return Object.keys(primaryData).filter(
+      (key) => key.endsWith('parent') && primaryData[key]
+    ).length;
+  };
+
+
   const countAbsentForToday = () => {
     const dayLetter = getCurrentDayLetter();
     const totalStudents = Object.keys(primaryData).filter((key) =>
