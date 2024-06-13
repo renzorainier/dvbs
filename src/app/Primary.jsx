@@ -26,9 +26,6 @@ function Primary({
   const [editableStudentInfo, setEditableStudentInfo] = useState({});
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
-  const [showParentPopup, setShowParentPopup] = useState(false);
-  const [studentToUpdateParent, setStudentToUpdateParent] = useState(null);
-
   const audioRef = useRef(null);
   const uploadTime = new Date().toLocaleString();
 
@@ -143,11 +140,8 @@ function Primary({
         config.dbPath.split("/")[0],
         config.dbPath.split("/")[1]
       );
-
-
       const newValue = primaryData[fieldToUpdate] ? "" : uploadTime;
       const bibleField = `${fieldToUpdate}bible`;
-      const parentField  = `${fieldToUpdate}parent`;
 
       // Calculate the new points value
       const pointsField = `${fieldName.slice(
@@ -185,159 +179,38 @@ function Primary({
     setStudentToMarkAbsent(null);
   };
 
-  // const updateBibleStatus = async (fieldName, broughtBible) => {
-  //   try {
-  //     const docRef = doc(
-  //       db,
-  //       config.dbPath.split("/")[0],
-  //       config.dbPath.split("/")[1]
-  //     );
-  //     console.log("Received fieldName for bible before: ", fieldName);
-  //     const dayLetter = getCurrentDayLetter();
-  //     const bibleField = `${fieldName.slice(0, 3)}${dayLetter}bible`;
-  //     const pointsField = `${fieldName.slice(0, 3)}${dayLetter}points`;
-
-  //     // Update Bible status and points
-  //     const currentPoints = primaryData[pointsField] || 0;
-  //     const newPoints = broughtBible ? currentPoints + 3 : currentPoints;
-
-  //     await updateDoc(docRef, {
-  //       [bibleField]: broughtBible ? true : false,
-  //       [pointsField]: newPoints, // Update points with Bible bonus
-  //     });
-
-  //     setPrimaryData((prevData) => ({
-  //       ...prevData,
-  //       [bibleField]: broughtBible ? true : false,
-  //       [pointsField]: newPoints, // Update local state with the new points value
-  //     }));
-  //   } catch (error) {
-  //     console.error("Error updating Firebase: ", error);
-  //   }
-
-  //   setShowBiblePopup(false);
-  //   setStudentToUpdateBible(null);
-  //   setShowParentPopup(true);
-  //   console.log("Received fieldName for bible after: ", fieldName);
-
-  // };
-
-
-
   const updateBibleStatus = async (fieldName, broughtBible) => {
     try {
-        const docRef = doc(
-            db,
-            config.dbPath.split("/")[0],
-            config.dbPath.split("/")[1]
-        );
-        console.log("Received fieldName for bible before: ", fieldName);
-        const dayLetter = getCurrentDayLetter();
-        const bibleField = `${fieldName.slice(0, 3)}${dayLetter}bible`;
-        const pointsField = `${fieldName.slice(0, 3)}${dayLetter}points`;
+      const docRef = doc(
+        db,
+        config.dbPath.split("/")[0],
+        config.dbPath.split("/")[1]
+      );
+      const dayLetter = getCurrentDayLetter();
+      const bibleField = `${fieldName.slice(0, 3)}${dayLetter}bible`;
+      const pointsField = `${fieldName.slice(0, 3)}${dayLetter}points`;
 
-        // Update Bible status and points
-        const currentPoints = primaryData[pointsField] || 0;
-        const newPoints = broughtBible ? currentPoints + 3 : currentPoints;
+      // Update Bible status and points
+      const currentPoints = primaryData[pointsField] || 0;
+      const newPoints = broughtBible ? currentPoints + 3 : currentPoints;
 
-        await updateDoc(docRef, {
-            [bibleField]: broughtBible ? true : false,
-            [pointsField]: newPoints, // Update points with Bible bonus
-        });
+      await updateDoc(docRef, {
+        [bibleField]: broughtBible ? true : false,
+        [pointsField]: newPoints, // Update points with Bible bonus
+      });
 
-        setPrimaryData((prevData) => ({
-            ...prevData,
-            [bibleField]: broughtBible ? true : false,
-            [pointsField]: newPoints, // Update local state with the new points value
-        }));
-
-        console.log("Updated bibleField and pointsField: ", bibleField, pointsField);
+      setPrimaryData((prevData) => ({
+        ...prevData,
+        [bibleField]: broughtBible ? true : false,
+        [pointsField]: newPoints, // Update local state with the new points value
+      }));
     } catch (error) {
-        console.error("Error updating Firebase: ", error);
+      console.error("Error updating Firebase: ", error);
     }
 
     setShowBiblePopup(false);
     setStudentToUpdateBible(null);
-    setShowParentPopup(true);
-
-    console.log("Received fieldName for bible after: ", fieldName);
-
-    // Call updateParentStatus with the same fieldName
-    updateParentStatus(fieldName, false); // You can change 'false' to the appropriate value for broughtParent
-};
-
-
-
-const updateParentStatus = async (fieldName, broughtParent) => {
-  try {
-      const docRef = doc(
-          db,
-          config.dbPath.split("/")[0],
-          config.dbPath.split("/")[1]
-      );
-      const dayLetter = getCurrentDayLetter();
-      const parentField = `${fieldName.slice(0, 3)}${dayLetter}parent`;
-      console.log(fieldName)
-      const pointsField = `${fieldName.slice(0, 3)}${dayLetter}points`;
-
-      // Update Parent status and points
-      const currentPoints = primaryData[pointsField] || 0;
-      const newPoints = broughtParent ? currentPoints + 3 : currentPoints;
-
-      await updateDoc(docRef, {
-          [parentField]: broughtParent ? true : false,
-          [pointsField]: newPoints, // Update points with Parent bonus
-      });
-
-      setPrimaryData((prevData) => ({
-          ...prevData,
-          [parentField]: broughtParent ? true : false,
-          [pointsField]: newPoints, // Update local state with the new points value
-      }));
-
-      console.log("Updated parentField and pointsField: ", parentField, pointsField);
-  } catch (error) {
-      console.error("Error updating Firebase: ", error);
-  }
-
-  // setShowParentPopup(false);
-  setStudentToUpdateParent(null);
-};
-
-
-
-  // const updateParentStatus = async (fieldName, broughtParent) => {
-  //   try {
-  //     const docRef = doc(
-  //       db,
-  //       config.dbPath.split("/")[0],
-  //       config.dbPath.split("/")[1]
-  //     );
-  //     const dayLetter = getCurrentDayLetter();
-  //     const parentField = `${fieldName.slice(0, 3)}${dayLetter}parent`;
-  //     const pointsField = `${fieldName.slice(0, 3)}${dayLetter}points`;
-
-  //     // Update Parent status and points
-  //     const currentPoints = primaryData[pointsField] || 0;
-  //     const newPoints = broughtParent ? currentPoints + 3 : currentPoints;
-
-  //     await updateDoc(docRef, {
-  //       [parentField]: broughtParent ? true : false,
-  //       [pointsField]: newPoints, // Update points with Parent bonus
-  //     });
-
-  //     setPrimaryData((prevData) => ({
-  //       ...prevData,
-  //       [parentField]: broughtParent ? true : false,
-  //       [pointsField]: newPoints, // Update local state with the new points value
-  //     }));
-  //   } catch (error) {
-  //     console.error("Error updating Firebase: ", error);
-  //   }
-
-  //   setShowParentPopup(false);
-  //   setStudentToUpdateParent(null);
-  // };
+  };
 
   const getButtonColor = (fieldName) => {
     const prefix = fieldName.slice(0, 3);
@@ -640,27 +513,6 @@ const updateParentStatus = async (fieldName, broughtParent) => {
           </div>
         </div>
       )}
-
-      {showParentPopup && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center">
-          <div className="fixed inset-0 bg-black opacity-50"></div>
-          <div className="bg-white rounded-lg p-5 shadow-md z-10 flex flex-col items-center">
-            <p className="mb-2">Did the student bring their parent today?</p>
-            <div className="flex space-x-4">
-              <button
-                className="bg-green-500 text-white font-bold py-2 px-4 rounded"
-                onClick={() => updateParentStatus(studentToUpdateParent, true)}>
-                Yes
-              </button>
-              <button
-                className="bg-red-500 text-white font-bold py-2 px-4 rounded"
-                onClick={() => updateParentStatus(studentToUpdateParent, false)}>
-                No
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
       {showVisitorPrompt && (
         <div className="fixed inset-0 z-50 flex items-center justify-center">
           <div className="fixed inset-0 bg-black opacity-50"></div>
@@ -722,7 +574,7 @@ const updateParentStatus = async (fieldName, broughtParent) => {
             const Epoints = id + "Epoints";
             const invites = id + "invites";
             const age = id + "age";
-            const invitedBy = id + "invitedBy";
+            const invitedBy = id + "invitedBy"
 
             return (
               <div key={index} className="flex items-center">
@@ -770,7 +622,7 @@ const updateParentStatus = async (fieldName, broughtParent) => {
                       invites: primaryData[invites],
                       age: primaryData[age],
                       id: id,
-                      invitedBy: primaryData[invitedBy],
+                      invitedBy: primaryData[invitedBy]
                     });
                   }}>
                   <MdOutlineMoreHoriz />
