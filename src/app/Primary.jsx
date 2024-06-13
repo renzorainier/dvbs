@@ -213,7 +213,7 @@ function Primary({
     }
 
     setShowBiblePopup(false);
-    // setStudentToUpdateBible(null);
+    setStudentToUpdateBible(null);
     setShowParentPopup(true);
   };
 
@@ -221,11 +221,16 @@ function Primary({
     try {
       console.log("Starting updateParentStatus");
 
-      const docRef = doc(
-        db,
-        config.dbPath.split("/")[0],
-        config.dbPath.split("/")[1]
-      );
+      // Log configuration path and split it
+      console.log("Config dbPath: ", config.dbPath);
+      const splitPath = config.dbPath.split("/");
+      console.log("Split path: ", splitPath);
+
+      if (splitPath.length < 2) {
+        throw new Error("Invalid dbPath configuration");
+      }
+
+      const docRef = doc(db, splitPath[0], splitPath[1]);
       console.log("docRef created: ", docRef);
 
       const dayLetter = getCurrentDayLetter();
@@ -263,6 +268,7 @@ function Primary({
     setStudentToUpdateParent(null);
     console.log("Student to update parent reset");
   };
+
 
 
   // const updateParentStatus = async (fieldName, broughtParent) => {
