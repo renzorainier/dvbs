@@ -7,7 +7,7 @@ import { FaUserCheck } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
 import { HiClipboardList } from "react-icons/hi";
 import { MdOutlineMoreHoriz } from "react-icons/md";
-import { MdPersonPin } from "react-icons/md";
+import { RiGroup2Fill } from "react-icons/ri";
 
 function Primary({
   config,
@@ -618,7 +618,7 @@ function Primary({
             return (
               <div key={index} className="flex items-center">
                 <div>
-                <MdPersonPin />
+                <RiGroup2Fill /> {id}
                 </div>
                 <button
                   className={`w-70percent flex items-center justify-center hover:bg-blue-700 text-white font-bold py-2 px-3 rounded-lg ${getButtonColor(
