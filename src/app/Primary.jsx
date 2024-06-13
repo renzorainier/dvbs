@@ -192,7 +192,7 @@ function Primary({
         config.dbPath.split("/")[0],
         config.dbPath.split("/")[1]
       );
-      console.log("Received fieldName: ", fieldName);
+      console.log("Received fieldName for bible before: ", fieldName);
       const dayLetter = getCurrentDayLetter();
       const bibleField = `${fieldName.slice(0, 3)}${dayLetter}bible`;
       const pointsField = `${fieldName.slice(0, 3)}${dayLetter}points`;
@@ -218,7 +218,12 @@ function Primary({
     setShowBiblePopup(false);
     setStudentToUpdateBible(null);
     setShowParentPopup(true);
+    console.log("Received fieldName for bible after: ", fieldName);
+
   };
+
+
+
   const updateParentStatus = async (fieldName, broughtParent) => {
     try {
       console.log("Starting updateParentStatus");
