@@ -26,6 +26,10 @@ function Primary({
   const [editableStudentInfo, setEditableStudentInfo] = useState({});
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
+  const [showParentPopup, setShowParentPopup] = useState(false); // New state for parent popup
+  const [studentToUpdateParent, setStudentToUpdateParent] = useState(null); // New state to track the student
+
+
   const audioRef = useRef(null);
   const uploadTime = new Date().toLocaleString();
 
@@ -176,6 +180,12 @@ function Primary({
         [bibleField]: broughtBible ? true : false,
         [pointsField]: newPoints, // Update local state with the new points value
       }));
+
+      // Show the parent popup after updating Bible status
+      if (broughtBible) {
+        setStudentToUpdateParent(fieldName);
+        setShowParentPopup(true);
+      }
     } catch (error) {
       console.error("Error updating Firebase: ", error);
     }
@@ -183,6 +193,40 @@ function Primary({
     setShowBiblePopup(false);
     setStudentToUpdateBible(null);
   };
+
+  const updateParentStatus = async (fieldName, broughtParent) => {
+    try {
+      const docRef = doc(
+        db,
+        config.dbPath.split("/")[0],
+        config.dbPath.split("/")[1]
+      );
+      const dayLetter = getCurrentDayLetter();
+      const parentField = `${fieldName.slice(0, 3)}${dayLetter}parent`;
+      const pointsField = `${fieldName.slice(0, 3)}${dayLetter}points`;
+
+      // Update Parent status and points
+      const currentPoints = primaryData[pointsField] || 0;
+      const newPoints = broughtParent ? currentPoints + 5 : currentPoints;
+
+      await updateDoc(docRef, {
+        [parentField]: broughtParent ? true : false,
+        [pointsField]: newPoints, // Update points with Parent bonus
+      });
+
+      setPrimaryData((prevData) => ({
+        ...prevData,
+        [parentField]: broughtParent ? true : false,
+        [pointsField]: newPoints, // Update local state with the new points value
+      }));
+    } catch (error) {
+      console.error("Error updating Firebase: ", error);
+    }
+
+    setShowParentPopup(false);
+    setStudentToUpdateParent(null);
+  };
+
 
   const getButtonColor = (fieldName) => {
     const prefix = fieldName.slice(0, 3);
@@ -305,6 +349,28 @@ function Primary({
           </div>
         </div>
       )}
+
+{showParentPopup && (
+  <div className="fixed inset-0 z-50 flex items-center justify-center">
+    <div className="fixed inset-0 bg-black opacity-50"></div>
+    <div className="bg-white rounded-lg p-5 shadow-md z-10 flex flex-col items-center">
+      <p className="mb-2">Did the student bring their parent(s) today?</p>
+      <div className="flex space-x-4">
+        <button
+          className="bg-green-500 text-white font-bold py-2 px-4 rounded"
+          onClick={() => updateParentStatus(studentToUpdateParent, true)}>
+          Yes
+        </button>
+        <button
+          className="bg-red-500 text-white font-bold py-2 px-4 rounded"
+          onClick={() => updateParentStatus(studentToUpdateParent, false)}>
+          No
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+
 
       {showStudentInfo && !showSuccessMessage && (
         <div className="fixed inset-0 z-50 flex items-center justify-center">
