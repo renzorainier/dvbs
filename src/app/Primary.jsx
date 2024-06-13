@@ -185,53 +185,95 @@ function Primary({
     setStudentToMarkAbsent(null);
   };
 
+  // const updateBibleStatus = async (fieldName, broughtBible) => {
+  //   try {
+  //     const docRef = doc(
+  //       db,
+  //       config.dbPath.split("/")[0],
+  //       config.dbPath.split("/")[1]
+  //     );
+  //     console.log("Received fieldName for bible before: ", fieldName);
+  //     const dayLetter = getCurrentDayLetter();
+  //     const bibleField = `${fieldName.slice(0, 3)}${dayLetter}bible`;
+  //     const pointsField = `${fieldName.slice(0, 3)}${dayLetter}points`;
+
+  //     // Update Bible status and points
+  //     const currentPoints = primaryData[pointsField] || 0;
+  //     const newPoints = broughtBible ? currentPoints + 3 : currentPoints;
+
+  //     await updateDoc(docRef, {
+  //       [bibleField]: broughtBible ? true : false,
+  //       [pointsField]: newPoints, // Update points with Bible bonus
+  //     });
+
+  //     setPrimaryData((prevData) => ({
+  //       ...prevData,
+  //       [bibleField]: broughtBible ? true : false,
+  //       [pointsField]: newPoints, // Update local state with the new points value
+  //     }));
+  //   } catch (error) {
+  //     console.error("Error updating Firebase: ", error);
+  //   }
+
+  //   setShowBiblePopup(false);
+  //   setStudentToUpdateBible(null);
+  //   setShowParentPopup(true);
+  //   console.log("Received fieldName for bible after: ", fieldName);
+
+  // };
+
+
+
   const updateBibleStatus = async (fieldName, broughtBible) => {
     try {
-      const docRef = doc(
-        db,
-        config.dbPath.split("/")[0],
-        config.dbPath.split("/")[1]
-      );
-      console.log("Received fieldName for bible before: ", fieldName);
-      const dayLetter = getCurrentDayLetter();
-      const bibleField = `${fieldName.slice(0, 3)}${dayLetter}bible`;
-      const pointsField = `${fieldName.slice(0, 3)}${dayLetter}points`;
+        const docRef = doc(
+            db,
+            config.dbPath.split("/")[0],
+            config.dbPath.split("/")[1]
+        );
+        console.log("Received fieldName for bible before: ", fieldName);
+        const dayLetter = getCurrentDayLetter();
+        const bibleField = `${fieldName.slice(0, 3)}${dayLetter}bible`;
+        const pointsField = `${fieldName.slice(0, 3)}${dayLetter}points`;
 
-      // Update Bible status and points
-      const currentPoints = primaryData[pointsField] || 0;
-      const newPoints = broughtBible ? currentPoints + 3 : currentPoints;
+        // Update Bible status and points
+        const currentPoints = primaryData[pointsField] || 0;
+        const newPoints = broughtBible ? currentPoints + 3 : currentPoints;
 
-      await updateDoc(docRef, {
-        [bibleField]: broughtBible ? true : false,
-        [pointsField]: newPoints, // Update points with Bible bonus
-      });
+        await updateDoc(docRef, {
+            [bibleField]: broughtBible ? true : false,
+            [pointsField]: newPoints, // Update points with Bible bonus
+        });
 
-      setPrimaryData((prevData) => ({
-        ...prevData,
-        [bibleField]: broughtBible ? true : false,
-        [pointsField]: newPoints, // Update local state with the new points value
-      }));
+        setPrimaryData((prevData) => ({
+            ...prevData,
+            [bibleField]: broughtBible ? true : false,
+            [pointsField]: newPoints, // Update local state with the new points value
+        }));
+
+        console.log("Updated bibleField and pointsField: ", bibleField, pointsField);
     } catch (error) {
-      console.error("Error updating Firebase: ", error);
+        console.error("Error updating Firebase: ", error);
     }
 
     setShowBiblePopup(false);
     setStudentToUpdateBible(null);
     setShowParentPopup(true);
+
     console.log("Received fieldName for bible after: ", fieldName);
 
-  };
+    // Call updateParentStatus with the same fieldName
+    updateParentStatus(fieldName, false); // You can change 'false' to the appropriate value for broughtParent
+};
 
 
 
-
-
-  const updateParentStatus = async (fieldName, broughtParent) => {
-    try {
+const updateParentStatus = async (fieldName, broughtParent) => {
+  try {
       const docRef = doc(
-        db,
-        config.dbPath.split("/")[0],
-        config.dbPath.split("/")[1]
+          db,
+          config.dbPath.split("/")[0],
+          config.dbPath.split("/")[1]
       );
       const dayLetter = getCurrentDayLetter();
       const parentField = `${fieldName.slice(0, 3)}${dayLetter}parent`;
@@ -242,22 +284,59 @@ function Primary({
       const newPoints = broughtParent ? currentPoints + 3 : currentPoints;
 
       await updateDoc(docRef, {
-        [parentField]: broughtParent ? true : false,
-        [pointsField]: newPoints, // Update points with Parent bonus
+          [parentField]: broughtParent ? true : false,
+          [pointsField]: newPoints, // Update points with Parent bonus
       });
 
       setPrimaryData((prevData) => ({
-        ...prevData,
-        [parentField]: broughtParent ? true : false,
-        [pointsField]: newPoints, // Update local state with the new points value
+          ...prevData,
+          [parentField]: broughtParent ? true : false,
+          [pointsField]: newPoints, // Update local state with the new points value
       }));
-    } catch (error) {
-      console.error("Error updating Firebase: ", error);
-    }
 
-    setShowParentPopup(false);
-    setStudentToUpdateParent(null);
-  };
+      console.log("Updated parentField and pointsField: ", parentField, pointsField);
+  } catch (error) {
+      console.error("Error updating Firebase: ", error);
+  }
+
+  setShowParentPopup(false);
+  setStudentToUpdateParent(null);
+};
+
+
+
+  // const updateParentStatus = async (fieldName, broughtParent) => {
+  //   try {
+  //     const docRef = doc(
+  //       db,
+  //       config.dbPath.split("/")[0],
+  //       config.dbPath.split("/")[1]
+  //     );
+  //     const dayLetter = getCurrentDayLetter();
+  //     const parentField = `${fieldName.slice(0, 3)}${dayLetter}parent`;
+  //     const pointsField = `${fieldName.slice(0, 3)}${dayLetter}points`;
+
+  //     // Update Parent status and points
+  //     const currentPoints = primaryData[pointsField] || 0;
+  //     const newPoints = broughtParent ? currentPoints + 3 : currentPoints;
+
+  //     await updateDoc(docRef, {
+  //       [parentField]: broughtParent ? true : false,
+  //       [pointsField]: newPoints, // Update points with Parent bonus
+  //     });
+
+  //     setPrimaryData((prevData) => ({
+  //       ...prevData,
+  //       [parentField]: broughtParent ? true : false,
+  //       [pointsField]: newPoints, // Update local state with the new points value
+  //     }));
+  //   } catch (error) {
+  //     console.error("Error updating Firebase: ", error);
+  //   }
+
+  //   setShowParentPopup(false);
+  //   setStudentToUpdateParent(null);
+  // };
 
   const getButtonColor = (fieldName) => {
     const prefix = fieldName.slice(0, 3);
