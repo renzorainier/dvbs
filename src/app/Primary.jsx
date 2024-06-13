@@ -596,6 +596,12 @@ function Primary({
             {countPresentForToday() + countAbsentForToday()}
           </p>
         </div>
+        <div className="flex items-center bg-white border rounded-lg shadow-md p-4 ml-4">
+          <FaUserCheck style={{ fontSize: "1.5em" }} />
+          <p className="text-gray-800 font-bold ml-2 text-lg sm:text-base md:text-lg lg:text-xl">
+            {countStudentsWithParents()}
+          </p>
+        </div>
       </div>
 
       <div className="w-full max-w-md text-gray-700 bg-white p-5 border rounded-lg shadow-lg mx-auto">
