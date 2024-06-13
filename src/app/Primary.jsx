@@ -145,6 +145,7 @@ function Primary({
       );
       const newValue = primaryData[fieldToUpdate] ? "" : uploadTime;
       const bibleField = `${fieldToUpdate}bible`;
+      const parentField  = `${fieldToUpdate}parent`;
 
       // Calculate the new points value
       const pointsField = `${fieldName.slice(
