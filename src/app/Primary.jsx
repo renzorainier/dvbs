@@ -202,7 +202,7 @@ function Primary({
         config.dbPath.split("/")[1]
       );
       const dayLetter = getCurrentDayLetter();
-      const parentField = `${fieldName.slice(0, 3)}${dayLetter}parent`;
+      const parentField = `${fieldName.slice(0, 3)}parent`;
       const pointsField = `${fieldName.slice(0, 3)}${dayLetter}points`;
 
       // Update Parent status and points
