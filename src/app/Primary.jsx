@@ -30,7 +30,6 @@ function Primary({
   const [showParentPopup, setShowParentPopup] = useState(false); // New state for parent popup
   const [studentToUpdateParent, setStudentToUpdateParent] = useState(null); // New state to track the student
 
-
   const audioRef = useRef(null);
   const uploadTime = new Date().toLocaleString();
 
@@ -89,7 +88,6 @@ function Primary({
     }
     return points;
   };
-
 
   const handleClick = (fieldName) => {
     if (isVisitorView) {
@@ -228,7 +226,6 @@ function Primary({
     setStudentToUpdateParent(null);
   };
 
-
   const getButtonColor = (fieldName) => {
     const prefix = fieldName.slice(0, 3);
     const dayLetter = getCurrentDayLetter();
@@ -351,27 +348,28 @@ function Primary({
         </div>
       )}
 
-{showParentPopup && (
-  <div className="fixed inset-0 z-50 flex items-center justify-center">
-    <div className="fixed inset-0 bg-black opacity-50"></div>
-    <div className="bg-white rounded-lg p-5 shadow-md z-10 flex flex-col items-center">
-      <p className="mb-2">Did the student bring their parent(s) today?</p>
-      <div className="flex space-x-4">
-        <button
-          className="bg-green-500 text-white font-bold py-2 px-4 rounded"
-          onClick={() => updateParentStatus(studentToUpdateParent, true)}>
-          Yes
-        </button>
-        <button
-          className="bg-red-500 text-white font-bold py-2 px-4 rounded"
-          onClick={() => updateParentStatus(studentToUpdateParent, false)}>
-          No
-        </button>
-      </div>
-    </div>
-  </div>
-)}
-
+      {showParentPopup && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
+          <div className="fixed inset-0 bg-black opacity-50"></div>
+          <div className="bg-white rounded-lg p-5 shadow-md z-10 flex flex-col items-center">
+            <p className="mb-2">Did the student bring their parent(s) today?</p>
+            <div className="flex space-x-4">
+              <button
+                className="bg-green-500 text-white font-bold py-2 px-4 rounded"
+                onClick={() => updateParentStatus(studentToUpdateParent, true)}>
+                Yes
+              </button>
+              <button
+                className="bg-red-500 text-white font-bold py-2 px-4 rounded"
+                onClick={() =>
+                  updateParentStatus(studentToUpdateParent, false)
+                }>
+                No
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {showStudentInfo && !showSuccessMessage && (
         <div className="fixed inset-0 z-50 flex items-center justify-center">
@@ -613,12 +611,17 @@ function Primary({
             const Epoints = id + "Epoints";
             const invites = id + "invites";
             const age = id + "age";
-            const invitedBy = id + "invitedBy"
+            const invitedBy = id + "invitedBy";
 
             return (
               <div key={index} className="flex items-center">
                 <div>
-                <RiGroup2Fill /> {id}
+                  {primaryData[`${id}parent`] && (
+                    <div>
+                      <RiGroup2Fill />
+                    </div>
+                  )}
+ 
                 </div>
                 <button
                   className={`w-70percent flex items-center justify-center hover:bg-blue-700 text-white font-bold py-2 px-3 rounded-lg ${getButtonColor(
@@ -664,7 +667,7 @@ function Primary({
                       invites: primaryData[invites],
                       age: primaryData[age],
                       id: id,
-                      invitedBy: primaryData[invitedBy]
+                      invitedBy: primaryData[invitedBy],
                     });
                   }}>
                   <MdOutlineMoreHoriz />
