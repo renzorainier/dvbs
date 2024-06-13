@@ -213,6 +213,7 @@ function Primary({
 
     setShowBiblePopup(false);
     setStudentToUpdateBible(null);
+    setShowParentPopup(true);
   };
 
   const updateParentStatus = async (fieldName, broughtParent) => {
