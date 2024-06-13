@@ -134,7 +134,7 @@ function AttendanceChart() {
         // Extract the prefix (index) part of the key
         const index = parseInt(key.substring(0, 2));
         // Ensure the index is a number between 1 and 99
-        return !isNaN(index) && index >= 1 && index <= 99;
+        return !isNaN(index) && index >= 1 ;
       }
       return false;
     }).length;
