@@ -20,9 +20,7 @@ function Primary({
   const [studentToMarkAbsent, setStudentToMarkAbsent] = useState(null);
   const [showBiblePopup, setShowBiblePopup] = useState(false);
   const [studentToUpdateBible, setStudentToUpdateBible] = useState(null);
-  const [showParentPopup, setShowParentPopup] = useState(false); // New state for parent prompt
-  const [studentToUpdateParent, setStudentToUpdateParent] = useState(null); // New state for student to update parent status
-  const [showVisitorPrompt, setShowVisitorPrompt] = useState(false);
+  const [showVisitorPrompt, setShowVisitorPrompt] = useState(false); // New state for visitor prompt
   const [showStudentInfo, setShowStudentInfo] = useState(false);
   const [selectedStudentInfo, setSelectedStudentInfo] = useState(null);
   const [editableStudentInfo, setEditableStudentInfo] = useState({});
@@ -86,6 +84,7 @@ function Primary({
     }
     return points;
   };
+
 
   const handleClick = (fieldName) => {
     if (isVisitorView) {
@@ -177,49 +176,12 @@ function Primary({
         [bibleField]: broughtBible ? true : false,
         [pointsField]: newPoints, // Update local state with the new points value
       }));
-
-      // Show the parent prompt after updating the Bible status
-      setStudentToUpdateParent(fieldName);
-      setShowParentPopup(true);
     } catch (error) {
       console.error("Error updating Firebase: ", error);
     }
 
     setShowBiblePopup(false);
     setStudentToUpdateBible(null);
-  };
-
-  const updateParentStatus = async (fieldName, broughtParent) => {
-    try {
-      const docRef = doc(
-        db,
-        config.dbPath.split("/")[0],
-        config.dbPath.split("/")[1]
-      );
-      const dayLetter = getCurrentDayLetter();
-      const parentField = `${fieldName.slice(0, 3)}${dayLetter}parent`;
-      const pointsField = `${fieldName.slice(0, 3)}${dayLetter}points`;
-
-      // Update parent status and points
-      const currentPoints = primaryData[pointsField] || 0;
-      const newPoints = broughtParent ? currentPoints + 5 : currentPoints;
-
-      await updateDoc(docRef, {
-        [parentField]: broughtParent ? true : false,
-        [pointsField]: newPoints, // Update points with parent bonus
-      });
-
-      setPrimaryData((prevData) => ({
-        ...prevData,
-        [parentField]: broughtParent ? true : false,
-        [pointsField]: newPoints, // Update local state with the new points value
-      }));
-    } catch (error) {
-      console.error("Error updating Firebase: ", error);
-    }
-
-    setShowParentPopup(false);
-    setStudentToUpdateParent(null);
   };
 
   const getButtonColor = (fieldName) => {
@@ -230,6 +192,7 @@ function Primary({
       ? config.colors.present
       : config.colors.absent;
   };
+
   const countPresentForToday = () => {
     const dayLetter = getCurrentDayLetter();
     return Object.keys(primaryData).filter(
@@ -314,8 +277,6 @@ function Primary({
       console.error("Error updating document: ", error);
     }
   };
-
-
 
   return (
     <div className="flex flex-col items-center">
@@ -459,147 +420,191 @@ function Primary({
             <div className="flex justify-center mt-6 w-full">
               <button
                 type="submit"
-                className="bg-green-500 text-white font-bold py-2 px-6 rounded-lg"
-                onClick={handleSubmit}>
-                Save
+                onClick={() => {
+                  handleSubmit();
+                  handleFetchClick();
+                }}
+                className="bg-blue-500 text-white font-bold py-3 px-8 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 w-full">
+                Update
               </button>
               <button
-                className="bg-red-500 text-white font-bold py-2 px-6 ml-4 rounded-lg"
-                onClick={() => setShowStudentInfo(false)}>
-                Cancel
+                className="bg-red-500 text-white font-bold py-3 px-8 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 ml-4 w-full"
+                onClick={() => {
+                  setShowStudentInfo(false);
+                  setEditableStudentInfo({});
+                }}>
+                Cancel{" "}
               </button>
             </div>
           </div>
         </div>
       )}
 
-      {showParentPopup && (
+      {/* Success Message */}
+      {showSuccessMessage && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
+          <div className="fixed inset-0 bg-black opacity-50"></div>
+          <div className="bg-white rounded-lg p-8 shadow-2xl z-10 flex flex-col items-center w-11/12 max-w-lg">
+            <h2 className="mb-6 text-2xl font-bold text-center text-gray-800">
+              Success!
+            </h2>
+            <p className="text-lg mb-4 text-center text-gray-700">
+              Document successfully updated!
+            </p>
+            <div className="flex justify-center mt-6 w-full">
+              <button
+                className="bg-green-500 text-white font-bold py-3 px-8 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 w-full"
+                onClick={() => {
+                  setShowStudentInfo(false);
+                  setShowSuccessMessage(false);
+                }}>
+                Okay
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {showBiblePopup && (
         <div className="fixed inset-0 z-50 flex items-center justify-center">
           <div className="fixed inset-0 bg-black opacity-50"></div>
           <div className="bg-white rounded-lg p-5 shadow-md z-10 flex flex-col items-center">
-            <p className="mb-2">Did the student bring a parent?</p>
+            <p className="mb-2">Did the student bring their Bible today?</p>
             <div className="flex space-x-4">
               <button
                 className="bg-green-500 text-white font-bold py-2 px-4 rounded"
-                onClick={() => updateParentStatus(studentToUpdateParent, true)}>
+                onClick={() => updateBibleStatus(studentToUpdateBible, true)}>
                 Yes
               </button>
               <button
-                className="bg-gray-500 text-white font-bold py-2 px-4 rounded"
-                onClick={() =>
-                  updateParentStatus(studentToUpdateParent, false)
-                }>
+                className="bg-red-500 text-white font-bold py-2 px-4 rounded"
+                onClick={() => updateBibleStatus(studentToUpdateBible, false)}>
                 No
               </button>
             </div>
           </div>
         </div>
       )}
-
-      {showSuccessMessage && (
+      {showVisitorPrompt && (
         <div className="fixed inset-0 z-50 flex items-center justify-center">
           <div className="fixed inset-0 bg-black opacity-50"></div>
           <div className="bg-white rounded-lg p-5 shadow-md z-10 flex flex-col items-center">
-            <p className="mb-2">Data successfully updated!</p>
+            <p className="mb-4 text-center">
+              You are in visitor view. This feature is disabled.
+            </p>
             <button
-              className="bg-blue-500 text-white font-bold py-2 px-4 rounded"
-              onClick={() => setShowSuccessMessage(false)}>
+              className="bg-blue-500 text-white font-bold py-2 px-6 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+              onClick={() => setShowVisitorPrompt(false)}>
               OK
             </button>
           </div>
         </div>
       )}
-
-      <div className="flex justify-between w-full px-4 py-2 bg-gray-200 shadow-md">
-        <div>
-          <h1 className="text-xl font-bold">Student Attendance Tracker</h1>
-          <p className="text-gray-700">
-            Track attendance and points for students
+      <div className="flex justify-center mb-5 font-bold">
+        <div className="flex items-center bg-white border rounded-lg shadow-md p-4">
+          <FaUserCheck style={{ fontSize: "1.5em" }} />
+          <p className="text-gray-800 font-bold ml-2 text-lg sm:text-base md:text-lg lg:text-xl">
+            {countPresentForToday()}
           </p>
         </div>
-        <div className="flex items-center">
-          <input
-            type="text"
-            className="border rounded-md px-4 py-2 mr-2"
-            placeholder="Search..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
-          <button
-            className="bg-blue-500 text-white font-bold py-2 px-4 rounded"
-            onClick={() => {
-              setShowStudentInfo(false);
-              setEditableStudentInfo({});
-              setSelectedStudentInfo({});
-            }}>
-            Clear
-          </button>
+        <div className="flex items-center bg-white border rounded-lg shadow-md p-4 ml-4">
+          <ImCross style={{ fontSize: "1.0em" }} />
+          <p className="text-gray-800 font-bold ml-2 text-lg sm:text-base md:text-lg lg:text-xl">
+            {countAbsentForToday()}
+          </p>
+        </div>
+
+        <div className="flex items-center bg-white border rounded-lg shadow-md p-4 ml-4">
+          <HiClipboardList style={{ fontSize: "1.5em" }} />
+          <p className="text-gray-800 font-bold ml-2 text-lg sm:text-base md:text-lg lg:text-xl">
+            {countPresentForToday() + countAbsentForToday()}
+          </p>
         </div>
       </div>
 
-      <div className="w-full px-4 py-2">
-        <div className="flex justify-between mb-4">
-          <div className="text-green-500">
-            Present Today: {countPresentForToday()}
-          </div>
-          <div className="text-red-500">
-            Absent Today: {countAbsentForToday()}
-          </div>
-        </div>
+      <div className="w-full max-w-md text-gray-700 bg-white p-5 border rounded-lg shadow-lg mx-auto">
+        <input
+          type="text"
+          placeholder="Search by name or ID no."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500 mb-4"
+        />
+        <div className="flex flex-col gap-4">
+          {filteredNames.map((name, index) => {
+            const studentIndex = Object.keys(primaryData).find(
+              (key) => primaryData[key] === name
+            );
+            const savedFieldName = `${studentIndex.slice(0, -4)}saved`; // Construct the saved field name
+            const id = savedFieldName.slice(0, -5);
+            const loc = id + "loc";
+            const contactNumber = id + "contactNumber";
+            const Apoints = id + "Apoints";
+            const Bpoints = id + "Bpoints";
+            const Cpoints = id + "Cpoints";
+            const Dpoints = id + "Dpoints";
+            const Epoints = id + "Epoints";
+            const invites = id + "invites";
+            const age = id + "age";
+            const invitedBy = id + "invitedBy"
 
-        <table className="min-w-full bg-white">
-          <thead>
-            <tr>
-              <th className="py-2">Student Name</th>
-              <th className="py-2">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredNames.map((name, index) => {
-              const studentFieldPrefix = Object.keys(primaryData)
-                .find((key) => primaryData[key] === name)
-                .slice(0, 3);
-              const fieldName = `${studentFieldPrefix}${getCurrentDayLetter()}`;
-              return (
-                <tr key={index} className="text-center">
-                  <td className="border py-2">{name}</td>
-                  <td className="border py-2">
-                    <button
-                      className={`px-4 py-2 rounded text-white ${getButtonColor(
-                        fieldName
-                      )}`}
-                      onClick={() =>
-                        setStudentToMarkAbsent({
-                          fieldName,
-                          fieldToUpdate: primaryData[fieldName] ? false : true,
-                        })
-                      }>
-                      {primaryData[fieldName] ? "Mark Absent" : "Mark Present"}
-                    </button>
-                    <button
-                      className="ml-2 bg-yellow-500 text-white px-4 py-2 rounded"
-                      onClick={() => {
-                        const studentId = studentFieldPrefix;
-                        const studentInfo = {
-                          id: studentId,
-                          ...Object.fromEntries(
-                            Object.entries(primaryData).filter(([key]) =>
-                              key.startsWith(studentId)
-                            )
-                          ),
-                        };
-                        setSelectedStudentInfo(studentInfo);
-                        setShowStudentInfo(true);
-                      }}>
-                      View/Edit
-                    </button>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+            return (
+              <div key={index} className="flex items-center">
+                <button
+                  className={`w-70percent flex items-center justify-center hover:bg-blue-700 text-white font-bold py-2 px-3 rounded-lg ${getButtonColor(
+                    studentIndex
+                  )}`}
+                  onClick={() => {
+                    if (!isVisitorView) {
+                      handleClick(studentIndex);
+                    } else {
+                      setShowVisitorPrompt(true); // Show visitor prompt if in visitor view
+                    }
+                  }}>
+                  <span className="mr-2">{name}</span> {/* Name */}
+                  {primaryData[savedFieldName] && <FaCheckCircle />}{" "}
+                  {/* Check if saved is true */}
+                </button>
+                <div className="flex flex-row ml-1 border-2 border-gray-400 p-1 rounded-md">
+                  {["A", "B", "C", "D", "E"].map((dayLetter) => {
+                    const fieldName = `${studentIndex.slice(0, 3)}${dayLetter}`;
+                    return (
+                      <div
+                        key={dayLetter}
+                        className={`w-4 h-7 rounded-lg ${
+                          primaryData[fieldName]
+                            ? config.colors.present
+                            : config.colors.absent
+                        } mr-1`}></div>
+                    );
+                  })}
+                </div>{" "}
+                <div
+                  className="ml-2 cursor-pointer border border-gray-400 border-4 rounded-lg  text-gray-400"
+                  onClick={() => {
+                    setShowStudentInfo(true);
+                    setSelectedStudentInfo({
+                      loc: primaryData[loc],
+                      contactNumber: primaryData[contactNumber],
+                      Apoints: primaryData[Apoints],
+                      Bpoints: primaryData[Bpoints],
+                      Cpoints: primaryData[Cpoints],
+                      Dpoints: primaryData[Dpoints],
+                      Epoints: primaryData[Epoints],
+                      invites: primaryData[invites],
+                      age: primaryData[age],
+                      id: id,
+                      invitedBy: primaryData[invitedBy]
+                    });
+                  }}>
+                  <MdOutlineMoreHoriz />
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
+      <audio ref={audioRef} />
     </div>
   );
 }
