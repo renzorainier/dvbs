@@ -143,6 +143,8 @@ function Primary({
         config.dbPath.split("/")[0],
         config.dbPath.split("/")[1]
       );
+
+
       const newValue = primaryData[fieldToUpdate] ? "" : uploadTime;
       const bibleField = `${fieldToUpdate}bible`;
       const parentField  = `${fieldToUpdate}parent`;
@@ -190,6 +192,7 @@ function Primary({
         config.dbPath.split("/")[0],
         config.dbPath.split("/")[1]
       );
+      console.log("Received fieldName: ", fieldName);
       const dayLetter = getCurrentDayLetter();
       const bibleField = `${fieldName.slice(0, 3)}${dayLetter}bible`;
       const pointsField = `${fieldName.slice(0, 3)}${dayLetter}points`;
@@ -216,10 +219,17 @@ function Primary({
     setStudentToUpdateBible(null);
     setShowParentPopup(true);
   };
-
   const updateParentStatus = async (fieldName, broughtParent) => {
     try {
       console.log("Starting updateParentStatus");
+
+      // Log fieldName to ensure it has a value
+      console.log("Received fieldName: ", fieldName);
+      console.log("Received broughtParent: ", broughtParent);
+
+      if (!fieldName) {
+        throw new Error("fieldName is not defined");
+      }
 
       // Log configuration path and split it
       console.log("Config dbPath: ", config.dbPath);
@@ -236,6 +246,8 @@ function Primary({
       const dayLetter = getCurrentDayLetter();
       console.log("Current day letter: ", dayLetter);
 
+      // Log fieldName before using it to construct parentField and pointsField
+      console.log("Using fieldName: ", fieldName);
       const parentField = `${fieldName.slice(0, 3)}${dayLetter}parent`;
       const pointsField = `${fieldName.slice(0, 3)}${dayLetter}points`;
       console.log("Fields determined: ", parentField, pointsField);
@@ -268,6 +280,7 @@ function Primary({
     setStudentToUpdateParent(null);
     console.log("Student to update parent reset");
   };
+
 
 
 
