@@ -186,7 +186,7 @@ function Primary({
 
         playEnterSound();
       }
-
+      setStudentToUpdateParent(fieldName);
       setShowParentPopup(true);
 
     } catch (error) {
