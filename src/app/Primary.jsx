@@ -183,9 +183,12 @@ function Primary({
       // Show the parent popup after updating Bible status
       if (broughtBible) {
         setStudentToUpdateParent(fieldName);
-        setShowParentPopup(true);
+
+        playEnterSound();
       }
-      playEnterSound();
+
+      setShowParentPopup(true);
+
     } catch (error) {
       console.error("Error updating Firebase: ", error);
     }
