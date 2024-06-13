@@ -132,7 +132,7 @@ function AttendanceChart() {
       // Check if the key ends with the selected day and has a truthy value
       if (key.endsWith(day) && attendanceData[key]) {
         // Extract the prefix (index) part of the key
-        const index = parseInt(key.substring(0, 2));
+        const index = parseInt(key.substring(0, 3));
         // Ensure the index is a number between 1 and 99
         return !isNaN(index) && index >= 1 ;
       }
