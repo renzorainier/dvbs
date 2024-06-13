@@ -615,12 +615,14 @@ function Primary({
 
             return (
               <div key={index} className="flex items-center">
-                <div className={`rounded-lg m ${getButtonColor(
+                <div className={`rounded-lg ${getButtonColor(
                     studentIndex
                   )}`}>
                   {primaryData[`${id}parent`] && (
                     <div className="flex items-center ">
-                      <RiGroup2Fill className="text-4xl" />
+                      <RiGroup2Fill className={`text-5xl p-1 ${getButtonColor(
+                    studentIndex
+                  )}`}/>
                     </div>
                   )}
                 </div>
