@@ -555,7 +555,7 @@ function Primary({
         <div className="fixed inset-0 z-50 flex items-center justify-center">
           <div className="fixed inset-0 bg-black opacity-50"></div>
           <div className="bg-white rounded-lg p-5 shadow-md z-10 flex flex-col items-center">
-            <p className="mb-2">Did the student bring their Bible today?</p>
+            <p className="mb-2">Did the student bring their parent today?</p>
             <div className="flex space-x-4">
               <button
                 className="bg-green-500 text-white font-bold py-2 px-4 rounded"
