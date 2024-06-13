@@ -224,69 +224,6 @@ function Primary({
 
 
 
-  // const updateParentStatus = async (fieldName, broughtParent) => {
-  //   try {
-  //     console.log("Starting updateParentStatus");
-
-  //     // Log fieldName to ensure it has a value
-  //     console.log("Received fieldName: ", fieldName);
-  //     console.log("Received broughtParent: ", broughtParent);
-
-  //     if (!fieldName) {
-  //       throw new Error("fieldName is not defined");
-  //     }
-
-  //     // Log configuration path and split it
-  //     console.log("Config dbPath: ", config.dbPath);
-  //     const splitPath = config.dbPath.split("/");
-  //     console.log("Split path: ", splitPath);
-
-  //     if (splitPath.length < 2) {
-  //       throw new Error("Invalid dbPath configuration");
-  //     }
-
-  //     const docRef = doc(db, splitPath[0], splitPath[1]);
-  //     console.log("docRef created: ", docRef);
-
-  //     const dayLetter = getCurrentDayLetter();
-  //     console.log("Current day letter: ", dayLetter);
-
-  //     // Log fieldName before using it to construct parentField and pointsField
-  //     console.log("Using fieldName: ", fieldName);
-  //     const parentField = `${fieldName.slice(0, 3)}${dayLetter}parent`;
-  //     const pointsField = `${fieldName.slice(0, 3)}${dayLetter}points`;
-  //     console.log("Fields determined: ", parentField, pointsField);
-
-  //     const currentPoints = primaryData[pointsField] || 0;
-  //     console.log("Current points: ", currentPoints);
-
-  //     const newPoints = broughtParent ? currentPoints + 3 : currentPoints;
-  //     console.log("New points: ", newPoints);
-
-  //     await updateDoc(docRef, {
-  //       [parentField]: broughtParent ? true : false,
-  //       [pointsField]: newPoints,
-  //     });
-  //     console.log("Document updated in Firebase");
-
-  //     setPrimaryData((prevData) => ({
-  //       ...prevData,
-  //       [parentField]: broughtParent ? true : false,
-  //       [pointsField]: newPoints,
-  //     }));
-  //     console.log("Local state updated");
-  //   } catch (error) {
-  //     console.error("Error updating Firebase: ", error);
-  //   }
-
-  //   setShowParentPopup(false);
-  //   console.log("Parent popup hidden");
-
-  //   setStudentToUpdateParent(null);
-  //   console.log("Student to update parent reset");
-  // };
-
-
 
 
   const updateParentStatus = async (fieldName, broughtParent) => {
