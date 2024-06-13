@@ -210,7 +210,7 @@ function Primary({
 
       // Update Parent status and points
       const currentPoints = primaryData[pointsField] || 0;
-      const newPoints = broughtParent ? currentPoints + 5 : currentPoints;
+      const newPoints = broughtParent ? currentPoints + 10 : currentPoints;
 
       await updateDoc(docRef, {
         [parentField]: broughtParent ? true : false,
