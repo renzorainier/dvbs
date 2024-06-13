@@ -185,6 +185,7 @@ function Primary({
         setStudentToUpdateParent(fieldName);
         setShowParentPopup(true);
       }
+      playEnterSound();
     } catch (error) {
       console.error("Error updating Firebase: ", error);
     }
@@ -218,6 +219,7 @@ function Primary({
         [parentField]: broughtParent ? true : false,
         [pointsField]: newPoints, // Update local state with the new points value
       }));
+      playEnterSound();
     } catch (error) {
       console.error("Error updating Firebase: ", error);
     }
