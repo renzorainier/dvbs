@@ -215,6 +215,48 @@ function Primary({
     setStudentToUpdateBible(null);
   };
 
+
+
+  const updateParentStatus = async (fieldName, broughtParent) => {
+    try {
+      const docRef = doc(
+        db,
+        config.dbPath.split("/")[0],
+        config.dbPath.split("/")[1]
+      );
+      const dayLetter = getCurrentDayLetter();
+      const parentField = `${fieldName.slice(0, 3)}${dayLetter}parent`;
+      const pointsField = `${fieldName.slice(0, 3)}${dayLetter}points`;
+
+      // Update Parent status and points
+      const currentPoints = primaryData[pointsField] || 0;
+      const newPoints = broughtParent ? currentPoints + 3 : currentPoints;
+
+      await updateDoc(docRef, {
+        [parentField]: broughtParent ? true : false,
+        [pointsField]: newPoints, // Update points with Parent bonus
+      });
+
+      setPrimaryData((prevData) => ({
+        ...prevData,
+        [parentField]: broughtParent ? true : false,
+        [pointsField]: newPoints, // Update local state with the new points value
+      }));
+    } catch (error) {
+      console.error("Error updating Firebase: ", error);
+    }
+
+    setShowParentPopup(false);
+    setStudentToUpdateParent(null);
+};
+
+
+
+
+
+
+
+
   const getButtonColor = (fieldName) => {
     const prefix = fieldName.slice(0, 3);
     const dayLetter = getCurrentDayLetter();
